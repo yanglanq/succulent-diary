@@ -1,7 +1,9 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/newDiary/newDiary",
+    "pages/myDiary/myDiary",
+    "pages/userInfo/userInfo"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -10,5 +12,30 @@
     "navigationBarTextStyle":"black"
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "tabBar":{
+    "color": "#a9b7b7",
+		"selectedColor": "#848484",
+    "borderStyle": "white",
+    "list":[
+      {
+				"selectedIconPath": "/images/tabbar_icon/shouyeSelect.png",
+				"iconPath": "/images/tabbar_icon/shouye.png",
+				"pagePath": "pages/index/index",
+				"text": "首页"
+      },
+      {
+				"selectedIconPath": "/images/tabbar_icon/mydiarySelect.png",
+				"iconPath": "/images/tabbar_icon/mydiary.png",
+				"pagePath": "pages/myDiary/myDiary",
+				"text": "日记"
+      },
+      {
+				"selectedIconPath": "/images/tabbar_icon/infoSelect.png",
+				"iconPath": "/images/tabbar_icon/info.png",
+				"pagePath": "pages/userInfo/userInfo",
+				"text": "我的"
+      }
+    ]
+  }
 }
