@@ -1,2 +1,28 @@
-<!--pages/newDiary/newdiary.wxml-->
-<text>pages/newDiary/newdiary.wxml</text>
+<view class="newDairy_title">
+    <view class="title_input">
+        <input type="text" placeholder="{{diary.title}}" maxlength="40" bindblur="titleConfirm" />
+        <button style="width:50rpx" plain='true' bindtap="chooseImg">
+            <image src='../../images/newDiary_icon/camera.png' mode='widthFix'>
+            </image>
+        </button>
+    </view>
+</view>
+<view class="content">
+    <view class="content_image" wx:for="{{imgs}}" wx:for-item="item" wx:key="*this">
+        <image src="{{item}}" data-index="{{index}}" mode="widthFix" bindtap="deleteImg" bindlongpress="previewImg">
+        </image>
+    </view>
+    <view class="content_text">
+        <textarea class="text_area" name="textarea" placeholder="{{diary.content}}" maxlength="-1" auto-height="true"
+            bindblur="contentConfirm">
+        </textarea>
+    </view>
+
+</view>
+
+<view class="bottom">
+    <button plain='true' bindtap="diarySubmit">
+        <image src='../../images/newDiary_icon/preservation.png' mode='widthFix'>
+        </image>
+    </button>
+</view>

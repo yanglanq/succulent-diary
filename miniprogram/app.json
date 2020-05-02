@@ -1,7 +1,7 @@
 {
   "pages":[
-    "pages/index/index",
     "pages/newDiary/newDiary",
+    "pages/index/index",
     "pages/myDiary/myDiary",
     "pages/userInfo/userInfo"
   ],

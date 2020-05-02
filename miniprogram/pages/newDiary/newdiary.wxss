@@ -1,1 +1,51 @@
-/* pages/newDiary/newdiary.wxss */
+page {
+  background-color: #C7dec0;
+  font-size: 34rpx;
+}
+.title_input {
+  height: 90rpx;
+  padding-left: 10rpx;
+  padding-top: 25rpx;
+  background-color: #99c48e;
+}
+.title_input input {
+  float: left;
+  align-items: center;
+  background-color: #99c48e;
+  width: 625rpx;
+}
+.title_input button {
+  height: 50rpx;
+  padding: 0;
+  border: none;
+}
+.title_input button image {
+  width: 50rpx;
+}
+.content {
+  width: 100%;
+  margin-bottom: 20rpx;
+}
+.content .content_image {
+  padding-top: 10rpx;
+  display: flex;
+  justify-content: center;
+}
+.content .content_text {
+  padding-top: 10rpx;
+  height: 1200rpx;
+}
+.content .content_text .text_area {
+  width: 100%;
+}
+.bottom button {
+  padding: 0;
+  height: 100rpx;
+  width: 100rpx;
+  position: flex;
+  bottom: 0;
+  border: none;
+}
+.bottom button image {
+  width: 100rpx;
+}

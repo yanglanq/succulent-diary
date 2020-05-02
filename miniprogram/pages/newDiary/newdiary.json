@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {},
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#649f55",
+  "navigationBarTitleText": "日记",
+  "navigationBarTextStyle": "white"
 }
