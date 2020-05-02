@@ -1,13 +1,10 @@
 /**app.wxss**/
 @import './utils/font/iconfont.wxss';
-
+page{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
 .container {
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
   box-sizing: border-box;
 } 
 @font-face {
@@ -18,4 +15,11 @@
   url('//at.alicdn.com/t/font_1795484_n0awj0jpfi.woff') format('woff'),
   url('//at.alicdn.com/t/font_1795484_n0awj0jpfi.ttf') format('truetype'),
   url('//at.alicdn.com/t/font_1795484_n0awj0jpfi.svg#iconfont') format('svg');
+}
+
+.imgIcon{
+  height: 1.2em; 
+  width: 1.2em;
+  display: inline-block;
+  vertical-align:text-bottom;
 }

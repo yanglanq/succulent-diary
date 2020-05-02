@@ -1,0 +1,8 @@
+/* components/bgCanvas/bgcanvas.wxss */
+.bg{
+  width: 100%;
+  min-height: 100%;
+  position: fixed;
+  z-index: -1;
+  background-color: rgba(250, 235, 215, 0.645);
+}

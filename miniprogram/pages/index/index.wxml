@@ -1,4 +1,8 @@
 <!--index.wxml-->
+<bgCanvas></bgCanvas>
 <view class="container">
-  <text class="iconfont .icon-duorouzhiwu"></text>
+	<view class="header">
+		<text>多肉日记本</text>
+		<cover-image class="imgIcon" src="https://yanglq.xyz/images/duorouduocai.png"></cover-image>
+	</view>
 </view>

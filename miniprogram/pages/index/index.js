@@ -3,7 +3,14 @@
 const app = getApp()
 Page({
   data: {
+    a:1
   },
   onLoad: function () {
+  },
+  aaa(){
+    console.log(this.data.a)
+  },
+  bbb:function(){
+    console.log(this.data.a);
   }
 })
