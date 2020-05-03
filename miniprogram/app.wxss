@@ -1,5 +1,7 @@
 /**app.wxss**/
 @import './utils/font/iconfont.wxss';
+@import './utils/main.wxss';
+
 page{
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
@@ -7,14 +9,10 @@ page{
   height: 100%;
   box-sizing: border-box;
 } 
-@font-face {
-  font-family: 'iconfont';  /* project id 1795484 */
-  src: url('//at.alicdn.com/t/font_1795484_n0awj0jpfi.eot');
-  src: url('//at.alicdn.com/t/font_1795484_n0awj0jpfi.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_1795484_n0awj0jpfi.woff2') format('woff2'),
-  url('//at.alicdn.com/t/font_1795484_n0awj0jpfi.woff') format('woff'),
-  url('//at.alicdn.com/t/font_1795484_n0awj0jpfi.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_1795484_n0awj0jpfi.svg#iconfont') format('svg');
+.colorgradient{
+  background: linear-gradient(to right, red, blue);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 .imgIcon{

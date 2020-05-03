@@ -62,6 +62,13 @@
 					"id": -1,
 					"name": "pages/newDiary/newDiary",
 					"pathName": "pages/newDiary/newDiary",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/search/search",
+					"pathName": "pages/search/search",
 					"scene": null
 				}
 			]
