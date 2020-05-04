@@ -2,7 +2,7 @@
 <!-- 头部返回组件 -->
 <view class="container">
   <bgCanvas></bgCanvas>
-	<backup bgColor="" isCustom="{{true}}">
+	<backup bgColor="" isCustom="{{false}}" isBack="{{true}}">
 		<view slot="content">搜索</view>
 	</backup>
 </view>

@@ -6,6 +6,9 @@
 		<text>多肉日记本</text>
 		<cover-image class="imgIcon" src="https://yanglq.xyz/images/duorouduocai.png"></cover-image>
 	</view>
+
+	
+
 	<!-- 点击跳转到搜索界面 -->
 	<view class="search"
     bindtap="search"
@@ -22,6 +25,11 @@
 				</view>
 			</swiper-item>
 		</swiper>
+	</view>
+
+	<view class="writeDiary">
+		<text class="iconfont icon-add-fill" style="color:rgba(153, 191, 76, 0.871)"></text>
+		<text class="colorgradient">来写一篇日记吧~</text>
 	</view>
 
 	<view class="msg">
