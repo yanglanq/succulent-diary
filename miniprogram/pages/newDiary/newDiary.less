@@ -1,64 +1,32 @@
+@import "../../utils/main.wxss";
+@import "../../utils/icon.wxss";
+.cu-form-group .title {
+  min-width: calc(4em + 30rpx);
+}
+
 page {
-    background-color: #C7dec0;
-    font-size: 34rpx;
+  background-color: white;
+  font-size: 34rpx;
 }
 
-.title_input {
-    height: 90rpx;
-    padding-left: 10rpx;
-    padding-top: 25rpx;
-    background-color: #99c48e;
-
-    input {
-        float: left;
-        // display: flex;
-        // justify-content: center;
-        align-items: center;
-        background-color: #99c48e;
-        // color: #666;
-        width: 625rpx;
-    }
-
-    button {
-        height: 50rpx;
-        padding: 0;
-        border: none;
-        image {
-            width: 50rpx;
-        }
-    }
+.img{
+  float: left;
+  width: 50rpx;
+  height: 50rpx;
 }
 
-.content {
-    width: 100%;
-    margin-bottom: 20rpx;
-    // border: 10rpx solid red;
-    .content_image {
-        padding-top: 10rpx;
-        display: flex;
-        justify-content: center;
-        image {}
-    }
-    .content_text {
-        padding-top: 10rpx;
-        height: 1200rpx;
-        .text_area{
-            width: 100%;
-        }
-    }
+.photo_img{
+  margin-left: 34rpx;
+  margin-top: 30rpx;
+  // justify-content: center;
+  height: 100rpx;
+  width: 100rpx;
 }
 
 .bottom{
-    button {
-        padding: 0;
-        height: 100rpx;
-        width: 100rpx;
-        position: flex;
-        bottom: 0;
-        border: none;
-        
-        image {
-            width: 100rpx;
-        }
-    }
+   height: 100rpx;
+   width: 100rpx;
+   position: fixed;
+   bottom: 0;
+   right: 0;
 }
