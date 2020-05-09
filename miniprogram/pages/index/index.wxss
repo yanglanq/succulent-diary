@@ -9,6 +9,7 @@
   line-height: 85rpx;
   color: aliceblue;
 }
+
 .search{
   margin: 30rpx auto 0rpx;
   height: 70rpx;

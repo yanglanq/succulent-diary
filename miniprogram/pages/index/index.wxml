@@ -14,7 +14,7 @@
     bindtap="search"
   >
 		<text class="icon iconfont icon-sousuo"></text>
-		<text>输入你想要搜索的内容</text>
+		<text>Search</text>
 	</view>
 
 	<view class="swiperImg">
