@@ -1,0 +1,44 @@
+{
+  "id": "1795484",
+  "name": "微信小程序大赛",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "11289514",
+      "name": "添加",
+      "font_class": "add-fill",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "13320033",
+      "name": "返 回",
+      "font_class": "fanhui",
+      "unicode": "e769",
+      "unicode_decimal": 59241
+    },
+    {
+      "icon_id": "13395335",
+      "name": "首页-选中",
+      "font_class": "icon_home",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "13478692",
+      "name": "保存",
+      "font_class": "A",
+      "unicode": "e6e7",
+      "unicode_decimal": 59111
+    },
+    {
+      "icon_id": "14269742",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+/* pages/search/search.wxss */
+.search-box {
+  position: relative;
+}
+
+.search-box .icon-sousuo {
+  position: absolute;
+  top: 16rpx;
+  right: 60rpx;
+  font-size: 18px;
+}
+
+.search {
+  box-sizing: border-box;
+  padding: 10rpx 50rpx 10rpx 20rpx;
+  margin: 30rpx auto 30rpx;
+  height: 70rpx;
+  width: 90%;
+  border-radius: 70rpx;
+  border: 1px solid #aaa;
+  text-align: left;
+  line-height: 70rpx;
+  background-color: rgba(255, 255, 255, 0.604);
+  color: #aaa;
+  cursor: pointer;
+}
+
+.hotKey {
+  width: 90%;
+  margin: 10px auto;
+}
+
+.hotKey > text {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.604);
+  padding: 1px 8px;
+  border-radius: 10px;
+  height: 20px;
+  color: #666;
+  line-height: 20px;
+  cursor: pointer;
+}
+.hotKey .title{
+  margin-bottom: 15px;
+  font-size: 15px;
+  font-weight: bold;
+}
+.resultCard{
+  padding: 20rpx;
+  width: 90%;
+  /* height: 150px; */
+  margin:auto;
+  background-color: rgba(255, 255, 255, 0.604);
+  cursor: pointer;
+}
+.resultCard .top{
+  margin-bottom: 10px;
+  height: 100rpx;
+}
+.resultCard .top image{
+  float: left;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  border:1px solid #999;
+}
+.resultCard .top .right{
+  float: left;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10px;
+}
+.resultCard .top .right .name{
+  background: linear-gradient(to right, rgb(127, 158, 63), rgb(116, 150, 14), rgb(94, 118, 46));
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.resultCard .top .right .alias{
+  color: rgb(150, 184, 81);
+}
+.resultCard .info{
+  color: #666;
+}

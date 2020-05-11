@@ -1,0 +1,5 @@
+/* components/backup/backup.wxss */
+.cu-custom{
+  background-color: rgba(153, 191, 76, 0.871);
+  color: #fff;
+}

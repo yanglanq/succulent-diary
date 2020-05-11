@@ -1,1 +1,53 @@
 /**index.wxss**/
+.header{
+  padding: 15rpx;
+  padding-top: 50rpx;
+  background-color: rgba(153, 191, 76, 0.871);
+  width: 100%;
+  height: 130rpx;
+  font-size: 41rpx;
+  line-height: 85rpx;
+  color: aliceblue;
+}
+
+.search{
+  margin: 30rpx auto 0rpx;
+  height: 70rpx;
+  width: 90%;
+  border-radius: 70rpx;
+  border:1px solid #aaa;
+  text-align: center;
+  line-height: 70rpx;
+  background-color: rgba(255, 255, 255, 0.604);
+  color: #aaa;
+}
+.writeDiary{
+  margin: auto;
+  width: 90%;
+  height: 70rpx;
+  line-height: 40rpx;
+  background-color: rgba(255, 255, 255, 0.604);
+  border-radius: 15rpx;
+  padding: 15rpx 25rpx;
+  letter-spacing: 5rpx;
+}
+.msg{
+  box-sizing: border-box;
+  margin: 30rpx auto;
+  padding: 25rpx;
+  width: 90%;
+  height: 50%;
+  background-color: rgba(255, 255, 255, 0.611);
+  border-radius: 15rpx;
+}
+.msg .title{
+  margin: 5rpx 0 20rpx;
+  font-size: 35rpx;
+}
+.msg .content{
+  word-wrap: break-word;
+  line-height: 1.5em;
+  background: linear-gradient(to right, rgb(153, 191, 76), rgb(116, 150, 14), rgb(153, 191, 76));
+  -webkit-background-clip: text;
+  color: transparent;
+}

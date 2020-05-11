@@ -1,6 +1,10 @@
 <form>
+    <bgCanvas></bgCanvas>
+    <backup bgColor="" isCustom="{{false}}" isBack="{{true}}">
+        <view slot="content">日记</view>
+    </backup>
     <!-- 标题 -->
-    <view class="cu-form-group" style="background-color: #99c48e;">
+    <view class="cu-form-group" style="background-color: #d9e895;">
         <view style="font-size: 34rpx;" class="title">
             <image class="img" src="https://yanglq.xyz/images/duorou16.png" mode='widthFix'></image>
             标题
@@ -9,8 +13,8 @@
     </view>
     <!-- 正文 -->
     <view class="cu-form-group textarea">
-        <textarea style="height: 570rpx;font-size: 34rpx;" maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaInput"
-            placeholder="{{diary.content}}"></textarea>
+        <textarea style="height: 570rpx;font-size: 34rpx;" maxlength="-1" disabled="{{modalName!=null}}"
+            bindinput="textareaInput" placeholder="{{diary.content}}"></textarea>
     </view>
     <!-- 图片 -->
     <view class="cu-bar bg-white margin-top">
