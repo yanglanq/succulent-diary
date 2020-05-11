@@ -1,9 +1,9 @@
 {
   "pages":[
     "pages/newDiary/newDiary",
+    "pages/userInfo/userInfo",
     "pages/index/index",
-    "pages/myDiary/myDiary",
-    "pages/userInfo/userInfo"
+    "pages/myDiary/myDiary"
   ],
   "window":{
     "backgroundTextStyle":"light",

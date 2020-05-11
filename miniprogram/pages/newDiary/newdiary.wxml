@@ -19,7 +19,7 @@
             上传图片
         </view>
         <view class="action">
-            {{diary.imgList.length}}/4
+            {{diary.imgList.length}}/8
         </view>
     </view>
     <view class="cu-form-group">
@@ -30,7 +30,7 @@
                     <text class="cuIcon-close"></text>
                 </view>
             </view>
-            <view style="border-radius:10%;" class="solids" bindtap="ChooseImage" wx:if="{{diary.imgList.length<4}}">
+            <view style="border-radius:10%;" class="solids" bindtap="ChooseImage" wx:if="{{diary.imgList.length<8}}">
                 <image class="photo_img" src='https://yanglq.xyz/images/camera.png' mode='widthFix'></image>
             </view>
         </view>
