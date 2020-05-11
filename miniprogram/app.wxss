@@ -1,7 +1,23 @@
 /**app.wxss**/
+@import './utils/font/iconfont.wxss';
+@import './utils/main.wxss';
 
-page,view,text,swiper,swiper-item,image,navigator{
-  padding: 0;
-  margin: 0;
+page{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.container {
+  height: 100%;
   box-sizing: border-box;
+} 
+.colorgradient{
+  background: linear-gradient(to right, red, blue);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.imgIcon{
+  height: 1.2em; 
+  width: 1.2em;
+  display: inline-block;
+  vertical-align:text-bottom;
 }
