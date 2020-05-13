@@ -4,17 +4,10 @@
         <text>个人中心</text>
         <cover-image class="imgIcon" src="https://yanglq.xyz/images/duorouduocai.png"></cover-image>
     </view>
+    <view class="flex padding justify-center">
+        <view class="cu-avatar xxl round" style="background-image:url({{userInfo.avatarUrl}});"></view>
+    </view>
     <view class="cu-list menu sm-border card-menu margin-top">
-        <view class="cu-item arrow">
-            <view>
-                <image class="cu-avatar round"
-                    src="{{userInfo.gender === 0 ? 'https://yanglq.xyz/images/duorou16.png' : 'https://yanglq.xyz/images/duorou17.png'}}"
-                    mode='widthFix'></image>
-                <text style="margin-left:10rpx;">头像</text>
-            </view>
-    
-            <view class="cu-avatar xl round" style="background-image:url({{userInfo.avatarUrl}});"></view>
-        </view>
         <view class="cu-item arrow">
             <view>
                 <image class="cu-avatar round" src="https://yanglq.xyz/images/duorou18.png" mode='widthFix'></image>
@@ -39,12 +32,25 @@
         <view class="cu-item arrow">
             <view>
                 <image class="cu-avatar round" src="https://yanglq.xyz/images/duorou20.png" mode='widthFix'></image>
-                <text style="margin-left:10rpx;">个性签名</text>
+                <text style="margin-left:10rpx;">多肉数量</text>
             </view>
+            <picker value="{{duorouNum}}" range="{{number}}" bindchange="duorouNumChange">
+                <view class="picker">
+                    {{duorouNum}}
+                </view>
+            </picker>
+        </view>
+        <view class="cu-item arrow">
             <view>
+                <image class="cu-avatar round" src="https://yanglq.xyz/images/duorou20.png" mode='widthFix'></image>
+                <text style="margin-left:10rpx;">日记本数</text>
             </view>
+            <picker value="{{diaryNum}}" range="{{number}}" bindchange="diaryNumChange">
+                <view class="picker">
+                    {{diaryNum}}
+                </view>
+            </picker>
         </view>
     </view>
-    <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权</button>
+    <!-- <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权</button> -->
 </view>
-  

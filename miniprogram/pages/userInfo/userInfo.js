@@ -2,9 +2,22 @@ const app = getApp();
 Page({
   data: {
     userInfo: {},
+    duorouNum:0,
+    diaryNum:0,
+    number:[0,1,2,3,4,5,6,7,8,9,10]
     // hasUserInfo:false
   },
-
+  duorouNumChange(e) {
+    // console.log(e);
+    this.setData({
+      duorouNum: e.detail.value
+    })
+  },
+  diaryNumChange(e) {
+    this.setData({
+      diaryNum: e.detail.value
+    })
+  },
   // getUserInfo:function(e){
   //   console.log(e.detail.userInfo);
   //   this.setData({
