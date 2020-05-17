@@ -1,0 +1,46 @@
+<form>
+    <bgCanvas></bgCanvas>
+    <backup bgColor="" isCustom="{{false}}" isBack="{{true}}">
+        <view slot="content">查看/修改日记</view>
+    </backup>
+    <!-- 标题 -->
+    <view class="cu-form-group" style="background-color: #d9e895;">
+        <view style="font-size: 34rpx;" class="title">
+            <image class="img" src="https://yanglq.xyz/images/duorou16.png" mode='widthFix'></image>
+            标题
+        </view>
+        <input style="font-size: 34rpx;" value="{{diary.title}}" maxlength="30" bindblur="textInput"></input>
+    </view>
+    <!-- 正文 -->
+    <view class="cu-form-group textarea">
+        <textarea style="height: 570rpx;font-size: 34rpx;" maxlength="-1" disabled="{{modalName!=null}}"
+            bindinput="textareaInput" value="{{diary.content}}"></textarea>
+    </view>
+    <!-- 图片 -->
+    <view class="cu-bar bg-white margin-top">
+        <view class="action" style="font-size: 34rpx;">
+            <image class="img" src="https://yanglq.xyz/images/duorou18.png" mode='widthFix'></image>
+            上传图片
+        </view>
+        <view class="action">
+            {{diary.imgList.length}}/8
+        </view>
+    </view>
+    <view class="cu-form-group">
+        <view class="grid col-4 grid-square flex-sub">
+            <view class="bg-img" wx:for="{{diary.imgList}}" wx:for-item="item" wx:key="*this" bindtap="ViewImage">
+                <image src="{{item}}" data-index="{{index}}" mode='aspectFill'></image>
+                <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+                    <text class="cuIcon-close"></text>
+                </view>
+            </view>
+            <view style="border-radius:10%;" class="solids" bindtap="ChooseImage" wx:if="{{diary.imgList.length<8}}">
+                <image class="photo_img" src='https://yanglq.xyz/images/camera.png' mode='widthFix'></image>
+            </view>
+        </view>
+    </view>
+    <!-- 提交 -->
+    <view class="bottom" bindtap="diarySubmit">
+        <image src='https://yanglq.xyz/images/preservation.png' mode='widthFix'></image>
+    </view>
+</form>

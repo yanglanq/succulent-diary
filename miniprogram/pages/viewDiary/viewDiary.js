@@ -6,18 +6,16 @@ Page({
    */
   data: {
     diary: {
-      title: "在这里输入标题，最多30个字符",
+      title: "这是标题~",
       imgList: [],
-      content: "美好的一天，写点东西吧^o^"
+      content: "这是正文~"
     }
   },
 
   textInput(e) {
-    if(e.detail.value!=""){
-      this.setData({
-        ['diary.title']: e.detail.value
-      })
-    }
+    this.setData({
+      ['diary.title']: e.detail.value
+    })
   },
 
   ChooseImage() {

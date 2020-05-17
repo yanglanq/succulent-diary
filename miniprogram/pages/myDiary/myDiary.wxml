@@ -1,0 +1,40 @@
+<bgCanvas></bgCanvas>
+<view class="container">
+    <view class="header">
+        <text>日记本</text>
+        <cover-image class="imgIcon" src="https://yanglq.xyz/images/duorouduocai.png"></cover-image>
+    </view>
+    <!-- 图片 -->
+    <view class="cu-list menu sm-border card-menu margin-top">
+        <view class="cu-item" style="font-size: 34rpx;background-color: #d9e895;">
+            <view class="action" style="margin-right: 0;font-size: 34rpx;">
+                <image class="img" src="https://yanglq.xyz/images/duorou18.png" mode='widthFix' bindtap="ChooseImage">
+                </image>
+                新建日记本
+            </view>
+            <view class="action">
+                日记本数：{{diary.imgList.length}}
+            </view>
+        </view>
+    </view>
+
+    <view class="cu-list menu sm-border card-menu margin-top">
+        <view class="cu-item" style="font-size: 34rpx;background-color: #d9e895; margin-top: 10rpx;"wx:for="{{diary.imgList}}" wx:for-item="item" wx:key="*this">
+            <image class="diary_img action" src="{{item}}" data-index="{{index}}" mode='aspectFill' bindtap="ViewImage"></image>
+            <view style="margin-left: 30rpx">
+                <view style="float: left;">
+                    日记名：
+                </view>
+                <input style="width: 100rpx;" value="hhh" type="text"/>
+                <view>
+                    更新时间：
+                </view>
+            </view>
+            <view class="cu-avatar round sm" style="background-image:url(https://yanglq.xyz/images/add.png);" bindtap="Add">
+            </view>
+            <view class="cu-avatar round sm" style="background-image:url(https://yanglq.xyz/images/delete1.png);" bindtap="Del">
+            </view>
+              
+        </view>
+    </view>
+</view>

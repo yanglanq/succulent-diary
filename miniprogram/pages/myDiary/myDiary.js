@@ -1,11 +1,56 @@
-// pages/myDiary/myDiary.js
+// pages/newDiary/newdiary.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    diary: {
+      title: [],
+      imgList: [],
+      content: []
+    }
+  },
 
+  ChooseImage() {
+    wx.chooseImage({
+      count: 20, //默认9
+      sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], //从相册选择
+      success: (res) => {
+        if (this.data.diary.imgList.length != 0) {
+          this.setData({
+            ['diary.imgList']: this.data.diary.imgList.concat(res.tempFilePaths)
+          })
+        } else {
+          this.setData({
+            ['diary.imgList']: res.tempFilePaths
+          })
+        }
+      }
+    });
+  },
+  ViewImage(e) {
+    wx.previewImage({
+      urls: this.data.diary.imgList,
+      current: e.currentTarget.dataset.url
+    });
+  },
+  Del(e) {
+    wx.showModal({
+      title: '提示',
+      content: '确定要删除这本日记吗？',
+      cancelText: '取消',
+      confirmText: '确定',
+      success: res => {
+        if (res.confirm) {
+          this.data.diary.imgList.splice(e.currentTarget.dataset.index, 1);
+          this.setData({
+            ['diary.imgList']: this.data.diary.imgList
+          })
+        }
+      }
+    })
   },
   
   /**
