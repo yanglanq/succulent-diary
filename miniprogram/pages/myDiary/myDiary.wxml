@@ -1,2 +1,7 @@
 <!--pages/myDiary/myDiary.wxml-->
-<text>pages/myDiary/myDiary.wxml</text>
+<view class="container">
+    <bgCanvas></bgCanvas>
+	<backup bgColor="" isCustom="{{false}}" isBack="{{true}}">
+		<view slot="content">我的日记</view>
+	</backup>
+</view>
