@@ -6,8 +6,8 @@
     </view>
     <!-- 图片 -->
     <view class="cu-list menu sm-border card-menu margin-top">
-        <view class="cu-item" style="font-size: 34rpx;background-color: #d9e895;">
-            <view class="action" style="margin-right: 0;font-size: 34rpx;">
+        <view class="cu-item" style="font-size: 30rpx;background-color: #d9e895;">
+            <view class="action" style="margin-right: 0;font-size: 30rpx;;">
                 <image class="img" src="https://yanglq.xyz/images/duorou18.png" mode='widthFix' bindtap="ChooseImage">
                 </image>
                 新建日记本
@@ -19,22 +19,25 @@
     </view>
 
     <view class="cu-list menu sm-border card-menu margin-top">
-        <view class="cu-item" style="font-size: 34rpx;background-color: #d9e895; margin-top: 10rpx;"wx:for="{{diary.imgList}}" wx:for-item="item" wx:key="*this">
-            <image class="diary_img action" src="{{item}}" data-index="{{index}}" mode='aspectFill' bindtap="ViewImage"></image>
-            <view style="margin-left: 30rpx">
-                <view style="float: left;">
-                    日记名：
-                </view>
-                <input style="width: 100rpx;" value="hhh" type="text"/>
-                <view>
-                    更新时间：
-                </view>
+        <view class="cu-item" style="height: 150rpx;font-size: 30rpx;background-color: #fbfbfb; margin-top: 10rpx;"
+            wx:for="{{diary.imgList}}" wx:for-item="item" wx:key="*this">
+            <image class="diary_img action" src="{{item}}" data-index="{{index}}" mode='aspectFill' bindtap="ViewImage">
+            </image>
+            <view style="word-break:break-all">
+                <!-- <text style="margin-top: 0rpx;" selectable="false" space="false" decode="true"> -->
+                    <view>日记名：{{}}</view>
+                    <view>更新时间：</view>
+                <!-- </text> -->
             </view>
-            <view class="cu-avatar round sm" style="background-image:url(https://yanglq.xyz/images/add.png);" bindtap="Add">
+            <view class="cu-avatar round sm" bindtap="Add">
+                <image style="background-color:#fbfbfb;" src="https://yanglq.xyz/images/add.png" mode='widthFix'>
+                </image>
             </view>
-            <view class="cu-avatar round sm" style="background-image:url(https://yanglq.xyz/images/delete1.png);" bindtap="Del">
+            <view class="cu-avatar round sm" bindtap="Del">
+                <image style="background-color:#fbfbfb;" src="https://yanglq.xyz/images/delete1.png" mode='widthFix'>
+                </image>
             </view>
-              
+
         </view>
     </view>
 </view>

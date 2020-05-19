@@ -5,20 +5,20 @@
     </backup>
     <!-- 标题 -->
     <view class="cu-form-group" style="background-color: #d9e895;">
-        <view style="font-size: 34rpx;" class="title">
+        <view style="font-size: 30rpx;" class="title">
             <image class="img" src="https://yanglq.xyz/images/duorou16.png" mode='widthFix'></image>
             标题
         </view>
-        <input style="font-size: 34rpx;" value="{{diary.title}}" maxlength="30" bindblur="textInput"></input>
+        <input style="font-size: 30rpx;" value="{{diary.title}}" maxlength="30" bindblur="textInput"></input>
     </view>
     <!-- 正文 -->
     <view class="cu-form-group textarea">
-        <textarea style="height: 570rpx;font-size: 34rpx;" maxlength="-1" disabled="{{modalName!=null}}"
+        <textarea style="height: 570rpx;font-size: 30rpx;" maxlength="-1" disabled="{{modalName!=null}}"
             bindinput="textareaInput" value="{{diary.content}}"></textarea>
     </view>
     <!-- 图片 -->
     <view class="cu-bar bg-white margin-top">
-        <view class="action" style="font-size: 34rpx;">
+        <view class="action" style="font-size: 30rpx;">
             <image class="img" src="https://yanglq.xyz/images/duorou18.png" mode='widthFix'></image>
             上传图片
         </view>
