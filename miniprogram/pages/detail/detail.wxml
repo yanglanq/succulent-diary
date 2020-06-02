@@ -1,0 +1,21 @@
+<form>
+    <bgCanvas></bgCanvas>
+    <backup bgColor="" isCustom="{{false}}" isBack="{{true}}">
+        <view slot="content">详细介绍</view>
+    </backup>
+    <view class='margin-xl bg-white padding-xl radius shadow-lg'>
+        <view class='text-center margin-bottom text-lg  text-grey property_font'>{{succulent.Name}}</view>
+        <view class='text-content' wx:for="{{succulent}}" wx:for-index="id" wx:for-item="item">
+            <view class='margin-top-sm' wx:if="{{id != 'Name' && item.length > 1}}">
+                <view wx:for="{{item}}" wx:for-index="id1" wx:for-item="item1">
+                    <view class="property_font" wx:if="{{id1 == 0}}">
+                        {{succulent.Name}}的{{item1}}
+                    </view>
+                    <view wx:elif="{{id1 > 0}}">
+                        <image class="img" src="https://yanglq.xyz/images/duorou18.png" mode='widthFix' />{{item1}}
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</form>

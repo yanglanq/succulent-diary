@@ -5,6 +5,7 @@
     "pages/newDiary/newDiary",
     "pages/userInfo/userInfo",
     "pages/search/search",
+    "pages/detail/detail",
     "pages/viewDiary/viewDiary"
   ],
   "window": {
