@@ -1,0 +1,69 @@
+<!--pages/diaryList/diaryList.wxml-->
+<scroll-view scroll-y class="DrawerPage {{modalName=='viewModal'?'show':''}}">
+	<bgCanvas></bgCanvas>
+	<backup bgColor="" isBack="{{true}}">
+		<view slot="content">详细信息</view>
+	</backup>
+	<view class="content">
+		<view class="checkInfo padding">
+			<text class="cuIcon-edit text-olive"
+			bindtap="editShow"
+			></text>
+			<text>{{thisDiary.name}}</text>
+		</view>
+		<!-- <view wx:if="{{!overdueList.length}}" class="text-xl padding text">
+			<text class="text-black text-bold">暂无日记哦!</text>
+		</view> -->
+		<view >
+			<view class="cu-timeline" style="background:transparent">
+				<view class="cu-time">06-17</view>
+				<view class="cu-item">
+					<view class="content">
+						<view class="cu-capsule radius">
+							<view class="cu-tag bg-cyan">上午</view>
+							<view class="cu-tag line-cyan">10:00</view>
+						</view>
+						<view class="margin-top">这是第一次，我家的铲屎官走了这么久。久到足足有三天！！ 在听到他的脚步声响在楼梯间的那一刻，我简直想要破门而出，对着他狠狠地吼上10分钟，然后再看心情要不要他进门。</view>
+						<view></view>
+					</view>
+				</view>
+			</view>
+		</view>
+
+	</view>
+</scroll-view>
+<view class="DrawerClose {{modalName=='viewModal'?'show':''}}" bindtap="hideModal">
+	<text class="cuIcon-pullright"></text>
+</view>
+<scroll-view scroll-y class="DrawerWindow {{modalName=='viewModal'?'show':''}}">
+	<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg">
+		<view class="cu-item pend-form" style="height:1250rpx;justify-content:flex-start;opacity:0.8;">
+			<!-- 日记名称 -->
+			<view class="cu-form-group margin-top">
+				<view class="title">日记名称</view>
+				<input value="{{diary.title}}" bindinput="onTitle" required="required"></input>
+			</view>
+			<!-- 多肉名称 -->
+			<view class="cu-form-group">
+				<view class="title">多肉名称</view>
+				<input value="{{diary.plantName}}" bindchange="onMajor"></input>
+			</view>
+			<!-- 浇水时间 -->
+			<view class="cu-form-group">
+				<view class="title">浇水时间</view>
+				<picker mode="time" value="{{diary.time}}" start="09:01" end="21:01" bindchange="TimeChange">
+					<view class="picker">
+						{{diary.time}}
+					</view>
+				</picker>
+			</view>
+
+			<!-- 描述 -->
+			<view class="cu-form-group align-start">
+				<view class="title">描述</view>
+				<textarea maxlength="-1" value="{{diary.des}}" placeholder="日记描述"></textarea>
+			</view>
+			<button class="cu-btn bg-olive lg margin-bottom" style="position: absolute;bottom: 25rpx;" catchtap="onSubmit">提交</button>
+		</view>
+	</view>
+</scroll-view>

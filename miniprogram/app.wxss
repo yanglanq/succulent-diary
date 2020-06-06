@@ -1,6 +1,7 @@
 /**app.wxss**/
 @import './utils/font/iconfont.wxss';
 @import './utils/main.wxss';
+@import './utils/icon.wxss';
 
 page{
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;

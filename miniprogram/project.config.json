@@ -76,6 +76,13 @@
 					"id": -1,
 					"name": "pages/myDiary/myDiary",
 					"pathName": "pages/myDiary/myDiary",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/diaryList/diaryList",
+					"pathName": "pages/diaryList/diaryList",
 					"scene": null
 				}
 			]

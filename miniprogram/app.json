@@ -4,7 +4,8 @@
         "pages/newDiary/newDiary",
         "pages/myDiary/myDiary",
         "pages/userInfo/userInfo",
-        "pages/search/search"
+        "pages/search/search",
+        "pages/diaryList/diaryList"
     ],
     "window": {
         "backgroundColor": "#F6F6F6",
