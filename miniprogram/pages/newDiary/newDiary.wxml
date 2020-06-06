@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-<!--pages/newDiary/newDiary.wxml-->
-<text>pages/newDiary/newDiary.wxml</text>
-=======
+
 <form>
     <bgCanvas></bgCanvas>
     <backup bgColor="" isCustom="{{false}}" isBack="{{true}}">
@@ -48,4 +45,3 @@
         <image src='https://yanglq.xyz/images/plantIcon/preservation.png' mode='widthFix'></image>
     </view>
 </form>
->>>>>>> xuwh
