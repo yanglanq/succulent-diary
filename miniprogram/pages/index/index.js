@@ -38,14 +38,14 @@ Page({
   },
   onLoad: function () {
   },
-  newDiary(){
-    wx.navigateTo({
-      url: '/pages/newDiary/newDiary'
-    })
-  },
   search(){
     wx.navigateTo({
       url: '/pages/search/search'
+    })
+  },
+  newDiary(){
+    wx.navigateTo({
+      url: '/pages/newDiary/newDiary'
     })
   },
   // 图片预览

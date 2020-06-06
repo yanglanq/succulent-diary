@@ -1,7 +1,51 @@
-<!--pages/myDiary/myDiary.wxml-->
+
+<bgCanvas></bgCanvas>
 <view class="container">
-    <bgCanvas></bgCanvas>
-	<backup bgColor="" isCustom="{{false}}" isBack="{{true}}">
-		<view slot="content">我的日记</view>
-	</backup>
+    <view class="header">
+        <text>日记本</text>
+        <cover-image class="imgIcon" src="https://yanglq.xyz/images/plantIcon/duorouduocai.png"></cover-image>
+    </view>
+    <!-- 图片 -->
+    <view class="cu-list menu sm-border card-menu margin-top">
+        <view class="cu-item" style="font-size: 30rpx;background-color: #d9e895;">
+            <view class="action" style="margin-right: 0;font-size: 30rpx;;">
+                <image class="img" src="https://yanglq.xyz/images/plantIcon/duorou18.png" mode='widthFix' bindtap="ChooseImage"></image>
+                新建日记本
+            </view>
+            <view class="action">日记本数：{{diary.length}}</view>
+        </view>
+    </view>
+    <view class="cu-list menu sm-border card-menu margin-top">
+        <view class="cu-item margin-top-sm" style="height: 150rpx;font-size: 30rpx;background-color: #fbfbfb;" wx:for="{{diary}}" wx:for-item="item" wx:key="*this">
+            <!-- {{item.name}}{{item.headUrl}} -->
+            <image class="diary_img action" src="http://47.94.210.131:4430{{item.headUrl}}" data-index="{{index}}" mode='aspectFill' bindtap="ViewImage"></image>
+            <view>
+            日记名：
+            <input wx:if="{{item.name == null}}" placeholder="请输入日记名" type="text" bindblur="InputName"/>
+            <input wx:if="{{item.name != null}}" value="{{item.name}}" type="text" bindblur="InputName"/>
+            </view>
+            <view class="margin-top-sm"></view>
+            <view class="cu-avatar round sm" bindtap="Add">
+                <image style="background-color:#fbfbfb;" src="https://yanglq.xyz/images/plantIcon/add.png" mode='widthFix'></image>
+            </view>
+            <view class="cu-avatar round sm" bindtap="Del">
+                <image style="background-color:#fbfbfb;" src="https://yanglq.xyz/images/plantIcon/delete.png" mode='widthFix'></image>
+            </view>
+
+            <!-- <image class="diary_img action" src="{{item}}" data-index="{{index}}" mode='aspectFill' bindtap="ViewImage"></image>
+            {{item}}
+            <view>
+            日记名：
+            <input wx:if="{{diary.name[index] == null}}" placeholder="请输入日记名" type="text" bindblur="InputName"/>
+            <input wx:elif="{{diary.name[index] != null}}" value="{{diary.name[index]}}" type="text" bindblur="InputName"/>
+            </view>
+            <view class="margin-top-sm"></view>
+            <view class="cu-avatar round sm" bindtap="Add">
+                <image style="background-color:#fbfbfb;" src="https://yanglq.xyz/images/plantIcon/add.png" mode='widthFix'></image>
+            </view>
+            <view class="cu-avatar round sm" bindtap="Del">
+                <image style="background-color:#fbfbfb;" src="https://yanglq.xyz/images/plantIcon/delete.png" mode='widthFix'></image>
+            </view> -->
+        </view>
+    </view>
 </view>

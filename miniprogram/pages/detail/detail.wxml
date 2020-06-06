@@ -1,0 +1,42 @@
+<form>
+    <bgCanvas></bgCanvas>
+    <backup bgColor="" isCustom="{{false}}" isBack="{{true}}">
+        <view slot="content">详细介绍</view>
+    </backup>
+    <view class='margin-xl bg-white padding-xl radius shadow-lg'>
+        <view class='text-center margin-bottom text-lg  text-grey property_font'>{{succulent.Name}}</view>
+        <!-- 不显示详细信息 -->
+        <view class='text-content' wx:for="{{succulent}}" wx:for-index="id" wx:for-item="item" wx:key="id">
+            <view class='margin-top-sm' wx:if="{{(id != 'Name' && (id == 'ImgUrl' || id == 'Alias' || id == 'Classify' || id == 'Florescence' || id == 'Intro')) && item.length > 1}}">
+                <view wx:if="{{id == 'ImgUrl'}}" class="flex padding justify-center">
+                    <view class="cu-avatar xxl round" style="background-image:url({{succulent.ImgUrl}});"></view>
+                </view>
+                <view wx:if="{{id != 'ImgUrl'}}" wx:for="{{item}}" wx:for-index="id1" wx:for-item="item1" wx:key="id1">
+                    <view class="property_font" wx:if="{{id1 == 0}}">
+                        {{succulent.Name}}的{{item1}}
+                    </view>
+                    <view wx:elif="{{id1 > 0}}" class="margin-top-xs">
+                        <!-- <image class="img" src="https://yanglq.xyz/images/duorou18.png" mode='widthFix' /> -->
+                        <text decode="{{true}}">{{space}}</text>{{item1}}
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view wx:if="{{detail == false}}" class="iconfont icon-expanding:before" bindtap="displayMore"></view>
+        <!-- 显示详细信息 -->
+        <view class='text-content' wx:if="{{detail == true}}" wx:for="{{succulent}}" wx:for-index="id" wx:for-item="item" wx:key="id">
+            <view class='margin-top-sm' wx:if="{{id != 'Name' && id != 'PlantId' && id != 'ImgUrl' && id != 'Alias' && id != 'Classify' && id != 'Florescence' && id != 'Intro' && item.length > 1}}">
+                <view wx:for="{{item}}" wx:for-index="id1" wx:for-item="item1" wx:key="id1">
+                    <view class="property_font" wx:if="{{id1 == 0}}">
+                        {{succulent.Name}}的{{item1}}
+                    </view>
+                    <view wx:elif="{{id1 > 0}}" class="margin-top-xs">
+                        <!-- <image class="img" src="https://yanglq.xyz/images/duorou18.png" mode='widthFix' /> -->
+                        <text decode="{{true}}">{{space}}</text>{{item1}}
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view wx:if="{{detail == true}}" class="iconfont icon-gengduo:before" bindtap="displayLess"></view>
+    </view>
+</form>

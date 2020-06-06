@@ -1,0 +1,24 @@
+
+  page {
+    background-color: white;
+    font-size: 30rpx;
+  }
+  .img {
+    float: left;
+    width: 50rpx;
+    height: 50rpx;
+  }
+  .photo_img {
+    margin-left: 34rpx;
+    margin-top: 30rpx;
+    height: 100rpx;
+    width: 100rpx;
+  }
+  .bottom {
+    height: 100rpx;
+    width: 100rpx;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+  }
+  
