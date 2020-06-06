@@ -1,12 +1,12 @@
 {
   "pages": [
-    "pages/detail/detail",
-    "pages/index/index",
     "pages/myDiary/myDiary",
+    "pages/index/index",
+    
     "pages/newDiary/newDiary",
     "pages/userInfo/userInfo",
     "pages/search/search",
-    
+    "pages/detail/detail",
     "pages/viewDiary/viewDiary"
   ],
   "window": {

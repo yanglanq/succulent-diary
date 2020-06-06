@@ -3,7 +3,7 @@
 <view class="container">
 	<view class="header">
 		<text>多肉日记本</text>
-		<cover-image class="imgIcon" src="https://yanglq.xyz/images/duorouduocai.png"></cover-image>
+		<cover-image class="imgIcon" src="https://yanglq.xyz/images/plantIcon/duorouduocai.png"></cover-image>
 	</view>
 
 
@@ -32,7 +32,7 @@
 
 	<view class="msg">
 		<view class="title">
-			<cover-image class="imgIcon" src="https://yanglq.xyz/images/duorouduocai.png"></cover-image>
+			<cover-image class="imgIcon" src="https://yanglq.xyz/images/plantIcon/duorouduocai.png"></cover-image>
 			<text class="colorgradient">今日份小贴士~</text>
 		</view>
 		<view class="content">

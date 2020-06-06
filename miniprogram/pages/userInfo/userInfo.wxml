@@ -31,7 +31,7 @@
         </view>
         <view class="cu-item arrow">
             <view>
-                <image class="cu-avatar round" src="https://yanglq.xyz/images/duorou20.png" mode='widthFix'></image>
+                <image class="cu-avatar round" src="https://yanglq.xyz/images/plantIcon/duorou20.png" mode='widthFix'></image>
                 <text style="margin-left:10rpx;">多肉数量</text>
             </view>
             <picker value="{{duorouNum}}" range="{{number}}" bindchange="duorouNumChange">
@@ -42,7 +42,7 @@
         </view>
         <view class="cu-item arrow">
             <view>
-                <image class="cu-avatar round" src="https://yanglq.xyz/images/duorou20.png" mode='widthFix'></image>
+                <image class="cu-avatar round" src="https://yanglq.xyz/images/plantIcon/duorou20.png" mode='widthFix'></image>
                 <text style="margin-left:10rpx;">日记本数</text>
             </view>
             <picker value="{{diaryNum}}" range="{{number}}" bindchange="diaryNumChange">
@@ -52,5 +52,7 @@
             </picker>
         </view>
     </view>
-    <!-- <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权</button> -->
+    <view class="margin-top-xl">
+        <button class="round bg-olive" open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录</button>
+    </view>
 </view>

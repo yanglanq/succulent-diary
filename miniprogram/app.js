@@ -5,12 +5,12 @@ App({
       success: e => {
         this.globalData.StatusBar = e.statusBarHeight;
         let capsule = wx.getMenuButtonBoundingClientRect();
-		if (capsule) {
-		 	this.globalData.Custom = capsule;
-			this.globalData.CustomBar = capsule.bottom + capsule.top - e.statusBarHeight;
-		} else {
-			this.globalData.CustomBar = e.statusBarHeight + 50;
-		}
+        if (capsule) {
+          this.globalData.Custom = capsule;
+          this.globalData.CustomBar = capsule.bottom + capsule.top - e.statusBarHeight;
+        } else {
+          this.globalData.CustomBar = e.statusBarHeight + 50;
+        }
       }
     })
     // 展示本地存储能力
@@ -20,10 +20,31 @@ App({
 
     // 登录
     wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+      // success: res => {
+      //   // 发送 res.code 到后台换取 openId, sessionKey, unionId
+      // }
+      success(res) {
+        if (res.code) {
+          //发起网络请求
+          wx.request({
+            url: 'https://yanglq.xyz/login',
+            data: {
+              code: res.code
+            },
+            header: {
+              'content-type': 'application/json'
+            },
+            success: res1 => {
+              var openid = res1.data.openid;
+              console.log('openid = ' + openid);
+            }
+          })
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
       }
     })
+
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -32,7 +53,7 @@ App({
           wx.getUserInfo({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo
+              this.globalData.wxuserInfo = res.userInfo
 
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
@@ -46,6 +67,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    wxuserInfo: null
   }
 })

@@ -6,7 +6,7 @@
     <!-- 标题 -->
     <view class="cu-form-group" style="background-color: #d9e895;">
         <view style="font-size: 30rpx;" class="title">
-            <image class="img" src="https://yanglq.xyz/images/duorou16.png" mode='widthFix'></image>
+            <image class="img" src="https://yanglq.xyz/images/plantIcon/duorou16.png" mode='widthFix'></image>
             标题
         </view>
         <input style="font-size: 30rpx;" value="{{diary.title}}" maxlength="30" bindblur="textInput"></input>
@@ -19,7 +19,7 @@
     <!-- 图片 -->
     <view class="cu-bar bg-white margin-top">
         <view class="action" style="font-size: 30rpx;">
-            <image class="img" src="https://yanglq.xyz/images/duorou18.png" mode='widthFix'></image>
+            <image class="img" src="https://yanglq.xyz/images/plantIcon/duorou18.png" mode='widthFix'></image>
             上传图片
         </view>
         <view class="action">
@@ -35,12 +35,12 @@
                 </view>
             </view>
             <view style="border-radius:10%;" class="solids" bindtap="ChooseImage" wx:if="{{diary.imgList.length<8}}">
-                <image class="photo_img" src='https://yanglq.xyz/images/camera.png' mode='widthFix'></image>
+                <image class="photo_img" src='https://yanglq.xyz/images/plantIcon/camera.png' mode='widthFix'></image>
             </view>
         </view>
     </view>
     <!-- 提交 -->
     <view class="bottom" bindtap="diarySubmit">
-        <image src='https://yanglq.xyz/images/preservation.png' mode='widthFix'></image>
+        <image src='https://yanglq.xyz/images/plantIcon/preservation.png' mode='widthFix'></image>
     </view>
 </form>

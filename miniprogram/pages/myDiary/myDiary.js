@@ -5,37 +5,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-    diary: {
-      title: [],
-      imgList: [],
-      content: []
-    }
+    diary: [{
+      date: '',
+      headUrl: '',
+      id: '',
+      name: '',
+      path: '',
+      uid: '',
+    }],
   },
 
   ChooseImage() {
     wx.chooseImage({
-      count: 20, //默认9
+      count: 1, //默认9
       sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], //从相册选择
       success: (res) => {
-        if (this.data.diary.imgList.length != 0) {
-          this.setData({
-            ['diary.imgList']: this.data.diary.imgList.concat(res.tempFilePaths)
-          })
-        } else {
-          this.setData({
-            ['diary.imgList']: res.tempFilePaths
-          })
-        }
+        
       }
     });
   },
-  ViewImage(e) {
-    wx.previewImage({
-      urls: this.data.diary.imgList,
-      current: e.currentTarget.dataset.url
-    });
-  },
+
+
+  //删除
   Del(e) {
     wx.showModal({
       title: '提示',
@@ -44,20 +36,55 @@ Page({
       confirmText: '确定',
       success: res => {
         if (res.confirm) {
-          this.data.diary.imgList.splice(e.currentTarget.dataset.index, 1);
+          this.data.diary.splice(e.currentTarget.dataset.index, 1);
           this.setData({
-            ['diary.imgList']: this.data.diary.imgList
+            ['diary']: this.data.diary
           })
         }
       }
     })
   },
-  
+
+  // InputName(e){
+  //   if (this.data.diary.name.length != 0) {
+  //     this.setData({
+  //       ['diary.name']: this.data.diary.name.concat(res.detail.value)
+  //     })
+  //   } else {
+  //     this.setData({
+  //       ['diary.name']: e.detail.value
+  //     })
+  //   }
+  // },
+
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that=this;
+    wx.request({
+      url: 'https://yanglq.xyz/diary/listBook',
+      data:{
+        id:'1'//用户id
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function(res){
+        // success
+        // console.log(res.data);
+        that.setData({
+	        diary:res.data
+        })        
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
   },
 
   /**
