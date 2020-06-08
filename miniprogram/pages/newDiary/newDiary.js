@@ -7,9 +7,9 @@ Page({
    */
   data: {
     diary: {
-      title: "在这里输入标题，最多30个字符",
+      title: "",
       imgList: [],
-      content: "美好的一天，写点东西吧^o^"
+      content: ""
     }
   },
 
@@ -66,17 +66,17 @@ Page({
       ['diary.content']: e.detail.value
     })
   },
-  diarySubmit: function (e) {
+  diarySubmit(e){
     // console.log(e);
       wx.showModal({
         title: '提示',
-        content: '确认保存嘛？',
-        success: function (res) {
+        content: '确认提交嘛？',
+        success: (res)=>{
           if (res.confirm) {  
             console.log('确认')
-          } else {   
-            console.log('取消')
-          }
+            console.log(this.data.diary);
+            
+          } 
         }
       })
   },
@@ -86,53 +86,4 @@ Page({
   onLoad: function (options) {
     console.log(options.id)
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })
