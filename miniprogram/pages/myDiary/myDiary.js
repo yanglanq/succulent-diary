@@ -1,22 +1,65 @@
+
 // pages/newDiary/newdiary.js
 let app = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     haveImg:false,
     imgNum:0,
     modalName:'',
     addbutton:'https://yanglq.xyz/images/plantIcon/add.png',
     deletebutton:'https://yanglq.xyz/images/plantIcon/delete.png',
+    imgList:[],
     diary: [],
     temp:{
       watering:'00:00'
     }
   },
 
+
+
+  ChooseImage() {
+		wx.chooseImage({
+			count: 1, //默认9
+			sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+			sourceType: ['album'], //从相册选择
+			success: (res) => {
+				if (this.data.imgList.length != 0) {
+					this.setData({
+						imgList: this.data.imgList.concat(res.tempFilePaths)
+					})
+				} else {
+					this.setData({
+						imgList: res.tempFilePaths
+					});
+				}
+			}
+		});
+  },
+  
+	ViewImage(e) {
+		wx.previewImage({
+			urls: this.data.imgList,
+			current: e.currentTarget.dataset.url
+		});
+  },
+  
+	DelImg(e) {
+		wx.showModal({
+			title: '',
+			content: '确定要删除吗？',
+			cancelText: '取消',
+			confirmText: '确定',
+			success: res => {
+				if (res.confirm) {
+					this.data.imgList.splice(e.currentTarget.dataset.index, 1);
+					this.setData({
+						imgList: this.data.imgList
+					})
+				}
+			}
+		})
+  },
+  
   editShow(e){
 		this.setData({
 			modalName: "viewModal",
@@ -39,12 +82,6 @@ Page({
   },
 
   TimeChange(e) {
-    this.setData({
-      ['temp.watering']:e.detail.value,
-    })
-  },
-
-  onWatering(e){
     this.setData({
       ['temp.watering']:e.detail.value,
     })
@@ -81,66 +118,73 @@ Page({
 
   onSubmit(e){
     var that = this;
+    var app = getApp();
     var D = that.data.diary;
     var name = that.data.temp.name;
+    var uid = app.globalData.userInfo.uid;//用户id
     var plant = that.data.temp.plant;
-    var headUrl = that.data.temp.headUrl;
+    var headUrl = that.data.imgList[0];
     var description = that.data.temp.description;
     var watering = that.data.temp.watering;
-    // console.log(tmp);
-
-    wx.uploadFile({
+    wx.request({
       url: 'https://yanglq.xyz/diary/addBook',
-      filePath: headUrl, //文件路径  
-      name: 'file',  //随意
-      header: { 
-        'Content-Type': 'multipart/form-data',
+      data: {
+        name:name,
+        plant:plant,
+        uid: uid,
+        description: description,
+        watering: watering,
       },
-      method: 'POST',   //请求方式
-      formData: {
-        'name':name,
-        'plant':plant,
-        'uid': app.globalData.userInfo.uid,
-        'description':description,
-        'watering':watering,
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
       },
+      method: 'POST', 
       success: function(res){
-        // success
-        var id = res.data;
-        var ans = {};
-        ans.headUrl = headUrl;
-        ans.id = id;
-        ans.name = name;
-        ans.path = '';
-        ans.plant = plant;
-        ans.uid = uid;
-        ans.description = description;
-        ans.watering = watering;
-        D.push(ans);
-        that.setData({
-          diary:D,
-          haveImg:false,
-          imgNum:0,
-          ['temp.watering']:"00:00"
+        var Id = res.data;
+        wx.uploadFile({
+          url: 'https://yanglq.xyz/diary/updateBook',
+          filePath: headUrl, //文件路径  
+          name: 'file',  //随意
+          header: { 
+            'Content-Type': 'multipart/form-data',
+          },
+          formData: {
+            'id':Id,
+            'name':name,
+            method: 'POST'   //请求方式
+          },
+          success: function(res){
+            var id = res.data;
+            var ans = {};
+            ans.headUrl = headUrl;
+            ans.id = id;
+            ans.name = name;
+            ans.path = '';
+            ans.plant = plant;
+            ans.uid = uid;
+            ans.description = description;
+            ans.watering = watering;
+            D.push(ans);
+            that.setData({
+              diary:D,
+              haveImg:false,
+              imgNum:0,
+              ['temp.watering']:'00:00',
+              ['temp.plant']:'',
+              ['temp.name']:'',
+              ['temp.description']:'',
+              imgList:[],
+            })
+            wx.showToast({
+              title: '提交成功！',
+              icon: 'success'
+            })
+            that.hideModal();
+          }
         })
       }
     })
   },
-
-  NewDiary() {
-    var D = this.data.diary;
-    var tmp = {};
-    tmp.headUrl = '';
-    tmp.id = '';
-    tmp.name = '';
-    tmp.path = '';
-    tmp.uid = '';
-    D.push(tmp);
-    this.setData({
-      ['diary']:D
-    })
-  },
-
 
   //删除
   DeleteDiary(e) {
@@ -190,10 +234,12 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    var app = getApp();
+    var Id = app.globalData.userInfo.uid;
     wx.request({
       url: 'https://yanglq.xyz/diary/listBook',
       data: {
-        id: app.globalData.userInfo.uid //用户id
+        id: Id, //用户id
       },
       header: {
         'content-type': 'application/json' // 默认值
@@ -207,7 +253,11 @@ Page({
       },
       fail: function () {
         // fail
-      }
+        wx.showModal({
+          title: '加载失败',
+          icon:'loading'
+        })
+      },
     })
   },
 

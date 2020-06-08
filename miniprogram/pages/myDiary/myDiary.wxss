@@ -118,6 +118,8 @@
   margin-right: 0;
 }
 
+/* pages/diaryList/diaryList.wxss */
+/* packageAdmin/pages/pending/pending.wxss */
 .cu-form-group .title{
   font-size: 15px !important;
   color: #3a404d !important;
@@ -297,3 +299,4 @@
       justify-content: center;
       max-width: 100%;
   }
+  
