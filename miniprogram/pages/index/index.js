@@ -4,56 +4,54 @@ const app = getApp()
 Page({
   data: {
     // 轮播图数组
-    swiperList: [{
-      id: 0,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg'
-    }, {
-      id: 1,
-        type: 'image',
-        url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84001.jpg',
-    }, {
-      id: 2,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big39000.jpg'
-    }, {
-      id: 3,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg'
-    }, {
-      id: 4,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big25011.jpg'
-    }, {
-      id: 5,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big21016.jpg'
-    }, {
-      id: 6,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big99008.jpg'
-    }],
-    cardCur:0,
-    CustomBar:app.globalData.CustomBar
+    swiperList: [],
+    cardCur: 0,
+    CustomBar: app.globalData.CustomBar,
+    recommendMsg:""
   },
   onLoad: function () {
+    // 获取轮播图数据
+    wx.request({
+      url: 'https://yanglq.xyz/pic/getAll',
+      success:(res)=>{
+        this.setData({
+          swiperList:res.data
+        })
+      },
+      fail(err){
+        throw err;
+      }
+    })
+
+    // 获取每日推荐数据
+    wx.request({
+      url: 'https://yanglq.xyz/msg/userGetMsg',
+      success:(res)=>{
+        this.setData({
+          recommendMsg:res.data.msg
+        })
+      },
+      fail(err){
+        throw err;
+      }
+    })
   },
-  search(){
+  search() {
     wx.navigateTo({
       url: '/pages/search/search'
     })
   },
-  newDiary(){
+  newDiary() {
     wx.navigateTo({
       url: '/pages/newDiary/newDiary'
     })
   },
   // 图片预览
-  showImgList(e){
-    let list = this.data.swiperList.map(item=>item.url);
+  showImgList(e) {
+    let list = this.data.swiperList.map(item => item.url);
     wx.previewImage({
-      urls:list,
-      current:e.currentTarget.dataset.item.url
+      urls: list,
+      current: e.currentTarget.dataset.item.url
     })
   },
   cardSwiper(e) {

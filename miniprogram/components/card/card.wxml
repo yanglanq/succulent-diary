@@ -1,5 +1,5 @@
 <!--components/card/card.wxml-->
 <view class="card">
-  <image src="{{card.url}}" mode="aspectFill"></image>
-  <view class="text">内容描述</view>
+  <image src="{{url+card.url}}" mode="aspectFill"></image>
+  <view class="text">{{card.intro}}</view>
 </view>

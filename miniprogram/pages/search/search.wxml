@@ -2,25 +2,35 @@
 <!-- 头部返回组件 -->
 <view class="container">
 	<bgCanvas></bgCanvas>
+	
 	<backup bgColor="" isCustom="{{false}}" isBack="{{true}}">
 		<view slot="content">搜索</view>
 	</backup>
 	<view class="con">
 		<view class="search-box">
-			<input class="search" placeholder="请输入想要搜索的内容"></input>
-			<text class="icon iconfont icon-sousuo"></text>
+			<input class="search" placeholder="请输入想要搜索的内容"
+				bindchange="searchWordChange"
+				value="{{searchWord}}"
+			>
+		</input>
+			<text class="icon iconfont icon-sousuo"
+				bindtap="search"
+			></text>
 		</view>
 		<view class="hotKey" hidden="{{searchList.length}}">
 			<view class="title"><text class="colorgradient">搜索热词</text></view>
-			<text wx:for="{{hotKeyList}}" wx:key="*this">{{item}}</text>
+			<text wx:for="{{hotKeyList}}" wx:key="*this"
+				data-searchWord="{{item}}"
+				bindtap="search"
+			>{{item}}</text>
 		</view>
 		<view class="searchResult">
 			<view class="resultCard" wx:for="{{searchList}}" wx:key="*this">
 				<view class="top">
-					<image src="{{item.imgUrl}}"></image>
+					<image src="{{url+item.imgUrl}}"></image>
 					<view class="right">
-						<view class="name">{{item.name}}</view>
-						<view class="alias">别名：{{item.alias}}</view>
+						<view class="name ellipsis">{{item.pname}}</view>
+						<view class="alias ellipsis">别名：{{item.alias}}</view>
 					</view>
 				</view>
 				<view class="info">简介：{{item.intro}}</view>

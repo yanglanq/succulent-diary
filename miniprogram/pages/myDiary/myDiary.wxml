@@ -11,21 +11,22 @@
                 <view class="action" style="margin-right: 0;font-size: 30rpx;" bindtap="editShow">
                     <image class="img" src="https://yanglq.xyz/images/plantIcon/duorou18.png" mode='widthFix' ></image>
                     新建日记本
-                    <!-- bindtap="NewDiary" -->
                 </view>
                 <view class="action">日记本数：{{diary.length}}</view>
             </view>
         </view>
         <view class="cu-list menu sm-border card-menu margin-top">
             <view class="cu-item margin-top-sm" style="height: 150rpx;font-size: 30rpx;background-color: #fbfbfb;" wx:for="{{diary}}" wx:for-item="item" wx:key="ID">
-                <!-- {{item.name}}{{item.headUrl}} -->
                 <image class="diary_img action" wx:if="{{item.path != ''}}" src="http://yanglq.xyz:4430{{item.headUrl}}" data-index="{{index}}" mode='aspectFill' bindtap="ChooseImage"></image>
                 <image class="diary_img action" wx:if="{{item.path == ''}}" src="{{item.headUrl}}" data-index="{{index}}" mode='aspectFill' bindtap="ChooseImage"></image>
                 <view>
                     <view>{{item.name}}</view>
                     <view class="margin-top-sm">{{item.plant}}</view>
+<<<<<<< HEAD
                     <!-- <input wx:if="{{item.name == ''}}" data-index="{{index}}" placeholder="请输入日记名" type="text" bindblur="InputName"/>
             <input wx:if="{{item.name != ''}}" data-index="{{index}}" value="{{item.name}}" type="text" bindblur="InputName"/> -->
+=======
+>>>>>>> 566f09def8079e548b67fc5e2760e61683940812
                 </view>
                 <view class="margin-top-sm"></view>
                 <image class="cu-avatar round sm" style="background-color:#fbfbfb;" src="{{addbutton}}" data-index="{{index}}" mode='widthFix' bindtap="Add"></image>
@@ -41,45 +42,57 @@
     <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg">
         <view class="cu-item pend-form" style="height:1250rpx;justify-content:flex-start;opacity:0.8;">
             <view class="cu-form-group margin-top-xl">
-                <view class="title margin-left-sm">请输入以下内容：</view>
+                <view class="title ">请输入以下内容：</view>
             </view>
             <!-- 日记名称 -->
             <view class="cu-form-group">
-                <!-- <image class="img" src="https://yanglq.xyz/images/plantIcon/duorou18.png" mode='widthFix'></image> -->
-                <view class="title margin-left-sm">日记本名称</view>
-                <input value="{{temp.title}}" bindchange="onTitle" required="required"></input>
+                <view class="title">日记本名称</view>
+                <input value="{{temp.name}}" bindchange="onTitle" required="required"></input>
             </view>
             <!-- 多肉名称 -->
             <view class="cu-form-group">
-                <!-- <image class="img" src="https://yanglq.xyz/images/plantIcon/duorou18.png" mode='widthFix'></image> -->
-                <view class="title margin-left-sm">多肉名称</view>
+                <view class="title">多肉名称</view>
                 <input value="{{temp.plant}}" bindchange="onMajor"></input>
             </view>
             <!-- 浇水时间 -->
             <view class="cu-form-group">
-                <view class="title margin-left-sm">浇水时间</view>
+                <view class="title">浇水时间</view>
                 <picker mode="time" value="{{temp.watering}}" start="05:00" end="23:59" bindchange="TimeChange">
                     <view class="picker">
-                        <!-- {{diary.time}} -->
                         {{temp.watering}}
                     </view>
                 </picker>
             </view>
-            <!-- 日记本描述 -->
-            <view class="cu-form-group">
-                <!-- <image class="img" src="https://yanglq.xyz/images/plantIcon/duorou18.png" mode='widthFix'></image> -->
-                <view class="title margin-left-sm">日记本描述</view>
-                <input value="{{diary.description}}" bindchange="onDescription"></input>
-            </view>
-            <!-- 日记本封面 -->
-            <view class="cu-form-group">
-                <view class="title margin-left-sm">日记本封面</view>
-                <view class="title">{{imgNum}}/1</view>
-            </view>
-            <view class="img_boder">
-                <image wx:if="{{haveImg == false}}" class="img_max" mode="widthFix" src="https://yanglq.xyz/images/plantIcon/add2.png" bindtap="onImg" />
-                <image wx:if="{{haveImg == true}}" class="img_max" mode="widthFix" src="{{temp.headUrl}}" />
-            </view>
+            <!-- 描述 -->
+			<view class="cu-form-group align-start">
+				<view class="title">描述</view>
+				<textarea maxlength="-1" value="{{temp.description}}" placeholder="日记描述" bindblur="onDescription"></textarea>
+			</view>
+
+			<!-- 封面 -->
+			<view style="border-top: 1rpx solid #eee;">
+				<view class="cu-bar bg-white">
+					<view class="title action" style="font-size:26rpx;">
+						设置日记本封面
+					</view>
+					<view class="action">
+						{{imgList.length}}/1
+					</view>
+				</view>
+				<view class="cu-form-group">
+					<view class="grid col-4 grid-square flex-sub">
+						<view class="bg-img" wx:for="{{imgList}}" wx:key="index" bindtap="ViewImage" data-url="{{imgList[index]}}">
+							<image src='{{imgList[index]}}' mode='aspectFill'></image>
+							<view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+								<text class="cuIcon-close"></text>
+							</view>
+						</view>
+						<view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<1}}">
+							<text class="cuIcon-cameraadd"></text>
+						</view>
+					</view>
+				</view>
+			</view>
             <button class="cu-btn bg-olive lg margin-bottom-xl" style="position: absolute;bottom: 25rpx;" catchtap="onSubmit">
                 提交
             </button>
