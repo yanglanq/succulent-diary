@@ -29,22 +29,16 @@ App({
             data: {
               code: res.code
             },
-            header: {
-              'content-type': 'application/json'
-            },
             success: res => {
-              // console.log(res);
               var id = res.data;
               if(id < 0){
                 id = -id;
                 wx.getUserInfo({
                   success:res1=>{
-                    // console.log(res1);
                     var username = res1.userInfo.nickName;
                     var sex = res1.userInfo.gender;
                     var headUrl = res1.userInfo.avatarUrl;
                     that.globalData.userInfo = res1.userInfo;
-                    // console.log(that.globalData.userInfo);
                     wx.request({
                       url: 'https://yanglq.xyz/user/addUser',
                       data: {
@@ -53,24 +47,16 @@ App({
                         'headUrl':headUrl,
                         'sex':sex,
                       },
-                      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-                      // header: {}, // 设置请求的 header
                       success: function(res){
-                        // success
-                        console.log(res);
                       },
                       fail: function() {
                         // fail
                       },
-                      complete: function() {
-                        // complete
-                      }
                     })
                   }
                 })
               }
               that.globalData.userInfo.uid = id;
-              // console.log(that.globalData.userInfo);
             }
           })
         } else {
@@ -86,10 +72,7 @@ App({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
-              // 可以将 res 发送给后台解码出 unionId
               that.globalData.wxuserInfo = res.userInfo
-              // console.log(that.globalData.wxuserInfo);
-              
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (that.userInfoReadyCallback) {

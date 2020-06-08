@@ -1,4 +1,5 @@
 // pages/newDiary/newdiary.js
+let app = getApp();
 Page({
 
   /**
@@ -26,13 +27,11 @@ Page({
 			modalName: null,
 		})
   },
-  
   onTitle(e){
     this.setData({
       ['temp.name']:e.detail.value,
     })
   },
-
   onMajor(e){
     this.setData({
       ['temp.plant']:e.detail.value,
@@ -61,7 +60,6 @@ Page({
     var that = this;
     wx.chooseImage({
       count: 1, // 最多可以选择的图片张数，默认9
-      sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
       sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
       success: function(res){
         // success
@@ -85,12 +83,12 @@ Page({
     var that = this;
     var D = that.data.diary;
     var name = that.data.temp.name;
-    var uid = 0;//用户id
     var plant = that.data.temp.plant;
     var headUrl = that.data.temp.headUrl;
     var description = that.data.temp.description;
     var watering = that.data.temp.watering;
     // console.log(tmp);
+
     wx.uploadFile({
       url: 'https://yanglq.xyz/diary/addBook',
       filePath: headUrl, //文件路径  
@@ -98,13 +96,13 @@ Page({
       header: { 
         'Content-Type': 'multipart/form-data',
       },
+      method: 'POST',   //请求方式
       formData: {
         'name':name,
         'plant':plant,
-        'uid': uid,
+        'uid': app.globalData.userInfo.uid,
         'description':description,
         'watering':watering,
-        method: 'POST'   //请求方式
       },
       success: function(res){
         // success
@@ -180,6 +178,13 @@ Page({
       }
     })
   },
+
+  //跳转
+  change(e){
+    wx.navigateTo({
+      url: '../diaryList/diaryList?id=' + e.currentTarget.dataset.id
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -188,38 +193,20 @@ Page({
     wx.request({
       url: 'https://yanglq.xyz/diary/listBook',
       data: {
-        id: '0' //用户id
+        id: app.globalData.userInfo.uid //用户id
       },
       header: {
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
-        // success
-        // console.log(res.data);
-        // var D = [];
-        // for (var i = 0; i < res.data.length; i++) {
-        //   var tmp = {};
-        //   tmp.headUrl = res.data[i].headUrl;
-        //   tmp.id = res.data[i].id;
-        //   tmp.name = res.data[i].name;
-        //   tmp.path = res.data[i].path;
-        //   tmp.uid = res.data[i].uid;
-        //   tmp.plant = res.data[i].plant;
-        //   tmp.description = res.data[i].description;
-        //   tmp.watering = res.data[i].watering;
-        //   D.push(tmp);
-        // }
-        that.setData({
-          diary: res.data
-        })
-        console.log(res.data);
-        
+        if(res.data.length){
+          that.setData({
+            diary: res.data
+          })
+        }
       },
       fail: function () {
         // fail
-      },
-      complete: function () {
-        // complete
       }
     })
   },

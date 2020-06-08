@@ -20,7 +20,40 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+		//获取日记详细信息
+		wx.request({
+			url: 'https://yanglq.xyz/diary/queryBookById',
+			data:{
+				id:options.id
+			},
+			success:(res)=>{
+				console.log(res.data);
+				
+			//   this.setData({
+			// 	diary:res.data.msg
+			//   })
+			},
+			fail(err){
+			  throw err;
+			}
+		})
+		// 获取日记列表信息
+		wx.request({
+			url: 'https://yanglq.xyz/diary/listDiary',
+			data:{
+				id:options.id
+			},
+			success:(res)=>{
+				console.log(res.data);
+				
+			//   this.setData({
+			// 	recommendMsg:res.data.msg
+			//   })
+			},
+			fail(err){
+			  throw err;
+			}
+		})
     },
     editShow(e){
 		this.setData({

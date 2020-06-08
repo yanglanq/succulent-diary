@@ -41,7 +41,9 @@
         </view>
     </view>
     <!-- 提交 -->
-    <view class="bottom" bindtap="diarySubmit">
-        <image src='https://yanglq.xyz/images/plantIcon/preservation.png' mode='widthFix'></image>
+    <view class="bottom" bindtap="diarySubmit"
+        style="border: 1px solid #eee;"
+    >
+       提交
     </view>
 </form>

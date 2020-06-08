@@ -7,9 +7,107 @@ Page({
     swiperList: [],
     cardCur: 0,
     CustomBar: app.globalData.CustomBar,
-    recommendMsg:""
+    recommendMsg:"",
+    diaryList:[],
+    index:0,
+    list:[],
+    watheringList:[]// 该浇水的日记本列表
   },
   onLoad: function () {
+    if(app.globalData.userInfo.id){
+      wx.request({
+        url: 'https://yanglq.xyz/diary/watering',
+        data:{
+          id:app.globalData.userInfo.uid
+        },
+        success:(res)=>{
+          console.log(res.data);
+          
+          // this.setData({
+          //   recommendMsg:res.data.msg
+          // })
+        },
+        fail(err){
+          throw err;
+        }
+      })
+      wx.request({
+        url: 'https://yanglq.xyz/diary/listBook',
+        data: {
+          id: app.globalData.userInfo.uid //用户id
+        },
+        success: (res)=>{
+          if(res.data.length){
+            this.setData({
+              diaryList: res.data
+            })
+            let list = [];
+            for (let i = 0; i < this.data.diaryList.length; i++) {
+              list.push(this.data.diaryList[i].name)
+            }
+            this.setData({
+              list:list
+            })
+          }
+        }
+      })
+    }else{
+      wx.login({
+        success:(res)=>{
+          if (res.code) {
+            wx.request({
+              url: 'https://yanglq.xyz/user/login',
+              data: {
+                code: res.code
+              },
+              success: res => {
+                if(res.data < 0){
+                  app.globalData.userInfo.uid = -res.data;
+                }
+                app.globalData.userInfo.uid = res.data;
+                wx.request({
+                  url: 'https://yanglq.xyz/diary/watering',
+                  data:{
+                    id:app.globalData.userInfo.uid
+                  },
+                  success:(res)=>{
+                    console.log(res.data);
+                    
+                    // this.setData({
+                    //   recommendMsg:res.data.msg
+                    // })
+                  },
+                  fail(err){
+                    throw err;
+                  }
+                })
+                wx.request({
+                  url: 'https://yanglq.xyz/diary/listBook',
+                  data: {
+                    id: app.globalData.userInfo.uid //用户id
+                  },
+                  success: (res)=>{
+                    if(res.data.length){
+                      this.setData({
+                        diaryList: res.data
+                      })
+                      let list = [];
+                      for (let i = 0; i < this.data.diaryList.length; i++) {
+                        list.push(this.data.diaryList[i].name)
+                      }
+                      this.setData({
+                        list:list
+                      })
+                    }
+                  }
+                })
+              }
+            })
+          } 
+        }
+      })
+    }
+
     // 获取轮播图数据
     wx.request({
       url: 'https://yanglq.xyz/pic/getAll',
@@ -35,6 +133,9 @@ Page({
         throw err;
       }
     })
+    // 获取浇水数据
+    
+    
   },
   search() {
     wx.navigateTo({
@@ -44,6 +145,11 @@ Page({
   newDiary() {
     wx.navigateTo({
       url: '/pages/newDiary/newDiary'
+    })
+  },
+  PickerChange(e){
+    wx.navigateTo({// 传该日记的id
+      url: '../newDiary/newDiary?id=' + this.data.diaryList[e.detail.value].id
     })
   },
   // 图片预览
