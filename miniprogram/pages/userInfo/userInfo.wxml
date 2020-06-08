@@ -2,7 +2,7 @@
 <view class="container">
     <view class="header">
         <text>个人中心</text>
-        <cover-image class="imgIcon" src="https://yanglq.xyz/images/duorouduocai.png"></cover-image>
+        <cover-image class="imgIcon" src="https://yanglq.xyz/images/plantIcon/duorouduocai.png"></cover-image>
     </view>
     <view class="flex padding justify-center">
         <view class="cu-avatar xxl round" style="background-image:url({{userInfo.avatarUrl}});"></view>
@@ -10,7 +10,7 @@
     <view class="cu-list menu sm-border card-menu margin-top">
         <view class="cu-item arrow">
             <view>
-                <image class="cu-avatar round" src="https://yanglq.xyz/images/duorou18.png" mode='widthFix'></image>
+                <image class="cu-avatar round" src="https://yanglq.xyz/images/plantIcon/duorou18.png" mode='widthFix'></image>
                 <text style="margin-left:10rpx;">昵称</text>
             </view>
             <view>
@@ -19,7 +19,7 @@
         </view>
         <view class="cu-item arrow">
             <view>
-                <image class="cu-avatar round" src="https://yanglq.xyz/images/duorou19.png" mode='widthFix'></image>
+                <image class="cu-avatar round" src="https://yanglq.xyz/images/plantIcon/duorou19.png" mode='widthFix'></image>
                 <text style="margin-left:10rpx;">性别</text>
             </view>
             <view wx:if="{{userInfo.gender === 0}}">
@@ -51,8 +51,5 @@
                 </view>
             </picker>
         </view>
-    </view>
-    <view class="margin-top-xl">
-        <button class="round bg-olive" open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录</button>
     </view>
 </view>
