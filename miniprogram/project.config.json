@@ -85,6 +85,20 @@
 					"id": -1,
 					"name": "pages/diaryList/diaryList",
 					"pathName": "pages/diaryList/diaryList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/viewDiary/viewDiary",
+					"pathName": "pages/viewDiary/viewDiary",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/diaryList/diaryList",
+					"pathName": "pages/diaryList/diaryList",
 					"scene": null
 				}
 			]
