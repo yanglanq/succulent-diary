@@ -28,7 +28,6 @@ Page({
       },
       method: 'GET', 
       success: function(res){
-        console.log(res);
         var did = res.data.did;
         that.setData({
           ['diary.title']:res.data.title,
