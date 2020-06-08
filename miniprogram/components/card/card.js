@@ -13,7 +13,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    url:"http://yanglq.xyz:4430"
   },
 
   /**

@@ -5,69 +5,66 @@ Page({
    * 页面的初始数据
    */
   data: {
-    hotKeyList:["多rt肉","多肉","多rth肉","多zdg肉","多肉","多srtn肉","多肉","多肉","多肉","多肉","多肉","多肉"],
+    hotKeyList: [],
     // searchList:[{
     //   imgUrl:"https://yanglq.xyz/images/ziyuan1.png",
     //   name:"清盛锦",
     //   alias:"艳日晖  灿烂  艳日辉",
     //   intro:"清盛锦又称“灿烂”，为景天科、莲花掌属多年生肉质草本植物，清盛锦株形秀丽美观，叶片色彩绚丽斑斓，常用小型工艺盆栽种，装饰窗台、几架、..."
     // }]
-    searchList:[]
+    searchList: [],
+    searchWord: "清盛锦",
+    url:"http://yanglq.xyz:4430"
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // 获取搜索热词
+    wx.request({
+      url: 'https://yanglq.xyz/succulent/getHotWord',
+      success: (res) => {
+        this.setData({
+          hotKeyList: res.data
+        })
+      },
+      fail(err) {
+        throw err;
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  search(e) {
+    
+    let word;
+    if (e.currentTarget.dataset.searchword) {
+      word = e.currentTarget.dataset.searchword
+    }else{
+      word = this.data.searchWord
+    }
+    console.log(word);
+    wx.request({
+      url: 'https://yanglq.xyz/succulent/searchByWord',
+      data:{
+        word:word
+      },
+      success: (res) => {
+        console.log(res.data.data);
+        
+        this.setData({
+          searchList: res.data.data
+        })
+      },
+      fail(err) {
+        throw err;
+      }
+    })
+    
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  searchWordChange(e) {
+    this.setData({
+      searchWord: e.detail.value
+    })
   }
+
 })

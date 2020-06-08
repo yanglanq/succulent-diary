@@ -5,18 +5,63 @@ Page({
    * 页面的初始数据
    */
   data: {
-    uid:0,
     haveImg:false,
     imgNum:0,
     modalName:'',
     addbutton:'https://yanglq.xyz/images/plantIcon/add.png',
     deletebutton:'https://yanglq.xyz/images/plantIcon/delete.png',
+    imgList:[],
     diary: [],
     temp:{
       watering:'00:00'
     }
   },
 
+
+
+  ChooseImage() {
+		wx.chooseImage({
+			count: 1, //默认9
+			sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+			sourceType: ['album'], //从相册选择
+			success: (res) => {
+				if (this.data.imgList.length != 0) {
+					this.setData({
+						imgList: this.data.imgList.concat(res.tempFilePaths)
+					})
+				} else {
+					this.setData({
+						imgList: res.tempFilePaths
+					});
+				}
+			}
+		});
+  },
+  
+	ViewImage(e) {
+		wx.previewImage({
+			urls: this.data.imgList,
+			current: e.currentTarget.dataset.url
+		});
+  },
+  
+	DelImg(e) {
+		wx.showModal({
+			title: '',
+			content: '确定要删除吗？',
+			cancelText: '取消',
+			confirmText: '确定',
+			success: res => {
+				if (res.confirm) {
+					this.data.imgList.splice(e.currentTarget.dataset.index, 1);
+					this.setData({
+						imgList: this.data.imgList
+					})
+				}
+			}
+		})
+  },
+  
   editShow(e){
 		this.setData({
 			modalName: "viewModal",
@@ -46,49 +91,20 @@ Page({
     })
   },
 
-  onWatering(e){
-    this.setData({
-      ['temp.watering']:e.detail.value,
-    })
-  },
-
   onDescription(e){
     this.setData({
       ['temp.description']:e.detail.value,
     })
   },
 
-  onImg(e){
-    var that = this;
-    wx.chooseImage({
-      count: 1, // 最多可以选择的图片张数，默认9
-      sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
-      sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
-      success: function(res){
-        // success
-        console.log(res.tempFilePaths[0]);
-        that.setData({
-          ['temp.headUrl']:res.tempFilePaths[0],
-          haveImg:true,
-          imgNum:1
-        })
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
-      }
-    })
-  },
-
   onSubmit(e){
     var that = this;
+    var app = getApp();
     var D = that.data.diary;
     var name = that.data.temp.name;
-    var uid = that.data.uid;//用户id
+    var uid = app.globalData.userInfo.uid;//用户id
     var plant = that.data.temp.plant;
-    var headUrl = that.data.temp.headUrl;
+    var headUrl = that.data.imgList[0];
     var description = that.data.temp.description;
     var watering = that.data.temp.watering;
     // console.log(tmp);
@@ -143,9 +159,14 @@ Page({
               ['temp.watering']:'00:00',
               ['temp.plant']:'',
               ['temp.name']:'',
+              ['temp.description']:'',
+              imgList:[],
             })
             // console.log(that.data.diary);
-            
+            wx.showToast({
+              title: '提交成功！',
+              icon: 'success'
+            })
           }
         })
       },
@@ -173,7 +194,6 @@ Page({
           that.setData({
             ['diary']: that.data.diary
           })
-          // console.log(ID);
           wx.request({
             url: 'https://yanglq.xyz/diary/deleteBook',
             header: {
@@ -201,26 +221,28 @@ Page({
   onLoad: function (options) {
     var that = this;
     var app = getApp();
+    var Id = app.globalData.userInfo.uid;
     wx.request({
       url: 'https://yanglq.xyz/diary/listBook',
       data: {
-        id: app.globalData.userInfo.uid //用户id
+        id: Id, //用户id
       },
       header: {
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
-        // console.log(res.data);
         that.setData({
           diary: res.data
         })
+        // console.log(res.data);
       },
       fail: function () {
         // fail
+        wx.showModal({
+          title: '加载失败',
+          icon:'loading'
+        })
       },
-      complete: function () {
-        // complete
-      }
     })
   },
 
