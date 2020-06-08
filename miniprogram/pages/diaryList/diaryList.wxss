@@ -14,6 +14,9 @@
     margin-bottom: 1px;
     padding-left: 40rpx;
   }
+  .cu-form-group picker{
+    height: 100% !important;
+  }
   .cu-item{
     padding:0 30px 5px !important;
   }
@@ -29,7 +32,7 @@
   .pend-url{
     display: inline-block;
     vertical-align: middle;
-      overflow: hidden;
+    overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     width: 450rpx;

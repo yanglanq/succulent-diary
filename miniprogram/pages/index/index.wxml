@@ -36,7 +36,7 @@
 			<text class="colorgradient">今日份小贴士~</text>
 		</view>
 		<view class="content">
-			aekrjlkbevjklrjejbrlahurl4bq3glirj4bqg3ljrbqjrbvl3kjrbvqk3jraaaaaaaaaaaaaaaaaaaaabv
+			{{recommendMsg}}
 		</view>
 	</view>
 

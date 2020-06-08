@@ -15,7 +15,11 @@ page{
   -webkit-background-clip: text;
   color: transparent;
 }
-
+.ellipsis{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .imgIcon{
   height: 1.2em; 
   width: 1.2em;

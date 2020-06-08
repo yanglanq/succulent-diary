@@ -5,9 +5,15 @@
 
 .search-box .icon-sousuo {
   position: absolute;
-  top: 16rpx;
-  right: 60rpx;
+  top: 0rpx;
+  right: 40rpx;
   font-size: 18px;
+  display: block;
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  line-height: 35px;
+  z-index: 5;
 }
 
 .search {
@@ -51,8 +57,7 @@
 .resultCard{
   padding: 20rpx;
   width: 90%;
-  /* height: 150px; */
-  margin:auto;
+  margin: 10px auto;
   background-color: rgba(255, 255, 255, 0.604);
   cursor: pointer;
 }
@@ -65,15 +70,14 @@
   width: 100rpx;
   height: 100rpx;
   border-radius: 50%;
-  border:1px solid #999;
+  border:1px solid #aaa;
 }
 .resultCard .top .right{
   float: left;
-  display: flex;
   height: 100%;
-  flex-direction: column;
-  justify-content: space-around;
-  padding: 10px;
+  padding: 2px;
+  width: 80%;
+  margin-left: 10px;
 }
 .resultCard .top .right .name{
   background: linear-gradient(to right, rgb(127, 158, 63), rgb(116, 150, 14), rgb(94, 118, 46));
@@ -82,10 +86,22 @@
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 5px;
+  width: 510rpx;
 }
 .resultCard .top .right .alias{
   color: rgb(150, 184, 81);
+  width: 510rpx;
 }
 .resultCard .info{
   color: #666;
+  /* display: inline-block;  */
+  width: 95%;
+  margin: 0rpx 10rpx;
+  display: -webkit-box ;
+  overflow: hidden; /*隐藏溢出的文本  */
+  text-overflow: ellipsis;
+  word-break: break-all;/*自动换行*/
+  -moz-box-orient: vertical; /*从上到下自动排列子元素*/
+  -webkit-box-orient: vertical; 
+  -webkit-line-clamp:3; /*显示的行数*/
 }
