@@ -11,6 +11,7 @@ Page({
     diaryList:[],
     index:0,
     list:[],
+    modalName:"",
     watheringList:[]// 该浇水的日记本列表
   },
   onLoad: function () {
@@ -65,17 +66,28 @@ Page({
                   app.globalData.userInfo.uid = -res.data;
                 }
                 app.globalData.userInfo.uid = res.data;
+                // 获取浇水数据
                 wx.request({
                   url: 'https://yanglq.xyz/diary/watering',
                   data:{
                     id:app.globalData.userInfo.uid
                   },
                   success:(res)=>{
-                    console.log(res.data);
+                    if(res.data.length){
+                      
+                      let data=res.data;
+                      data.forEach(item => {
+                        item.watering = item.watering.match(/\d{2}:\d{2}/);
+                        
+                      });
+                      this.setData({
+                        watheringList:data
+                      })
+                      this.setData({
+                        modalName:"Modal"
+                      })
+                    }
                     
-                    // this.setData({
-                    //   recommendMsg:res.data.msg
-                    // })
                   },
                   fail(err){
                     throw err;
@@ -133,9 +145,13 @@ Page({
         throw err;
       }
     })
-    // 获取浇水数据
     
     
+  },
+  hideModal(){
+    this.setData({
+      modalName:""
+    })
   },
   search() {
     wx.navigateTo({

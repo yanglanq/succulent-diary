@@ -51,3 +51,11 @@
   -webkit-background-clip: text;
   color: transparent;
 }
+
+.watering .title{
+  display: block;
+  color: rgb(161, 191, 27);
+  font-weight: bold;
+  margin:10px 0;
+  font-size: 16px;
+}

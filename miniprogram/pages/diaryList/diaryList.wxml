@@ -60,7 +60,7 @@
 			<view class="cu-form-group">
 				<view class="title">浇水时间</view>
 
-				<picker mode="time" value="{{diary.watering}}" start="05:00" end="23:59" bindchange="TimeChange">
+				<picker mode="time" value="{{diary.watering}}" start="00:00" end="23:59" bindchange="TimeChange">
 					<view class="picker">
 						{{diary.watering}}
 					</view>

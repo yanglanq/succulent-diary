@@ -100,7 +100,7 @@ Page({
 			success: (res) => {
 				if(res.data){
 					wx.showToast({
-						title: '添加成功',
+						title: '修改成功',
 					})
 					this.hideModal();
 				}

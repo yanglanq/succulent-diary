@@ -23,12 +23,12 @@
                 <!-- {{item.name}}{{item.headUrl}} -->
                 <image class="diary_img action" wx:if="{{item.path != ''}}" src="http://yanglq.xyz:4430{{item.headUrl}}" data-index="{{index}}" mode='aspectFill' bindtap="ChooseImage"></image>
                 <image class="diary_img action" wx:if="{{item.path == ''}}" src="{{item.headUrl}}" data-index="{{index}}" mode='aspectFill' bindtap="ChooseImage"></image>
-                <view>
+                <view style="position: relative;right: 55px;">
                     <view>{{item.name}}</view>
                     <view class="margin-top-sm">{{item.plant}}</view>
                 </view>
                 <view class="margin-top-sm"></view>
-                <image class="cu-avatar round sm" style="background-color:#fbfbfb;" src="{{addbutton}}" data-index="{{index}}" mode='widthFix' bindtap="Add"></image>
+                <!-- <image class="cu-avatar round sm" style="background-color:#fbfbfb;" src="{{addbutton}}" data-index="{{index}}" mode='widthFix' bindtap="Add"></image> -->
                 <image class="cu-avatar round sm" style="background-color:#fbfbfb;" src="{{deletebutton}}" data-index="{{index}}" mode='widthFix' bindtap="DeleteDiary"></image>
             </view>
         </view>
