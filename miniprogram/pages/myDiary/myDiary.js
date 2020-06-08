@@ -155,6 +155,7 @@ Page({
               title: '提交成功！',
               icon: 'success'
             })
+            this.hideModal();
           }
         })
       }
@@ -213,10 +214,11 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
-        that.setData({
-          diary: res.data
-        })
-        // console.log(res.data);
+        if(res.data.length){
+          that.setData({
+            diary: res.data
+          })
+        }
       },
       fail: function () {
         // fail
