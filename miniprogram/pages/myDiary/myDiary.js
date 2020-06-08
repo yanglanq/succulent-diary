@@ -1,9 +1,4 @@
-// pages/newDiary/newdiary.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     haveImg:false,
     imgNum:0,
@@ -107,7 +102,6 @@ Page({
     var headUrl = that.data.imgList[0];
     var description = that.data.temp.description;
     var watering = that.data.temp.watering;
-    // console.log(tmp);
     wx.request({
       url: 'https://yanglq.xyz/diary/addBook',
       data: {
@@ -120,11 +114,8 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      // header: {}, // 设置请求的 header
+      method: 'POST', 
       success: function(res){
-        // success
-        // console.log(res.data);
         var Id = res.data;
         wx.uploadFile({
           url: 'https://yanglq.xyz/diary/updateBook',
@@ -139,8 +130,6 @@ Page({
             method: 'POST'   //请求方式
           },
           success: function(res){
-            // success
-            // console.log(res);
             var id = res.data;
             var ans = {};
             ans.headUrl = headUrl;
@@ -162,19 +151,12 @@ Page({
               ['temp.description']:'',
               imgList:[],
             })
-            // console.log(that.data.diary);
             wx.showToast({
               title: '提交成功！',
               icon: 'success'
             })
           }
         })
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
       }
     })
   },
