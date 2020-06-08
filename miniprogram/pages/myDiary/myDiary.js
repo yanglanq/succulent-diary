@@ -155,6 +155,7 @@ Page({
               title: '提交成功！',
               icon: 'success'
             })
+            this.hideModal();
           }
         })
       }
