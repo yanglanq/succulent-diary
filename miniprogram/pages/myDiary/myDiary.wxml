@@ -17,8 +17,8 @@
         </view>
         <view class="cu-list menu sm-border card-menu margin-top">
             <view class="cu-item margin-top-sm" style="height: 150rpx;font-size: 30rpx;background-color: #fbfbfb;" wx:for="{{diary}}" wx:for-item="item" wx:key="ID">
-                <image class="diary_img action" wx:if="{{item.path != ''}}" src="http://yanglq.xyz:4430{{item.headUrl}}" data-index="{{index}}" mode='aspectFill' bindtap="ChooseImage"></image>
-                <image class="diary_img action" wx:if="{{item.path == ''}}" src="{{item.headUrl}}" data-index="{{index}}" mode='aspectFill' bindtap="ChooseImage"></image>
+                <image class="diary_img action" wx:if="{{item.path != ''}}" src="http://yanglq.xyz:4430{{item.headUrl}}" data-index="{{index}}" mode='aspectFill'></image>
+                <image class="diary_img action" wx:if="{{item.path == ''}}" src="{{item.headUrl}}" data-index="{{index}}" mode='aspectFill'></image>
                 <view>
                     <view>{{item.name}}</view>
                     <view class="margin-top-sm">{{item.plant}}</view>
