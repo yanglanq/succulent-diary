@@ -47,7 +47,7 @@
             <view class="cu-form-group">
                 <!-- <image class="img" src="https://yanglq.xyz/images/plantIcon/duorou18.png" mode='widthFix'></image> -->
                 <view class="title margin-left-sm">日记本名称</view>
-                <input value="{{temp.title}}" bindchange="onTitle" required="required"></input>
+                <input value="{{temp.name}}" bindchange="onTitle" required="required"></input>
             </view>
             <!-- 多肉名称 -->
             <view class="cu-form-group">
@@ -76,8 +76,8 @@
                 <view class="title margin-left-sm">日记本封面</view>
                 <view class="title">{{imgNum}}/1</view>
             </view>
-            <view class="img_boder">
-                <image wx:if="{{haveImg == false}}" class="img_max" mode="widthFix" src="https://yanglq.xyz/images/plantIcon/add2.png" bindtap="onImg" />
+            <view class="img_boder margin-top-xxl">
+                <image wx:if="{{haveImg == false}}" class="img_max" mode="widthFix" src="https://yanglq.xyz/images/plantIcon/aadd.png" bindtap="onImg" />
                 <image wx:if="{{haveImg == true}}" class="img_max" mode="widthFix" src="{{temp.headUrl}}" />
             </view>
             <button class="cu-btn bg-olive lg margin-bottom-xl" style="position: absolute;bottom: 25rpx;" catchtap="onSubmit">

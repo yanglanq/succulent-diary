@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    uid:0,
     haveImg:false,
     imgNum:0,
     modalName:'',
@@ -85,67 +86,77 @@ Page({
     var that = this;
     var D = that.data.diary;
     var name = that.data.temp.name;
-    var uid = 0;//用户id
+    var uid = that.data.uid;//用户id
     var plant = that.data.temp.plant;
     var headUrl = that.data.temp.headUrl;
     var description = that.data.temp.description;
     var watering = that.data.temp.watering;
     // console.log(tmp);
-    wx.uploadFile({
+    wx.request({
       url: 'https://yanglq.xyz/diary/addBook',
-      filePath: headUrl, //文件路径  
-      name: 'file',  //随意
-      header: { 
-        'Content-Type': 'multipart/form-data',
+      data: {
+        name:name,
+        plant:plant,
+        uid: uid,
+        description: description,
+        watering: watering,
       },
-      formData: {
-        'name':name,
-        'plant':plant,
-        'uid': uid,
-        'description':description,
-        'watering':watering,
-        method: 'POST'   //请求方式
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
       },
+      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      // header: {}, // 设置请求的 header
       success: function(res){
         // success
-        console.log(res);
-        var id = res.data;
-        var ans = {};
-        ans.headUrl = headUrl;
-        ans.id = id;
-        ans.name = name;
-        ans.path = '';
-        ans.plant = plant;
-        ans.uid = uid;
-        ans.description = description;
-        ans.watering = watering;
-        D.push(ans);
-        that.setData({
-          diary:D,
-          haveImg:false,
-          imgNum:0,
-          ['temp.watering']:"00:00"
+        // console.log(res.data);
+        var Id = res.data;
+        wx.uploadFile({
+          url: 'https://yanglq.xyz/diary/updateBook',
+          filePath: headUrl, //文件路径  
+          name: 'file',  //随意
+          header: { 
+            'Content-Type': 'multipart/form-data',
+          },
+          formData: {
+            'id':Id,
+            'name':name,
+            method: 'POST'   //请求方式
+          },
+          success: function(res){
+            // success
+            // console.log(res);
+            var id = res.data;
+            var ans = {};
+            ans.headUrl = headUrl;
+            ans.id = id;
+            ans.name = name;
+            ans.path = '';
+            ans.plant = plant;
+            ans.uid = uid;
+            ans.description = description;
+            ans.watering = watering;
+            D.push(ans);
+            that.setData({
+              diary:D,
+              haveImg:false,
+              imgNum:0,
+              ['temp.watering']:'00:00',
+              ['temp.plant']:'',
+              ['temp.name']:'',
+            })
+            // console.log(that.data.diary);
+            
+          }
         })
-        console.log(that.data.diary);
-        
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
       }
     })
   },
-
-  NewDiary() {
-    var D = this.data.diary;
-    var tmp = {};
-    tmp.headUrl = '';
-    tmp.id = '';
-    tmp.name = '';
-    tmp.path = '';
-    tmp.uid = '';
-    D.push(tmp);
-    this.setData({
-      ['diary']:D
-    })
-  },
-
 
   //删除
   DeleteDiary(e) {
@@ -189,35 +200,20 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    var app = getApp();
     wx.request({
       url: 'https://yanglq.xyz/diary/listBook',
       data: {
-        id: '0' //用户id
+        id: app.globalData.userInfo.uid //用户id
       },
       header: {
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
-        // success
         // console.log(res.data);
-        var D = [];
-        for (var i = 0; i < res.data.length; i++) {
-          var tmp = {};
-          tmp.headUrl = res.data[i].headUrl;
-          tmp.id = res.data[i].id;
-          tmp.name = res.data[i].name;
-          tmp.path = res.data[i].path;
-          tmp.uid = res.data[i].uid;
-          tmp.plant = res.data[i].plant;
-          tmp.description = res.data[i].description;
-          tmp.watering = res.data[i].watering;
-          D.push(tmp);
-        }
         that.setData({
-          diary: D
+          diary: res.data
         })
-        console.log(D);
-        
       },
       fail: function () {
         // fail
