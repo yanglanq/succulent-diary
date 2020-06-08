@@ -34,22 +34,22 @@
                 <image class="cu-avatar round" src="https://yanglq.xyz/images/plantIcon/duorou20.png" mode='widthFix'></image>
                 <text style="margin-left:10rpx;">多肉数量</text>
             </view>
-            <picker value="{{duorouNum}}" range="{{number}}" bindchange="duorouNumChange">
+            <view value="{{duorouNum}}" range="{{number}}">
                 <view class="picker">
                     {{duorouNum}}
                 </view>
-            </picker>
+            </view>
         </view>
         <view class="cu-item arrow">
             <view>
                 <image class="cu-avatar round" src="https://yanglq.xyz/images/plantIcon/duorou20.png" mode='widthFix'></image>
                 <text style="margin-left:10rpx;">日记本数</text>
             </view>
-            <picker value="{{diaryNum}}" range="{{number}}" bindchange="diaryNumChange">
+            <view value="{{diaryNum}}" range="{{number}}">
                 <view class="picker">
                     {{diaryNum}}
                 </view>
-            </picker>
+            </view>
         </view>
     </view>
 </view>
