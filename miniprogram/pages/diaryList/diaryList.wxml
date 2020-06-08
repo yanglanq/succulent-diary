@@ -23,18 +23,20 @@
 							<view class="cu-tag bg-cyan">上午</view>
 							<view class="cu-tag line-cyan">10:00</view>
 						</view>
+						
 						<view class="margin-top">这是第一次，我家的铲屎官走了这么久。久到足足有三天！！ 在听到他的脚步声响在楼梯间的那一刻，我简直想要破门而出，对着他狠狠地吼上10分钟，然后再看心情要不要他进门。</view>
 						<view></view>
 					</view>
 				</view>
 			</view>
 		</view>
-
 	</view>
 </scroll-view>
 <view class="DrawerClose {{modalName=='viewModal'?'show':''}}" bindtap="hideModal">
 	<text class="cuIcon-pullright"></text>
 </view>
+
+
 <scroll-view scroll-y class="DrawerWindow {{modalName=='viewModal'?'show':''}}">
 	<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg">
 		<view class="cu-item pend-form" style="height:1250rpx;justify-content:flex-start;opacity:0.8;">
@@ -51,9 +53,11 @@
 			<!-- 浇水时间 -->
 			<view class="cu-form-group">
 				<view class="title">浇水时间</view>
-				<picker mode="time" value="{{diary.time}}" start="09:01" end="21:01" bindchange="TimeChange">
+
+				<picker mode="time" value="{{diary.time}}" start="05:00" end="23:59" bindchange="TimeChange">
 					<view class="picker">
-						{{diary.time}}
+						<!-- {{diary.time}} -->
+						aaa
 					</view>
 				</picker>
 			</view>
@@ -63,6 +67,34 @@
 				<view class="title">描述</view>
 				<textarea maxlength="-1" value="{{diary.des}}" placeholder="日记描述"></textarea>
 			</view>
+
+			<!-- 封面 -->
+			<view style="border-top: 1rpx solid #eee;">
+				<view class="cu-bar bg-white">
+					<view class="title action" style="font-size:26rpx;">
+						设置日记本封面
+					</view>
+					<view class="action">
+						{{imgList.length}}/1
+					</view>
+				</view>
+				<view class="cu-form-group">
+					<view class="grid col-4 grid-square flex-sub">
+						<view class="bg-img" wx:for="{{imgList}}" wx:key="index" bindtap="ViewImage" data-url="{{imgList[index]}}">
+							<image src='{{imgList[index]}}' mode='aspectFill'></image>
+							<view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+								<text class="cuIcon-close"></text>
+							</view>
+						</view>
+						<view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<1}}">
+							<text class="cuIcon-cameraadd"></text>
+						</view>
+					</view>
+				</view>
+			</view>
+			
+			
+
 			<button class="cu-btn bg-olive lg margin-bottom" style="position: absolute;bottom: 25rpx;" catchtap="onSubmit">提交</button>
 		</view>
 	</view>

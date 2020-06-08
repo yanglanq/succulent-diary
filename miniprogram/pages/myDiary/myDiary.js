@@ -108,7 +108,6 @@ Page({
       },
       success: function(res){
         // success
-        console.log(res);
         var id = res.data;
         var ans = {};
         ans.headUrl = headUrl;
@@ -126,8 +125,6 @@ Page({
           imgNum:0,
           ['temp.watering']:"00:00"
         })
-        console.log(that.data.diary);
-        
       }
     })
   },
@@ -162,7 +159,6 @@ Page({
           that.setData({
             ['diary']: that.data.diary
           })
-          // console.log(ID);
           wx.request({
             url: 'https://yanglq.xyz/diary/deleteBook',
             header: {
@@ -200,23 +196,23 @@ Page({
       success: function (res) {
         // success
         // console.log(res.data);
-        var D = [];
-        for (var i = 0; i < res.data.length; i++) {
-          var tmp = {};
-          tmp.headUrl = res.data[i].headUrl;
-          tmp.id = res.data[i].id;
-          tmp.name = res.data[i].name;
-          tmp.path = res.data[i].path;
-          tmp.uid = res.data[i].uid;
-          tmp.plant = res.data[i].plant;
-          tmp.description = res.data[i].description;
-          tmp.watering = res.data[i].watering;
-          D.push(tmp);
-        }
+        // var D = [];
+        // for (var i = 0; i < res.data.length; i++) {
+        //   var tmp = {};
+        //   tmp.headUrl = res.data[i].headUrl;
+        //   tmp.id = res.data[i].id;
+        //   tmp.name = res.data[i].name;
+        //   tmp.path = res.data[i].path;
+        //   tmp.uid = res.data[i].uid;
+        //   tmp.plant = res.data[i].plant;
+        //   tmp.description = res.data[i].description;
+        //   tmp.watering = res.data[i].watering;
+        //   D.push(tmp);
+        // }
         that.setData({
-          diary: D
+          diary: res.data
         })
-        console.log(D);
+        console.log(res.data);
         
       },
       fail: function () {

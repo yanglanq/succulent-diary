@@ -8,8 +8,8 @@
         <!-- 图片 -->
         <view class="cu-list menu sm-border card-menu margin-top">
             <view class="cu-item" style="font-size: 30rpx;background-color: #d9e895;">
-                <view class="action" style="margin-right: 0;font-size: 30rpx;;">
-                    <image class="img" src="https://yanglq.xyz/images/plantIcon/duorou18.png" mode='widthFix' bindtap="editShow"></image>
+                <view class="action" style="margin-right: 0;font-size: 30rpx;" bindtap="editShow">
+                    <image class="img" src="https://yanglq.xyz/images/plantIcon/duorou18.png" mode='widthFix' ></image>
                     新建日记本
                     <!-- bindtap="NewDiary" -->
                 </view>
@@ -22,8 +22,8 @@
                 <image class="diary_img action" wx:if="{{item.path != ''}}" src="http://yanglq.xyz:4430{{item.headUrl}}" data-index="{{index}}" mode='aspectFill' bindtap="ChooseImage"></image>
                 <image class="diary_img action" wx:if="{{item.path == ''}}" src="{{item.headUrl}}" data-index="{{index}}" mode='aspectFill' bindtap="ChooseImage"></image>
                 <view>
-                    <view>日记名：{{item.name}}</view>
-                    <view class="margin-top-sm">多肉名：{{item.plant}}</view>
+                    <view>{{item.name}}</view>
+                    <view class="margin-top-sm">{{item.plant}}</view>
                     <!-- <input wx:if="{{item.name == ''}}" data-index="{{index}}" placeholder="请输入日记名" type="text" bindblur="InputName"/>
             <input wx:if="{{item.name != ''}}" data-index="{{index}}" value="{{item.name}}" type="text" bindblur="InputName"/> -->
                 </view>
