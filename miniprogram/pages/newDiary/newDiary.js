@@ -1,4 +1,4 @@
-
+// import {formatDate} from "../../utils/util.js"
 // pages/newDiary/newdiary.js
 Page({
 
@@ -9,7 +9,8 @@ Page({
     diary: {
       title: "",
       imgList: [],
-      content: ""
+      content: "",
+      id:null
     }
   },
 
@@ -67,23 +68,82 @@ Page({
     })
   },
   diarySubmit(e){
-    // console.log(e);
       wx.showModal({
         title: '提示',
         content: '确认提交嘛？',
         success: (res)=>{
-          if (res.confirm) {  
-            console.log('确认')
-            console.log(this.data.diary);
-            
+          if (res.confirm) { 
+            wx.request({
+              url: 'https://yanglq.xyz/diary/addDiary',
+              data:{
+                bid:Number(this.data.id),
+                title:this.data.diary.title,
+                inside:this.data.diary.content,
+                date:this.formatDate(new Date())
+              },
+              header:{
+                'Content-Type':'application/x-www-form-urlencoded'
+              },
+              method:"POST",
+              success:(res)=>{
+                let i = 0;
+                if(this.data.diary.imgList.length){
+                  this.data.diary.imgList.forEach(item => {
+                    wx.uploadFile({
+                      url: 'https://yanglq.xyz/diary/updateDiary',
+                      filePath: item, //文件路径  
+                      name: 'file',  //随意
+                      header: { 
+                        'Content-Type': 'multipart/form-data',
+                      },
+                      formData: {
+                        'id':res.data,
+                        method: 'POST'   //请求方式
+                      },
+                      success:(res1)=>{
+                        if(res1.data==="1"){
+                          i++;
+                          if(i==this.data.diary.imgList.length){
+                            wx.showToast({
+                              title: '添加成功',
+                            })
+                          }
+                        }
+                      }
+                    })
+                  });
+                }
+              },
+              fail(err){
+                throw err;
+              }
+            })
           } 
         }
       })
+  },
+  uploadImage(id){
+    
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.id)
+    this.setData({
+      id:options.id
+    })
   },
+  formatDate(date) {  
+    var y = date.getFullYear();  
+    var m = date.getMonth() + 1;  
+    m = m < 10 ? ('0' + m) : m;  
+    var d = date.getDate();  
+    d = d < 10 ? ('0' + d) : d;  
+    var h = date.getHours();  
+    var minute = date.getMinutes();  
+    minute = minute < 10 ? ('0' + minute) : minute; 
+    var second= date.getSeconds();  
+    second = minute < 10 ? ('0' + second) : second;  
+    return y + '-' + m + '-' + d+' '+h+':'+minute+':'+ second;  
+  }
 })

@@ -9,17 +9,17 @@ Page({
             name:"日记名称"
         },
         imgList:[],
-        diaryList:[
-            {
-                
-            }
-        ]
+		diaryList:[],
+		id:null
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+		this.setData({
+			id:options.id
+		})
 		//获取日记详细信息
 		wx.request({
 			url: 'https://yanglq.xyz/diary/queryBookById',
@@ -43,6 +43,7 @@ Page({
 			data:{
 				id:options.id
 			},
+			
 			success:(res)=>{
 				console.log(res.data);
 				
