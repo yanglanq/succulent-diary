@@ -8,7 +8,8 @@ Page({
     diary: {
       title: "这是标题~",
       imgList: [],
-      content: "这是正文~"
+      content: "这是正文~",
+      id:null,
     }
   },
   
@@ -16,7 +17,38 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    var that = this;
+    that.setData({
+      id:options.id
+    })
+    wx.request({
+      url: 'https://yanglq.xyz/diary/queryDiaryById',
+      data: {
+        id:that.data.diary.id,
+      },
+      method: 'GET', 
+      success: function(res){
+        console.log(res);
+        var did = res.data.did;
+        that.setData({
+          ['diary.title']:res.data.title,
+          ['diary.content']:res.data.inside,
+        })
+        wx.request({
+          url: 'https://yanglq.xyz/diary/listImg',
+          data: {
+            did:did,
+            id:that.data.diary.id,
+          },
+          method: 'GET', 
+          success: function(res1){
+            that.setData({
+              ['diary.imgList']:res1.data,
+            })
+          }
+        })
+      }
+    })  
   },
 
   /**
