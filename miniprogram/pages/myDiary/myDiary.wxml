@@ -1,51 +1,88 @@
-
-<bgCanvas></bgCanvas>
-<view class="container">
-    <view class="header">
-        <text>日记本</text>
-        <cover-image class="imgIcon" src="https://yanglq.xyz/images/plantIcon/duorouduocai.png"></cover-image>
-    </view>
-    <!-- 图片 -->
-    <view class="cu-list menu sm-border card-menu margin-top">
-        <view class="cu-item" style="font-size: 30rpx;background-color: #d9e895;">
-            <view class="action" style="margin-right: 0;font-size: 30rpx;;">
-                <image class="img" src="https://yanglq.xyz/images/plantIcon/duorou18.png" mode='widthFix' bindtap="ChooseImage"></image>
-                新建日记本
+<scroll-view scroll-y class="DrawerPage {{modalName=='viewModal'?'show':''}}">
+    <bgCanvas></bgCanvas>
+    <view class="container">
+        <view class="header">
+            <text>日记本</text>
+            <cover-image class="imgIcon" src="https://yanglq.xyz/images/plantIcon/duorouduocai.png"></cover-image>
+        </view>
+        <!-- 图片 -->
+        <view class="cu-list menu sm-border card-menu margin-top">
+            <view class="cu-item" style="font-size: 30rpx;background-color: #d9e895;">
+                <view class="action" style="margin-right: 0;font-size: 30rpx;;">
+                    <image class="img" src="https://yanglq.xyz/images/plantIcon/duorou18.png" mode='widthFix' bindtap="editShow"></image>
+                    新建日记本
+                    <!-- bindtap="NewDiary" -->
+                </view>
+                <view class="action">日记本数：{{diary.length}}</view>
             </view>
-            <view class="action">日记本数：{{diary.length}}</view>
+        </view>
+        <view class="cu-list menu sm-border card-menu margin-top">
+            <view class="cu-item margin-top-sm" style="height: 150rpx;font-size: 30rpx;background-color: #fbfbfb;" wx:for="{{diary}}" wx:for-item="item" wx:key="ID">
+                <!-- {{item.name}}{{item.headUrl}} -->
+                <image class="diary_img action" wx:if="{{item.path != ''}}" src="http://yanglq.xyz:4430{{item.headUrl}}" data-index="{{index}}" mode='aspectFill' bindtap="ChooseImage"></image>
+                <image class="diary_img action" wx:if="{{item.path == ''}}" src="{{item.headUrl}}" data-index="{{index}}" mode='aspectFill' bindtap="ChooseImage"></image>
+                <view>
+                    <view>日记名：{{item.name}}</view>
+                    <view class="margin-top-sm">多肉名：{{item.plant}}</view>
+                    <!-- <input wx:if="{{item.name == ''}}" data-index="{{index}}" placeholder="请输入日记名" type="text" bindblur="InputName"/>
+            <input wx:if="{{item.name != ''}}" data-index="{{index}}" value="{{item.name}}" type="text" bindblur="InputName"/> -->
+                </view>
+                <view class="margin-top-sm"></view>
+                <image class="cu-avatar round sm" style="background-color:#fbfbfb;" src="{{addbutton}}" data-index="{{index}}" mode='widthFix' bindtap="Add"></image>
+                <image class="cu-avatar round sm" style="background-color:#fbfbfb;" src="{{deletebutton}}" data-index="{{index}}" mode='widthFix' bindtap="DeleteDiary"></image>
+            </view>
         </view>
     </view>
-    <view class="cu-list menu sm-border card-menu margin-top">
-        <view class="cu-item margin-top-sm" style="height: 150rpx;font-size: 30rpx;background-color: #fbfbfb;" wx:for="{{diary}}" wx:for-item="item" wx:key="*this">
-            <!-- {{item.name}}{{item.headUrl}} -->
-            <image class="diary_img action" src="http://47.94.210.131:4430{{item.headUrl}}" data-index="{{index}}" mode='aspectFill' bindtap="ViewImage"></image>
-            <view>
-            日记名：
-            <input wx:if="{{item.name == null}}" placeholder="请输入日记名" type="text" bindblur="InputName"/>
-            <input wx:if="{{item.name != null}}" value="{{item.name}}" type="text" bindblur="InputName"/>
-            </view>
-            <view class="margin-top-sm"></view>
-            <view class="cu-avatar round sm" bindtap="Add">
-                <image style="background-color:#fbfbfb;" src="https://yanglq.xyz/images/plantIcon/add.png" mode='widthFix'></image>
-            </view>
-            <view class="cu-avatar round sm" bindtap="Del">
-                <image style="background-color:#fbfbfb;" src="https://yanglq.xyz/images/plantIcon/delete.png" mode='widthFix'></image>
-            </view>
-
-            <!-- <image class="diary_img action" src="{{item}}" data-index="{{index}}" mode='aspectFill' bindtap="ViewImage"></image>
-            {{item}}
-            <view>
-            日记名：
-            <input wx:if="{{diary.name[index] == null}}" placeholder="请输入日记名" type="text" bindblur="InputName"/>
-            <input wx:elif="{{diary.name[index] != null}}" value="{{diary.name[index]}}" type="text" bindblur="InputName"/>
-            </view>
-            <view class="margin-top-sm"></view>
-            <view class="cu-avatar round sm" bindtap="Add">
-                <image style="background-color:#fbfbfb;" src="https://yanglq.xyz/images/plantIcon/add.png" mode='widthFix'></image>
-            </view>
-            <view class="cu-avatar round sm" bindtap="Del">
-                <image style="background-color:#fbfbfb;" src="https://yanglq.xyz/images/plantIcon/delete.png" mode='widthFix'></image>
-            </view> -->
-        </view>
-    </view>
+</scroll-view>
+<view class="DrawerClose {{modalName=='viewModal'?'show':''}}" bindtap="hideModal">
+    <text class="cuIcon-pullright"></text>
 </view>
+<scroll-view scroll-y class="DrawerWindow {{modalName=='viewModal'?'show':''}}">
+    <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg">
+        <view class="cu-item pend-form" style="height:1250rpx;justify-content:flex-start;opacity:0.8;">
+            <view class="cu-form-group margin-top-xl">
+                <view class="title margin-left-sm">请输入以下内容：</view>
+            </view>
+            <!-- 日记名称 -->
+            <view class="cu-form-group">
+                <!-- <image class="img" src="https://yanglq.xyz/images/plantIcon/duorou18.png" mode='widthFix'></image> -->
+                <view class="title margin-left-sm">日记本名称</view>
+                <input value="{{temp.title}}" bindchange="onTitle" required="required"></input>
+            </view>
+            <!-- 多肉名称 -->
+            <view class="cu-form-group">
+                <!-- <image class="img" src="https://yanglq.xyz/images/plantIcon/duorou18.png" mode='widthFix'></image> -->
+                <view class="title margin-left-sm">多肉名称</view>
+                <input value="{{temp.plant}}" bindchange="onMajor"></input>
+            </view>
+            <!-- 浇水时间 -->
+            <view class="cu-form-group">
+                <view class="title margin-left-sm">浇水时间</view>
+                <picker mode="time" value="{{temp.watering}}" start="05:00" end="23:59" bindchange="TimeChange">
+                    <view class="picker">
+                        <!-- {{diary.time}} -->
+                        {{temp.watering}}
+                    </view>
+                </picker>
+            </view>
+            <!-- 日记本描述 -->
+            <view class="cu-form-group">
+                <!-- <image class="img" src="https://yanglq.xyz/images/plantIcon/duorou18.png" mode='widthFix'></image> -->
+                <view class="title margin-left-sm">日记本描述</view>
+                <input value="{{diary.description}}" bindchange="onDescription"></input>
+            </view>
+            <!-- 日记本封面 -->
+            <view class="cu-form-group">
+                <view class="title margin-left-sm">日记本封面</view>
+                <view class="title">{{imgNum}}/1</view>
+            </view>
+            <view class="img_boder">
+                <image wx:if="{{haveImg == false}}" class="img_max" mode="widthFix" src="https://yanglq.xyz/images/plantIcon/add2.png" bindtap="onImg" />
+                <image wx:if="{{haveImg == true}}" class="img_max" mode="widthFix" src="{{temp.headUrl}}" />
+            </view>
+            <button class="cu-btn bg-olive lg margin-bottom-xl" style="position: absolute;bottom: 25rpx;" catchtap="onSubmit">
+                提交
+            </button>
+        </view>
+    </view>
+</scroll-view>

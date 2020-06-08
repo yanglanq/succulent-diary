@@ -81,7 +81,41 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    wx.request({
+      url: 'https://yanglq.xyz/diary/listBook',
+      data: {
+        id: '0' //用户id
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        // success
+        // console.log(res.data);
+        var D = [];
+        for (var i = 0; i < res.data.length; i++) {
+          var tmp = {};
+          tmp.headUrl = res.data[i].headUrl;
+          tmp.id = res.data[i].id;
+          tmp.name = res.data[i].name;
+          tmp.path = res.data[i].path;
+          tmp.uid = res.data[i].uid;
+          D.push(tmp);
+        }
+        that.setData({
+          diary: D
+        })
+        console.log(D);
+        
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
+    })
   },
 
   /**
