@@ -4,64 +4,67 @@ Page({
     userInfo: {},
     duorouNum: 0,
     diaryNum: 0,
-    number: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     // hasUserInfo:false
   },
 
-  duorouNumChange(e) {
-    // console.log(e);
+  // ListTouch触摸开始
+  ListTouchStart(e) {
     this.setData({
-      duorouNum: e.detail.value
+      ListTouchStart: e.touches[0].pageX
     })
   },
 
-  diaryNumChange(e) {
+  // ListTouch计算方向
+  ListTouchMove(e) {
     this.setData({
-      diaryNum: e.detail.value
+      ListTouchDirection: e.touches[0].pageX - this.data.ListTouchStart > 0 ? 'right' : 'left'
     })
   },
 
-// onLoad: function (options) {
-//   var that = this;
-//   //获取用户信息
-//   wx.getUserInfo({
-//     success: function (res) {
-//       console.log(res.userInfo);
-//       that.data.userInfo = res.userInfo;
-//       that.setData({
-//         userInfo: that.data.userInfo
-//       })
-//     }
-//   })
-// },
-
-// ListTouch触摸开始
-ListTouchStart(e) {
-  this.setData({
-    ListTouchStart: e.touches[0].pageX
-  })
-},
-
-// ListTouch计算方向
-ListTouchMove(e) {
-  this.setData({
-    ListTouchDirection: e.touches[0].pageX - this.data.ListTouchStart > 0 ? 'right' : 'left'
-  })
-},
-
-// ListTouch计算滚动
-ListTouchEnd(e) {
-  if (this.data.ListTouchDirection == 'left') {
+  // ListTouch计算滚动
+  ListTouchEnd(e) {
+    if (this.data.ListTouchDirection == 'left') {
+      this.setData({
+        modalName: e.currentTarget.dataset.target
+      })
+    } else {
+      this.setData({
+        modalName: null
+      })
+    }
     this.setData({
-      modalName: e.currentTarget.dataset.target
+      ListTouchDirection: null
     })
-  } else {
-    this.setData({
-      modalName: null
+  },
+  onLoad: function () {
+    var that = this;
+    var app = getApp();
+    that.setData({
+      userInfo:app.globalData.wxuserInfo
     })
-  }
-  this.setData({
-    ListTouchDirection: null
-  })
-},
+    var uid = app.globalData.userInfo.uid;
+    wx.request({
+      url: 'https://yanglq.xyz/diary/listBook',
+      data: {
+        id: uid, 
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        that.setData({
+          diaryNum: res.data.length,
+          duorouNum: res.data.length
+        })
+      },
+      fail: function () {
+        // fail
+        wx.showModal({
+          title: '加载失败',
+          icon:'loading'
+        })
+        this.hideModal();
+      },
+    })
+  },
 })
