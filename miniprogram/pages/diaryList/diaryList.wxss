@@ -4,9 +4,19 @@
   font-size: 15px !important;
   color: #3a404d !important;
 }
+.title{
+  color: #8ec61e;
+  font-weight: bold;
+}
 .checkInfo text{
     font-size: 18px;
     margin-right: 10px;
+}
+.cu-timeline{
+  padding: 0px 15px !important;
+  margin:15px!important;
+  margin-top: 0!important;
+  background-color: rgba(255, 255, 255, 0.6) !important;
 }
 .cu-list.menu-avatar>.cu-item{
     padding-left: 20rpx;
@@ -14,20 +24,47 @@
     margin-bottom: 1px;
     padding-left: 40rpx;
   }
+  .cu-timeline>.cu-item::after{
+    height: 0 !important;
+  }
+  .cu-timeline>.cu-item>.content{
+    padding:30rpx 0;
+  }
   .cu-form-group picker{
     height: 100% !important;
   }
-  .cu-item{
-    padding:0 30px 5px !important;
+  .DrawerWindow .cu-item{
+    padding:20px !important;
+  }
+  .cu-timeline .cu-item{
+    padding:0 0px 5px 30px !important;
   }
   .cu-time{
     padding-bottom: 0 !important;
+    width: 100% !important;
+    text-align: left !important;
   }
   .cu-item::before{
     background-color: transparent !important;
   }
   .cu-item .content{
     background-color: transparent !important;
+  }
+  .cu-timeline>.cu-item::before{
+    left:5rpx !important;
+  }
+  .cu-item .content .info{
+    color: #666;
+    /* display: inline-block;  */
+    width: 95%;
+    margin: 0rpx;
+    display: -webkit-box ;
+    overflow: hidden; /*隐藏溢出的文本  */
+    text-overflow: ellipsis;
+    word-break: break-all;/*自动换行*/
+    -moz-box-orient: vertical; /*从上到下自动排列子元素*/
+    -webkit-box-orient: vertical; 
+    -webkit-line-clamp:3; /*显示的行数*/
   }
   .pend-url{
     display: inline-block;

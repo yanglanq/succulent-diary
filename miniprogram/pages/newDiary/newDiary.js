@@ -79,7 +79,6 @@ Page({
                 bid:Number(this.data.id),
                 title:this.data.diary.title,
                 inside:this.data.diary.content,
-                date:this.formatDate(new Date())
               },
               header:{
                 'Content-Type':'application/x-www-form-urlencoded'
@@ -107,10 +106,20 @@ Page({
                             wx.showToast({
                               title: '添加成功',
                             })
+                            wx.navigateBack({
+                              delta: 1
+                            });
                           }
                         }
                       }
                     })
+                  });
+                }else{
+                  wx.showToast({
+                    title: '添加成功',
+                  })
+                  wx.navigateBack({
+                    delta: 1
                   });
                 }
               },

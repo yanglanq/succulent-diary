@@ -9,23 +9,29 @@
 			<text class="cuIcon-edit text-olive"
 			bindtap="editShow"
 			></text>
-			<text>{{thisDiary.name}}</text>
+			<text>{{diary.name}}</text>
+			<text class="iconfont icon-add-fill" style="color:rgba(153, 191, 76, 0.871);float: right;font-size: 1.2em;"
+				bindtap="newDairy"
+			>新建</text>
 		</view>
 		<!-- <view wx:if="{{!overdueList.length}}" class="text-xl padding text">
 			<text class="text-black text-bold">暂无日记哦!</text>
 		</view> -->
 		<view >
-			<view class="cu-timeline" style="background:transparent">
-				<view class="cu-time">06-17</view>
+			<view class="cu-timeline" style="background:transparent"
+			wx:for="{{diaryList}}" wx:key="*this"
+			bindtap="viewDetail"
+			data-id="{{item.id}}"
+			>
+				<view class="cu-time">{{item.date[0]}}</view>
 				<view class="cu-item">
 					<view class="content">
 						<view class="cu-capsule radius">
-							<view class="cu-tag bg-cyan">上午</view>
-							<view class="cu-tag line-cyan">10:00</view>
+							<view class="cu-tag bg-cyan">{{item.time}}</view>
+							<view class="cu-tag line-cyan">{{item.date[1]}}</view>
 						</view>
-						
-						<view class="margin-top">这是第一次，我家的铲屎官走了这么久。久到足足有三天！！ 在听到他的脚步声响在楼梯间的那一刻，我简直想要破门而出，对着他狠狠地吼上10分钟，然后再看心情要不要他进门。</view>
-						<view></view>
+						<view class="title">{{item.title}}</view>
+						<view class="info">{{item.inside}}</view>
 					</view>
 				</view>
 			</view>
@@ -43,21 +49,20 @@
 			<!-- 日记名称 -->
 			<view class="cu-form-group margin-top">
 				<view class="title">日记名称</view>
-				<input value="{{diary.title}}" bindinput="onTitle" required="required"></input>
+				<input value="{{diary.name}}" bindchange="onTitle" required="required"></input>
 			</view>
 			<!-- 多肉名称 -->
 			<view class="cu-form-group">
 				<view class="title">多肉名称</view>
-				<input value="{{diary.plantName}}" bindchange="onMajor"></input>
+				<input value="{{diary.plant}}" bindchange="onPlant"></input>
 			</view>
 			<!-- 浇水时间 -->
 			<view class="cu-form-group">
 				<view class="title">浇水时间</view>
 
-				<picker mode="time" value="{{diary.time}}" start="05:00" end="23:59" bindchange="TimeChange">
+				<picker mode="time" value="{{diary.watering}}" start="05:00" end="23:59" bindchange="TimeChange">
 					<view class="picker">
-						<!-- {{diary.time}} -->
-						aaa
+						{{diary.watering}}
 					</view>
 				</picker>
 			</view>
@@ -65,7 +70,9 @@
 			<!-- 描述 -->
 			<view class="cu-form-group align-start">
 				<view class="title">描述</view>
-				<textarea maxlength="-1" value="{{diary.des}}" placeholder="日记描述"></textarea>
+				<textarea maxlength="-1" value="{{diary.description}}" placeholder="日记描述"
+					bindinput="textareaInput"
+				></textarea>
 			</view>
 
 			<!-- 封面 -->
