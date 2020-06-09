@@ -1,4 +1,5 @@
 // pages/diaryList/diaryList.js
+let app = getApp();
 Page({
 
     /**
@@ -11,13 +12,17 @@ Page({
 		imgList: [],
 		diaryList: [],
 		id: null,
-		url: "http://yanglq.xyz:4430"
+		url: "http://yanglq.xyz:4430",
+		height:null
 	},
 
     /**
      * 生命周期函数--监听页面加载
      */
 	onLoad: function (options) {
+		this.setData({
+			height:app.globalData.pHeight
+		})
 		this.setData({
 			id: options.id
 		})

@@ -81,6 +81,11 @@ App({
         }
       }
     })
+
+    
+    var phoneInfo=wx.getSystemInfoSync();
+    var pHeight=phoneInfo.windowHeight;//高
+    this.globalData.pHeight = pHeight;
   },
   globalData: {
     userInfo: {},

@@ -33,8 +33,12 @@
   .cu-form-group picker{
     height: 100% !important;
   }
+  .DrawerWindow{
+    box-sizing: border-box !important;
+  }
   .DrawerWindow .cu-item{
-    padding:20px !important;
+    box-sizing: border-box;
+    padding:30rpx !important;
   }
   .cu-timeline .cu-item{
     padding:0 0px 5px 30px !important;
@@ -125,7 +129,9 @@
     opacity: 1;
     pointer-events: all;
   }
-  
+  .DrawerWindow .cu-list{
+    margin:70rpx 40rpx;
+  }
   .DrawerClose {
     position: absolute;
     width: 40vw;

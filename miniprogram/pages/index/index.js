@@ -192,7 +192,7 @@ Page({
   },
   // 图片预览
   showImgList(e) {
-    let list = this.data.swiperList.map(item => item.url);
+    let list = this.data.swiperList.map(item => this.data.url+item.url);
     wx.previewImage({
       urls: list,
       current: e.currentTarget.dataset.item.url
