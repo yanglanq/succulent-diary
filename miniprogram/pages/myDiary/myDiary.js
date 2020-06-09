@@ -1,3 +1,6 @@
+
+// pages/newDiary/newdiary.js
+let app = getApp();
 Page({
   data: {
     haveImg:false,
@@ -67,13 +70,11 @@ Page({
 			modalName: null,
 		})
   },
-  
   onTitle(e){
     this.setData({
       ['temp.name']:e.detail.value,
     })
   },
-
   onMajor(e){
     this.setData({
       ['temp.plant']:e.detail.value,
@@ -89,6 +90,29 @@ Page({
   onDescription(e){
     this.setData({
       ['temp.description']:e.detail.value,
+    })
+  },
+
+  onImg(e){
+    var that = this;
+    wx.chooseImage({
+      count: 1, // 最多可以选择的图片张数，默认9
+      sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
+      success: function(res){
+        // success
+        console.log(res.tempFilePaths[0]);
+        that.setData({
+          ['temp.headUrl']:res.tempFilePaths[0],
+          haveImg:true,
+          imgNum:1
+        })
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
     })
   },
 
@@ -155,7 +179,7 @@ Page({
               title: '提交成功！',
               icon: 'success'
             })
-            this.hideModal();
+            that.hideModal();
           }
         })
       }
@@ -196,6 +220,13 @@ Page({
           })
         }
       }
+    })
+  },
+
+  //跳转
+  change(e){
+    wx.navigateTo({
+      url: '../diaryList/diaryList?id=' + e.currentTarget.dataset.id
     })
   },
   /**

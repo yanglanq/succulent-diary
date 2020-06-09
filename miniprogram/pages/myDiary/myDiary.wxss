@@ -137,12 +137,12 @@
   .cu-form-group picker{
     height: 100% !important;
   }
-  .cu-item{
+  /* .cu-item{
     padding:0 30px 5px !important;
   }
   .cu-time{
     padding-bottom: 0 !important;
-  }
+  } */
   .cu-item::before{
     background-color: transparent !important;
   }

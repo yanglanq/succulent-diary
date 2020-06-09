@@ -9,7 +9,7 @@ Page({
       title: "这是标题~",
       imgList: [],
       content: "这是正文~",
-      id:null,
+      id:null
     }
   },
   

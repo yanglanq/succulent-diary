@@ -10,12 +10,11 @@
             <image class="img" src="https://yanglq.xyz/images/plantIcon/duorou16.png" mode='widthFix'></image>
             标题
         </view>
-        <input style="font-size: 30rpx;" placeholder="{{diary.title}}" maxlength="30" bindblur="textInput"></input>
+        <input style="font-size: 30rpx;" placeholder="在这里输入标题，最多30个字符" maxlength="30" bindchange="textInput"></input>
     </view>
     <!-- 正文 -->
     <view class="cu-form-group textarea">
-        <textarea style="height: 570rpx;font-size: 30rpx;" maxlength="-1" disabled="{{modalName!=null}}"
-            bindinput="textareaInput" placeholder="{{diary.content}}"></textarea>
+        <textarea style="height: 570rpx;font-size: 30rpx;" maxlength="-1" bindinput="textareaInput" placeholder="美好的一天，写点东西吧^o^"></textarea>
     </view>
     <!-- 图片 -->
     <view class="cu-bar bg-white margin-top">
@@ -36,12 +35,14 @@
                 </view>
             </view>
             <view style="border-radius:10%;" class="solids" bindtap="ChooseImage" wx:if="{{diary.imgList.length<8}}">
-                <image class="photo_img" src='https://yanglq.xyz/images/plantIcon/camera.png' mode='widthFix'></image>
+                <text class="cuIcon-cameraadd"></text>
             </view>
         </view>
     </view>
     <!-- 提交 -->
-    <view class="bottom" bindtap="diarySubmit">
-        <image src='https://yanglq.xyz/images/plantIcon/preservation.png' mode='widthFix'></image>
+    <view class="bottom" bindtap="diarySubmit"
+        style="border: 1px solid #eee;"
+    >
+       提交
     </view>
 </form>

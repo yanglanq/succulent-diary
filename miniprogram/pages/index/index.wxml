@@ -1,6 +1,30 @@
 <!--index.wxml-->
 <bgCanvas></bgCanvas>
 <view class="container">
+
+	<view class="cu-modal {{modalName=='Modal'?'show':''}}">
+		<view class="cu-dialog watering">
+		  <view class="cu-bar bg-white justify-end">
+			<view class="content">温馨小提示</view>
+			<view class="action" bindtap="hideModal">
+			  <text class="cuIcon-close text-red"></text>
+			</view>
+		  </view>
+		  <view class="padding"
+		 	style="text-align: left;" 
+		  >
+			  <text class="title">不要忘记给心爱的多肉浇水哦</text>
+			 <view
+			 	wx:for="{{watheringList}}" wx:key="*this"
+			 >
+				您的 {{item.plant}}  {{item.watering}} 该浇水啦 
+			 </view
+			 >
+
+		  </view>
+		</view>
+	  </view>
+
 	<view class="header">
 		<text>多肉日记本</text>
 		<cover-image class="imgIcon" src="https://yanglq.xyz/images/plantIcon/duorouduocai.png"></cover-image>
@@ -18,16 +42,29 @@
 		<swiper class="card-swiper round-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000"
 			duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
 			<swiper-item wx:for="{{swiperList}}" wx:key='index' class="{{cardCur==index?'cur':''}}">
-				<view class="swiper-item">
+				<view class="swiper-item" style="height: 100% !important;">
 					<card data-item="{{item}}" card="{{item}}" bindtap="showImgList"></card>
 				</view>
 			</swiper-item>
 		</swiper>
 	</view>
 
-	<view class="writeDiary" bindtap="newDiary">
+	<view class="writeDiary"
+		style="position: relative;"
+	>
 		<text class="iconfont icon-add-fill" style="color:rgba(153, 191, 76, 0.871)"></text>
 		<text class="colorgradient">来写一篇日记吧~</text>
+
+		<view class="cu-form-group"
+			style="width: 100%;height: 100%;position: absolute;top: 0;left: 0;min-height: 0;opacity: 0;"
+		>
+			<view class="title">普通选择</view>
+			<picker bindchange="PickerChange" value="{{index}}" range="{{list}}">
+				<view class="picker">
+					{{list[index]}}
+				</view>
+			</picker>
+		</view>
 	</view>
 
 	<view class="msg">
@@ -40,5 +77,19 @@
 		</view>
 	</view>
 
-	<view class="recommend"></view>
+	<view class="recommend">
+		<view class="resultCard" wx:for="{{recommendList}}" wx:key="*this"
+			data-info="{{item}}"
+			bindtap = "viewInfo"
+		>
+			<view class="top">
+				<image src="{{url+item.imgUrl}}"></image>
+				<view class="right">
+					<view class="name ellipsis">{{item.pname}}</view>
+					<view class="alias ellipsis">别名：{{item.alias}}</view>
+				</view>
+			</view>
+			<view class="info">简介：{{item.intro}}</view>
+		</view>
+	</view>
 </view>

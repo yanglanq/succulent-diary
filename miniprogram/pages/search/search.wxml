@@ -25,7 +25,10 @@
 			>{{item}}</text>
 		</view>
 		<view class="searchResult">
-			<view class="resultCard" wx:for="{{searchList}}" wx:key="*this">
+			<view class="resultCard" wx:for="{{searchList}}" 
+			data-info="{{item}}"
+			bindtap = "viewInfo"
+			wx:key="*this">
 				<view class="top">
 					<image src="{{url+item.imgUrl}}"></image>
 					<view class="right">

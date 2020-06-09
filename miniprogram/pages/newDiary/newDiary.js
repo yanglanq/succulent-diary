@@ -1,4 +1,4 @@
-
+// import {formatDate} from "../../utils/util.js"
 // pages/newDiary/newdiary.js
 Page({
 
@@ -7,9 +7,10 @@ Page({
    */
   data: {
     diary: {
-      title: "在这里输入标题，最多30个字符",
+      title: "",
       imgList: [],
-      content: "美好的一天，写点东西吧^o^"
+      content: "",
+      id:null
     }
   },
 
@@ -66,73 +67,92 @@ Page({
       ['diary.content']: e.detail.value
     })
   },
-  diarySubmit: function (e) {
-    // console.log(e);
+  diarySubmit(e){
       wx.showModal({
         title: '提示',
-        content: '确认保存嘛？',
-        success: function (res) {
-          if (res.confirm) {  
-            console.log('确认')
-          } else {   
-            console.log('取消')
-          }
+        content: '确认提交嘛？',
+        success: (res)=>{
+          if (res.confirm) { 
+            wx.request({
+              url: 'https://yanglq.xyz/diary/addDiary',
+              data:{
+                bid:Number(this.data.id),
+                title:this.data.diary.title,
+                inside:this.data.diary.content,
+              },
+              header:{
+                'Content-Type':'application/x-www-form-urlencoded'
+              },
+              method:"POST",
+              success:(res)=>{
+                let i = 0;
+                if(this.data.diary.imgList.length){
+                  this.data.diary.imgList.forEach(item => {
+                    wx.uploadFile({
+                      url: 'https://yanglq.xyz/diary/updateDiary',
+                      filePath: item, //文件路径  
+                      name: 'file',  //随意
+                      header: { 
+                        'Content-Type': 'multipart/form-data',
+                      },
+                      formData: {
+                        'id':res.data,
+                        method: 'POST'   //请求方式
+                      },
+                      success:(res1)=>{
+                        if(res1.data==="1"){
+                          i++;
+                          if(i==this.data.diary.imgList.length){
+                            wx.showToast({
+                              title: '添加成功',
+                            })
+                            wx.navigateBack({
+                              delta: 1
+                            });
+                          }
+                        }
+                      }
+                    })
+                  });
+                }else{
+                  wx.showToast({
+                    title: '添加成功',
+                  })
+                  wx.navigateBack({
+                    delta: 1
+                  });
+                }
+              },
+              fail(err){
+                throw err;
+              }
+            })
+          } 
         }
       })
+  },
+  uploadImage(id){
+    
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    this.setData({
+      id:options.id
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  formatDate(date) {  
+    var y = date.getFullYear();  
+    var m = date.getMonth() + 1;  
+    m = m < 10 ? ('0' + m) : m;  
+    var d = date.getDate();  
+    d = d < 10 ? ('0' + d) : d;  
+    var h = date.getHours();  
+    var minute = date.getMinutes();  
+    minute = minute < 10 ? ('0' + minute) : minute; 
+    var second= date.getSeconds();  
+    second = minute < 10 ? ('0' + second) : second;  
+    return y + '-' + m + '-' + d+' '+h+':'+minute+':'+ second;  
   }
 })

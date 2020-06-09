@@ -29,9 +29,6 @@ App({
             data: {
               code: res.code
             },
-            header: {
-              'content-type': 'application/json'
-            },
             success: res => {
               var id = res.data;
               if(id < 0){

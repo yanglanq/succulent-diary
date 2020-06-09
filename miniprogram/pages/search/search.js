@@ -61,6 +61,11 @@ Page({
     })
     
   },
+  viewInfo(e){
+    wx.navigateTo({
+      url: '../detail/detail?info='+JSON.stringify(e.currentTarget.dataset.info),
+    })
+  },
   searchWordChange(e) {
     this.setData({
       searchWord: e.detail.value
