@@ -17,7 +17,6 @@
         </view>
         <view class="cu-list menu sm-border card-menu margin-top">
             <view class="cu-item margin-top-sm" style="height: 150rpx;font-size: 30rpx;background-color: #fbfbfb;" wx:for="{{diary}}" 
-            bindtap="change"
             data-id="{{item.id}}"
             wx:for-item="item" wx:key="ID">
                 <image class="diary_img action" wx:if="{{item.path != ''}}" src="http://yanglq.xyz:4430{{item.headUrl}}" data-index="{{index}}" mode='aspectFill' bindtap="ChooseImage"></image>
@@ -28,7 +27,7 @@
                 </view>
                 <view class="margin-top-sm"></view>
                 <!-- <image class="cu-avatar round sm" style="background-color:#fbfbfb;" src="{{addbutton}}" data-index="{{index}}" mode='widthFix' bindtap="Add"></image> -->
-                <image class="cu-avatar round sm" style="background-color:#fbfbfb;" src="{{deletebutton}}" data-index="{{index}}" mode='widthFix' bindtap="DeleteDiary"></image>
+                <image class="cu-avatar round sm" style="background-color:#fbfbfb;" src="{{deletebutton}}" data-index="{{index}}" mode='widthFix' bindcatch="DeleteDiary"></image>
             </view>
         </view>
     </view>
