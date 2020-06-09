@@ -20,7 +20,6 @@
             bindtap="change"
             data-id="{{item.id}}"
             wx:for-item="item" wx:key="ID">
-                <!-- {{item.name}}{{item.headUrl}} -->
                 <image class="diary_img action" wx:if="{{item.path != ''}}" src="http://yanglq.xyz:4430{{item.headUrl}}" data-index="{{index}}" mode='aspectFill' bindtap="ChooseImage"></image>
                 <image class="diary_img action" wx:if="{{item.path == ''}}" src="{{item.headUrl}}" data-index="{{index}}" mode='aspectFill' bindtap="ChooseImage"></image>
                 <view style="position: relative;right: 55px;">
