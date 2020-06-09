@@ -33,7 +33,7 @@ Component({
    */
   data: {
     StatusBar: app.globalData.StatusBar,
-    CustomBar: 130,
+    CustomBar: app.globalData.CustomBar,
     Custom: app.globalData.Custom
   },
   /**

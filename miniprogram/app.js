@@ -31,10 +31,10 @@ App({
             },
             success: res => {
               var id = res.data;
-              if(id < 0){
+              if (id < 0) {
                 id = -id;
                 wx.getUserInfo({
-                  success:res1=>{
+                  success: res1 => {
                     var username = res1.userInfo.nickName;
                     var sex = res1.userInfo.gender;
                     var headUrl = res1.userInfo.avatarUrl;
@@ -42,13 +42,13 @@ App({
                     wx.request({
                       url: 'https://yanglq.xyz/user/addUser',
                       data: {
-                        'id':id,
-                        'username':username,
-                        'headUrl':headUrl,
-                        'sex':sex,
+                        'id': id,
+                        'username': username,
+                        'headUrl': headUrl,
+                        'sex': sex,
                       },
-                      method: 'GET', 
-                      success: function(res){
+                      method: 'GET',
+                      success: function (res) {
                         console.log(res);
                       },
                     })
