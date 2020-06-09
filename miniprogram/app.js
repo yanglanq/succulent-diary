@@ -100,15 +100,21 @@ App({
   },
   getState(){
     wx.getSetting({
-      success:  (res)=>{
+      success: (res)=>{
         if (res.authSetting['scope.userInfo']) {
-          this.globalData.wxuserInfo = res.userInfo;
-          if (this.userInfoReadyCallback) {
-            this.userInfoReadyCallback(res)
-          }
-          wx.switchTab({
-            url: '../index/index',
+          wx.getUserInfo({
+            success: res => {
+              // 可以将 res 发送给后台解码出 unionId
+              this.globalData.wxuserInfo = res.userInfo;
+              if (this.userInfoReadyCallback) {
+                this.userInfoReadyCallback(res)
+              }
+              wx.switchTab({
+                url: '../index/index',
+              })
+            }
           })
+          
         }else{
           wx.redirectTo({
             url: '../authorize/authorize',

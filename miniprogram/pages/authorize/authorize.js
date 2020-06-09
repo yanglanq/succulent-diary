@@ -10,11 +10,13 @@ Page({
   },
 
   getUserInfo(e) {
+    console.log(e);
+    
     if (e.detail.userInfo) {
       wx.showToast({
         title: '授权成功',
       })
-      app.globalData.userInfo = e.detail.userInfo
+      app.globalData.wxuserInfo = e.detail.userInfo
       wx.switchTab({
         url: '../index/index'
       })
