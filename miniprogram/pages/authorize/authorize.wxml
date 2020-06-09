@@ -4,5 +4,5 @@
         <text>多肉日记本</text>
         <cover-image class="imgIcon" src="https://yanglq.xyz/images/plantIcon/duorouduocai.png"></cover-image>
     </view>
-    <button class="bg-gradual-green margin-top-xxxxl" open-type="getUserInfo" bindgetuserinfo="getUserInfo">开始使用</button>
+    <button class="bg-gradual-green margin-top-xxxxl radius" open-type="getUserInfo" bindgetuserinfo="getUserInfo">开始使用</button>
 </view>
