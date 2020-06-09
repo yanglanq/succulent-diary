@@ -106,6 +106,10 @@ Page({
                             wx.showToast({
                               title: '添加成功',
                             })
+                            var pages = getCurrentPages();
+                            var beforePage = pages[pages.length - 2];
+                            // 调用列表页的获取数据函数
+                            beforePage.loadData(this.data.id);
                             wx.navigateBack({
                               delta: 1
                             });

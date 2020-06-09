@@ -40,6 +40,9 @@
     box-sizing: border-box;
     padding:30rpx !important;
   }
+  .cu-timeline{
+    position: relative !important;
+  }
   .cu-timeline .cu-item{
     padding:0 0px 5px 30px !important;
   }
@@ -123,7 +126,19 @@
     transition: all 0.4s;
     font-size: 24rpx;
   }
-  
+  .cuIcon-deletefill{
+    color: rgb(240, 84, 36);
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    font-size: 18px;
+    display: block;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 25px;
+    z-index: 5;
+  }
   .DrawerWindow.show {
     transform: scale(1, 1) translateX(0%);
     opacity: 1;

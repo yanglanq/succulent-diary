@@ -1,52 +1,54 @@
 {
-  "pages": [
-    "pages/authorize/authorize",
-    "pages/index/index",
-    "pages/myDiary/myDiary",
-    "pages/newDiary/newDiary",
-    "pages/userInfo/userInfo",
-    "pages/search/search",
-    "pages/detail/detail",
-    "pages/viewDiary/viewDiary",
-    "pages/diaryList/diaryList"
-  ],
-  "window": {
-    "backgroundColor": "#F6F6F6",
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "E招汇",
-    "navigationBarTextStyle": "black",
-    "navigationStyle": "custom"
-  },
-  "style": "v2",
-  "sitemapLocation": "sitemap.json",
-  "tabBar": {
-    "color": "#a9b7b7",
-    "selectedColor": "#848484",
-    "borderStyle": "white",
-    "list": [
-      {
-        "selectedIconPath": "/images/tabbar_icon/shouyeSelect.png",
-        "iconPath": "/images/tabbar_icon/shouye.png",
-        "pagePath": "pages/index/index",
-        "text": "首页"
-      },
-      {
-        "selectedIconPath": "/images/tabbar_icon/mydiarySelect.png",
-        "iconPath": "/images/tabbar_icon/mydiary.png",
-        "pagePath": "pages/myDiary/myDiary",
-        "text": "日记"
-      },
-      {
-        "selectedIconPath": "/images/tabbar_icon/infoSelect.png",
-        "iconPath": "/images/tabbar_icon/info.png",
-        "pagePath": "pages/userInfo/userInfo",
-        "text": "我的"
-      }
-    ]
-  },
-  "usingComponents": {
-    "bgCanvas": "/components/bgCanvas/bgcanvas",
-    "backup": "/components/backup/backup"
-  }
+    "pages": [
+        "pages/loader/loader",
+        "pages/authorize/authorize",
+        "pages/index/index",
+        "pages/myDiary/myDiary",
+        "pages/newDiary/newDiary",
+        "pages/userInfo/userInfo",
+        "pages/search/search",
+        "pages/detail/detail",
+        "pages/viewDiary/viewDiary",
+        "pages/diaryList/diaryList",
+        "pages/loader"
+    ],
+    "window": {
+        "backgroundColor": "#F6F6F6",
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#F6F6F6",
+        "navigationBarTitleText": "E招汇",
+        "navigationBarTextStyle": "black",
+        "navigationStyle": "custom"
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json",
+    "tabBar": {
+        "color": "#a9b7b7",
+        "selectedColor": "#848484",
+        "borderStyle": "white",
+        "list": [
+            {
+                "selectedIconPath": "/images/tabbar_icon/shouyeSelect.png",
+                "iconPath": "/images/tabbar_icon/shouye.png",
+                "pagePath": "pages/index/index",
+                "text": "首页"
+            },
+            {
+                "selectedIconPath": "/images/tabbar_icon/mydiarySelect.png",
+                "iconPath": "/images/tabbar_icon/mydiary.png",
+                "pagePath": "pages/myDiary/myDiary",
+                "text": "日记"
+            },
+            {
+                "selectedIconPath": "/images/tabbar_icon/infoSelect.png",
+                "iconPath": "/images/tabbar_icon/info.png",
+                "pagePath": "pages/userInfo/userInfo",
+                "text": "我的"
+            }
+        ]
+    },
+    "usingComponents": {
+        "bgCanvas": "/components/bgCanvas/bgcanvas",
+        "backup": "/components/backup/backup"
+    }
 }

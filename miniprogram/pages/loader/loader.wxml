@@ -1,0 +1,2 @@
+<!--pages/loader/loader.wxml-->
+<view class="loader">.</view>

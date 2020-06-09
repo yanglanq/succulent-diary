@@ -47,10 +47,15 @@ Page({
 			}
 		})
 		// 获取日记列表信息
+		this.loadData(options.id);
+	},
+	loadData(id){
+		console.log(1111);
+		
 		wx.request({
 			url: 'https://yanglq.xyz/diary/listDiary',
 			data: {
-				id: options.id
+				id: id
 			},
 			success: (res) => {
 				let data = [];
@@ -72,6 +77,39 @@ Page({
 				throw err;
 			}
 		})
+	},
+	delete(e){
+		console.log(e.currentTarget.dataset.index);
+		
+		wx.showModal({
+			title: '提示',
+			content: '确认要删除吗?',
+			success: (res)=>{
+			  if (res.confirm) {
+				wx.request({
+					url: 'https://yanglq.xyz/diary/deleteDiary',
+					data: {
+						id: e.currentTarget.dataset.item.id
+					},
+					success: (res) => {
+						if(res.data){
+							let list = this.data.diaryList.splice(e.currentTarget.dataset.index,1);
+							this.setData({
+								diaryList:list
+							})
+							wx.showToast({
+							  title: '删除成功',
+							})
+						}
+					},
+					fail(err) {
+						throw err;
+					}
+				})
+			  }
+			}
+		})
+		
 	},
 	onSubmit() {
 		// 传图片

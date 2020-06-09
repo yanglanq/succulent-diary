@@ -10,7 +10,7 @@
 			bindtap="editShow"
 			></text>
 			<text>{{diary.name}}</text>
-			<text class="iconfont icon-add-fill" style="color:rgba(153, 191, 76, 0.871);float: right;font-size: 1.2em;"
+			<text class="cuIcon-roundadd" style="color:rgba(153, 191, 76, 0.871);float: right;font-size: 1.2em;"
 				bindtap="newDairy"
 			>新建</text>
 		</view>
@@ -23,6 +23,11 @@
 			bindtap="viewDetail"
 			data-id="{{item.id}}"
 			>
+				<text class="cuIcon-deletefill"
+					catchtap="delete"
+					data-item="{{item}}"
+					data-index="{{index}}"
+				></text>
 				<view class="cu-time">{{item.date[0]}}</view>
 				<view class="cu-item">
 					<view class="content">
@@ -45,7 +50,7 @@
 
 <scroll-view scroll-y class="DrawerWindow {{modalName=='viewModal'?'show':''}}">
 	<view class="cu-list menu card-menu  shadow-lg">
-		<view class="cu-item pend-form" style="height:{{height}}px;justify-content:flex-start;opacity:0.8;">
+		<view class="cu-item pend-form" style="height:1250rpx;justify-content:flex-start;opacity:0.8;">
 			<!-- 日记名称 -->
 			<view class="cu-form-group margin-top">
 				<view class="title">日记名称</view>

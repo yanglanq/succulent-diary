@@ -1,6 +1,7 @@
 //app.js
 App({
   onLaunch: function () {
+    
     wx.getSystemInfo({
       success: e => {
         this.globalData.StatusBar = e.statusBarHeight;
@@ -88,9 +89,7 @@ App({
           })
         }
       }
-    })
-
-    
+    })    
     var phoneInfo=wx.getSystemInfoSync();
     var pHeight=phoneInfo.windowHeight;//高
     this.globalData.pHeight = pHeight;
@@ -98,5 +97,20 @@ App({
   globalData: {
     userInfo: {},
     wxuserInfo: {},
+  },
+  getState(){
+    wx.getSetting({
+      success: function (res) {
+        if (res.authSetting['scope.userInfo']) {
+          wx.redirectTo({
+            url: './pages/index/index',
+          })
+        }else{
+          wx.redirectTo({
+            url: './pages/authorize/authorize',
+          })
+        }
+      }
+    })
   }
 })

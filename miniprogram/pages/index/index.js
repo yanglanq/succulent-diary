@@ -140,8 +140,6 @@ Page({
         word:"清盛锦"
       },
       success: (res) => {
-        console.log(res.data.data);
-        
         this.setData({
           recommendList: res.data.data
         })
@@ -193,9 +191,10 @@ Page({
   // 图片预览
   showImgList(e) {
     let list = this.data.swiperList.map(item => this.data.url+item.url);
+    
     wx.previewImage({
       urls: list,
-      current: e.currentTarget.dataset.item.url
+      current: this.data.url+e.currentTarget.dataset.item.url
     })
   },
   cardSwiper(e) {

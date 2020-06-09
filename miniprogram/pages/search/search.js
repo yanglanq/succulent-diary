@@ -14,7 +14,8 @@ Page({
     // }]
     searchList: [],
     searchWord: "清盛锦",
-    url:"http://yanglq.xyz:4430"
+    url:"http://yanglq.xyz:4430",
+    
   },
 
   /**
@@ -42,7 +43,6 @@ Page({
     }else{
       word = this.data.searchWord
     }
-    console.log(word);
     wx.request({
       url: 'https://yanglq.xyz/succulent/searchByWord',
       data:{

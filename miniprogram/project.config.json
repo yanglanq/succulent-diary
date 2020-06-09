@@ -127,6 +127,13 @@
 					"id": -1,
 					"name": "pages/authorize/authorize",
 					"pathName": "pages/authorize/authorize",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/loader/loader",
+					"pathName": "pages/loader/loader",
 					"scene": null
 				}
 			]
