@@ -3,7 +3,7 @@
   position: relative;
 }
 
-.search-box .icon-sousuo {
+.search-box .cuIcon-search {
   position: absolute;
   top: 0rpx;
   right: 40rpx;

@@ -34,7 +34,7 @@
 
 	<!-- 点击跳转到搜索界面 -->
 	<view class="search" bindtap="search">
-		<text class="icon iconfont icon-sousuo"></text>
+		<text class="cuIcon-search"></text>
 		<text>Search</text>
 	</view>
 

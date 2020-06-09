@@ -1,12 +1,13 @@
-<view class="cu-custom" style="height:{{CustomBar}}rpx">
-  <view class="cu-bar fixed {{bgImage!=''?'none-bg text-white bg-img':''}} {{bgColor}}" style="height:{{CustomBar}}rpx;padding-top:{{StatusBar}}px;">
+<view class="cu-custom" style="height:{{CustomBar}}rpx;">
+  <view class="cu-bar fixed {{bgImage!=''?'none-bg text-white bg-img':''}} {{bgColor}}" 
+  style="height:{{CustomBar}}rpx;padding-top:{{StatusBar}}px;">
     <view class="action" bindtap="BackPage" wx:if="{{isBack}}">
-      <text class="iconfont icon-fanhui"></text>
+      <text class="cuIcon-back"></text>
       <slot name="backText"></slot>
     </view>
     <view class="text-white action border-custom"  wx:if="{{isCustom}}" style="width:{{Custom.width}}px;height:{{Custom.height}}px;margin-left:calc(750rpx - {{Custom.right}}px)">
-      <text class="iconfont icon-fanhui" bindtap="BackPage"></text>
-      <text class="iconfont icon-icon_home" bindtap="toHome"></text>
+      <text class="cuIcon-back" bindtap="BackPage"></text>
+      <text class="cuIcon-home" bindtap="toHome"></text>
     </view>
     <view class="content" style="top:{{StatusBar}}px">
       <slot name="content"></slot>

@@ -13,7 +13,7 @@
 				value="{{searchWord}}"
 			>
 		</input>
-			<text class="icon iconfont icon-sousuo"
+			<text class="cuIcon-search"
 				bindtap="search"
 			></text>
 		</view>
