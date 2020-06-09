@@ -10,14 +10,6 @@ Page({
     succulent:{
       
     }
-    // pname:'',
-    //   plantid:null,
-    //   imgUrl:'',
-    //   alias:["别名"],
-    //   classification:["分类"],
-    //   floresce:["盛花期"],
-    //   intro:["介绍"],
-    //   feature:["形态特征"],
   },
   
   displayMore(e){
@@ -35,12 +27,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(JSON.parse(options.info));
     this.setData({
       succulent:JSON.parse(options.info)
     })
-    console.log(this.data.succulent);
-    
   },
 
   /**
