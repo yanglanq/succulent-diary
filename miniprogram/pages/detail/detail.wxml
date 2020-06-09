@@ -4,20 +4,43 @@
         <view slot="content">详细介绍</view>
     </backup>
     <view class='margin-xl bg-white padding-xl radius shadow-lg'>
-        <view class='text-center margin-bottom text-lg  text-grey property_font'>{{succulent.Name}}</view>
+        <view class='text-center margin-bottom text-lg  text-grey property_font'>{{succulent.pname}}</view>
         <!-- 不显示详细信息 -->
         <view class='text-content' wx:for="{{succulent}}" wx:for-index="id" wx:for-item="item" wx:key="id">
-            <view class='margin-top-sm' wx:if="{{(id != 'Name' && (id == 'ImgUrl' || id == 'Alias' || id == 'Classify' || id == 'Florescence' || id == 'Intro')) && item.length > 1}}">
-                <view wx:if="{{id == 'ImgUrl'}}" class="flex padding justify-center">
-                    <view class="cu-avatar xxl round" style="background-image:url({{succulent.ImgUrl}});"></view>
+            <view class='margin-top-sm' wx:if="{{id != 'pname'}}">
+                <view wx:if="{{id == 'imgUrl'}}" class="flex padding justify-center">
+                    <view class="cu-avatar xxl round" style="background-image:url(http://yanglq.xyz:4430{{succulent.imgUrl}});"></view>
                 </view>
-                <view wx:if="{{id != 'ImgUrl'}}" wx:for="{{item}}" wx:for-index="id1" wx:for-item="item1" wx:key="id1">
-                    <view class="property_font" wx:if="{{id1 == 0}}">
-                        {{succulent.Name}}的{{item1}}
+                <view wx:if="{{id == 'alias'}}">
+                    <view class="property_font" >
+                        别名
                     </view>
-                    <view wx:elif="{{id1 > 0}}" class="margin-top-xs">
-                        <!-- <image class="img" src="https://yanglq.xyz/images/duorou18.png" mode='widthFix' /> -->
-                        <text decode="{{true}}">{{space}}</text>{{item1}}
+                    <view class="margin-top-xs">
+                        <text decode="{{true}}">{{space}}</text>{{item}}
+                    </view>
+                </view>
+                <view wx:if="{{id == 'classification'}}">
+                    <view class="property_font" >
+                        分类
+                    </view>
+                    <view class="margin-top-xs">
+                        <text decode="{{true}}">{{space}}</text>{{item}}
+                    </view>
+                </view>
+                <view wx:if="{{id == 'floresce'}}">
+                    <view class="property_font" >
+                        盛花期
+                    </view>
+                    <view class="margin-top-xs">
+                        <text decode="{{true}}">{{space}}</text>{{item}}
+                    </view>
+                </view>
+                <view wx:if="{{id == 'intro'}}">
+                    <view class="property_font" >
+                        介绍
+                    </view>
+                    <view class="margin-top-xs">
+                        <text decode="{{true}}">{{space}}</text>{{item}}
                     </view>
                 </view>
             </view>
@@ -25,14 +48,13 @@
         <view wx:if="{{detail == false}}" class="iconfont icon-expanding:before" bindtap="displayMore"></view>
         <!-- 显示详细信息 -->
         <view class='text-content' wx:if="{{detail == true}}" wx:for="{{succulent}}" wx:for-index="id" wx:for-item="item" wx:key="id">
-            <view class='margin-top-sm' wx:if="{{id != 'Name' && id != 'PlantId' && id != 'ImgUrl' && id != 'Alias' && id != 'Classify' && id != 'Florescence' && id != 'Intro' && item.length > 1}}">
-                <view wx:for="{{item}}" wx:for-index="id1" wx:for-item="item1" wx:key="id1">
-                    <view class="property_font" wx:if="{{id1 == 0}}">
-                        {{succulent.Name}}的{{item1}}
+            <view class='margin-top-sm' wx:if="{{id != 'pname'}}">
+                <view wx:if="{{id == 'feature'}}">
+                    <view class="property_font" >
+                        形态特征
                     </view>
-                    <view wx:elif="{{id1 > 0}}" class="margin-top-xs">
-                        <!-- <image class="img" src="https://yanglq.xyz/images/duorou18.png" mode='widthFix' /> -->
-                        <text decode="{{true}}">{{space}}</text>{{item1}}
+                    <view class="margin-top-xs">
+                        <text decode="{{true}}">{{space}}</text>{{item}}
                     </view>
                 </view>
             </view>
