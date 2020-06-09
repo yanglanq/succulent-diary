@@ -67,4 +67,32 @@ Page({
       },
     })
   },
+  onShow: function () {
+    var that = this;
+    var app = getApp();
+    var uid = app.globalData.userInfo.uid;
+    wx.request({
+      url: 'https://yanglq.xyz/diary/listBook',
+      data: {
+        id: uid, 
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        that.setData({
+          diaryNum: res.data.length,
+          duorouNum: res.data.length
+        })
+      },
+      fail: function () {
+        // fail
+        wx.showModal({
+          title: '加载失败',
+          icon:'loading'
+        })
+        this.hideModal();
+      },
+    })
+  },
 })
