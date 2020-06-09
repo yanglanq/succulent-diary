@@ -180,6 +180,7 @@ Page({
               icon: 'success'
             })
             that.hideModal();
+            that.load();
           }
         })
       }
@@ -233,13 +234,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.load();
+  },
+  load(){
     var that = this;
-    var app = getApp();
-    var Id = app.globalData.userInfo.uid;
     wx.request({
       url: 'https://yanglq.xyz/diary/listBook',
       data: {
-        id: Id, //用户id
+        id: app.globalData.userInfo.uid, //用户id
       },
       header: {
         'content-type': 'application/json' // 默认值

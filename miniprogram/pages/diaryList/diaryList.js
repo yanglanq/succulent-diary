@@ -50,8 +50,6 @@ Page({
 		this.loadData(options.id);
 	},
 	loadData(id){
-		console.log(1111);
-		
 		wx.request({
 			url: 'https://yanglq.xyz/diary/listDiary',
 			data: {
@@ -79,8 +77,6 @@ Page({
 		})
 	},
 	delete(e){
-		console.log(e.currentTarget.dataset.index);
-		
 		wx.showModal({
 			title: '提示',
 			content: '确认要删除吗?',

@@ -103,13 +103,14 @@ Page({
                         if(res1.data==="1"){
                           i++;
                           if(i==this.data.diary.imgList.length){
+                            let pages = getCurrentPages();
+                            let beforePage = pages[pages.length - 2];
+                            // 调用列表页的获取数据函数
+                            beforePage.loadData(this.data.id);
                             wx.showToast({
                               title: '添加成功',
                             })
-                            var pages = getCurrentPages();
-                            var beforePage = pages[pages.length - 2];
-                            // 调用列表页的获取数据函数
-                            beforePage.loadData(this.data.id);
+                            
                             wx.navigateBack({
                               delta: 1
                             });
@@ -122,6 +123,10 @@ Page({
                   wx.showToast({
                     title: '添加成功',
                   })
+                  let pages = getCurrentPages();
+                  let beforePage = pages[pages.length - 2];
+                  // 调用列表页的获取数据函数
+                  beforePage.loadData(this.data.id);
                   wx.navigateBack({
                     delta: 1
                   });
