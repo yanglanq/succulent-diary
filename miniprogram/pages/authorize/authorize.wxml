@@ -1,0 +1,13 @@
+<bgCanvas></bgCanvas>
+<view class="container">
+    <view
+        style="text-align: center;font-size: 25px;color: #9fbb23;padding-top: 300rpx;"
+    >
+        欢迎使用多肉日记本
+    </view
+
+    >
+    <button class="bg-gradual-green radius" open-type="getUserInfo" 
+    style="margin-top: 200rpx;"
+    bindgetuserinfo="getUserInfo">开始使用</button>
+</view>

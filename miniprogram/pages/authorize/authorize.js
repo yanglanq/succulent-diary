@@ -1,35 +1,44 @@
-// pages/newDiary/newdiary.js
+// pages/authorize/authorize.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    detail:false,
-    space:"&emsp;&emsp;",
-    succulent:{
-      
-    }
+    canIUse: wx.canIUse("button.open-type.getUserInfo")
   },
   
-  displayMore(e){
-    this.setData({
-      detail: true
-    })
-  },
-
-  displayLess(e){
-    this.setData({
-      detail: false
-    })
+  getUserInfo(e){
+    console.log(e);
+    if(e.detail.userInfo){
+      wx.switchTab({
+        url: '../index/index'
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      succulent:JSON.parse(options.info)
-    })
+    wx.getSetting({
+      success: function(res) {
+        if(res.authSetting['scope.userInfo']){
+          wx.getUserInfo({
+            success: function(res){
+              // success
+              // console.log(res.userInfo);
+            },
+            fail: function() {
+              // fail
+            },
+            complete: function() {
+              // complete
+            }
+          })
+        }
+      }
+    });
+      
   },
 
   /**

@@ -16,7 +16,7 @@ App({
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+
 
     var that = this;
     // 登录
@@ -52,6 +52,14 @@ App({
                         console.log(res);
                       },
                     })
+                  },
+                  fail: function () {
+                    // fail
+                    console.log("获取失败！")
+                  },
+                  complete: function () {
+                    // complete
+                    console.log("获取用户信息完成！")
                   }
                 })
               }

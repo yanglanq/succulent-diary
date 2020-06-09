@@ -12,7 +12,6 @@ Page({
       id:null
     }
   },
-  
   /**
    * 生命周期函数--监听页面加载
    */
@@ -20,11 +19,11 @@ Page({
     var that = this;
     that.setData({
       id:options.id
-    })
+    })    
     wx.request({
       url: 'https://yanglq.xyz/diary/queryDiaryById',
       data: {
-        id:that.data.diary.id,
+        id:options.id,
       },
       method: 'GET', 
       success: function(res){
@@ -37,7 +36,7 @@ Page({
           url: 'https://yanglq.xyz/diary/listImg',
           data: {
             did:did,
-            id:that.data.diary.id,
+            id:options.id,
           },
           method: 'GET', 
           success: function(res1){
