@@ -77,5 +77,19 @@
 		</view>
 	</view>
 
-	<view class="recommend"></view>
+	<view class="recommend">
+		<view class="resultCard" wx:for="{{recommendList}}" wx:key="*this"
+			data-info="{{item}}"
+			bindtap = "viewInfo"
+		>
+			<view class="top">
+				<image src="{{url+item.imgUrl}}"></image>
+				<view class="right">
+					<view class="name ellipsis">{{item.pname}}</view>
+					<view class="alias ellipsis">别名：{{item.alias}}</view>
+				</view>
+			</view>
+			<view class="info">简介：{{item.intro}}</view>
+		</view>
+	</view>
 </view>

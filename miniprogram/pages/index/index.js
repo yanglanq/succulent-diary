@@ -12,6 +12,8 @@ Page({
     index:0,
     list:[],
     modalName:"",
+    recommendList:[],
+    url:"http://yanglq.xyz:4430",
     watheringList:[]// 该浇水的日记本列表
   },
   onLoad: function () {
@@ -132,7 +134,22 @@ Page({
         throw err;
       }
     })
-
+    wx.request({
+      url: 'https://yanglq.xyz/succulent/searchByWord',
+      data:{
+        word:"清盛锦"
+      },
+      success: (res) => {
+        console.log(res.data.data);
+        
+        this.setData({
+          recommendList: res.data.data
+        })
+      },
+      fail(err) {
+        throw err;
+      }
+    })
     // 获取每日推荐数据
     wx.request({
       url: 'https://yanglq.xyz/msg/userGetMsg',
@@ -147,6 +164,11 @@ Page({
     })
     
     
+  },
+  viewInfo(e){
+    wx.navigateTo({
+      url: '../detail/detail?info='+JSON.stringify(e.currentTarget.dataset.info),
+    })
   },
   hideModal(){
     this.setData({
