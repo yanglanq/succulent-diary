@@ -23,9 +23,12 @@
                 <text style="margin-left:10rpx;">性别</text>
             </view>
             <view wx:if="{{userInfo.gender === 0}}">
+                未知
+            </view>
+            <view wx:if="{{userInfo.gender === 1}}">
                 男
             </view>
-            <view wx:else>
+            <view wx:if="{{userInfo.gender === 2}}">
                 女
             </view>
         </view>
