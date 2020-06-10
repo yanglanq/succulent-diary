@@ -89,7 +89,8 @@ Page({
 					},
 					success: (res) => {
 						if(res.data){
-							let list = this.data.diaryList.splice(e.currentTarget.dataset.index,1);
+							let list = this.data.diaryList;
+							list.splice(e.currentTarget.dataset.index,1);
 							this.setData({
 								diaryList:list
 							})
