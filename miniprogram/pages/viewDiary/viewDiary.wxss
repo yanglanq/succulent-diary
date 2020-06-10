@@ -21,4 +21,27 @@
     bottom: 0;
     right: 0;
   }
-  
+  .bottom {
+    padding: 0 8px;
+    width: auto;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    bottom: 30rpx;
+    right: 30rpx;
+    text-align: center;
+    background-color: #90ae0a;  
+    color: #fff;
+    border-radius: 5px;
+  }
+  button{
+    margin:0 !important;
+    padding: 0 !important;
+    width: 50px !important;
+    background-color: transparent!important;
+    color: inherit !important;
+    font-weight: normal !important;
+    line-height: 30px !important;
+    height: 30px !important;
+    font-size: inherit !important;
+  }

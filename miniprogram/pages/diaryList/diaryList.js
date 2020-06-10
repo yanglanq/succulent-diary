@@ -185,7 +185,6 @@ Page({
 		})
 	},
 	viewDetail(e){
-		console.log(e.currentTarget.dataset.id);
 		wx.navigateTo({// 传该日记的id
 			url: '../viewDiary/viewDiary?id=' + e.currentTarget.dataset.id
 		})

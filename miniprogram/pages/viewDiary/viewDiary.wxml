@@ -33,5 +33,14 @@
             </view>
         </view>
     </view>
+
+    <view class="bottom"
+        style="border: 1px solid #eee;"
+    >
+        
+        <button open-type="share">
+            <text class="cuIcon-forward"> 转发</text>
+        </button>
+    </view>
 </form>
 

@@ -9,12 +9,12 @@ Page({
       title: "这是标题~",
       imgList: [],
       content: "这是正文~",
-      id:null
+      id: null
     }
   },
   ViewImage(e) {
     var cur = [];
-    for(var i = 0;i < this.data.diary.imgList.length;i++){
+    for (var i = 0; i < this.data.diary.imgList.length; i++) {
       cur.push('http://yanglq.xyz:4430' + this.data.diary.imgList[i]);
     }
     wx.previewImage({
@@ -22,41 +22,57 @@ Page({
       current: e.currentTarget.dataset.url
     });
   },
+  onShareAppMessage(res){
+    if (res.from === 'button') {
+
+    }
+    return {
+      title: '转发',
+      path: '/pages/viewDiary/viewDiary?id=' + this.data.id,
+      imageUrl:this.data.diary.imgList.length?'http://yanglq.xyz:4430'+this.data.diary.imgList[0].picUrl:"",
+      success: function (res) {
+        wx.showToast({
+          title: '转发成功',
+        })
+      }
+    }
+  }
+  ,
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this;
     that.setData({
-      id:options.id
-    })    
+      id: options.id
+    })
     wx.request({
       url: 'https://yanglq.xyz/diary/queryDiaryById',
       data: {
-        id:options.id,
+        id: options.id,
       },
-      method: 'GET', 
-      success: function(res){
+      method: 'GET',
+      success: function (res) {
         var did = res.data.did;
         that.setData({
-          ['diary.title']:res.data.title,
-          ['diary.content']:res.data.inside,
+          ['diary.title']: res.data.title,
+          ['diary.content']: res.data.inside,
         })
         wx.request({
           url: 'https://yanglq.xyz/diary/listImg',
           data: {
-            did:did,
-            id:options.id,
+            did: did,
+            id: options.id,
           },
-          method: 'GET', 
-          success: function(res1){
+          method: 'GET',
+          success: function (res1) {
             that.setData({
-              ['diary.imgList']:res1.data,
+              ['diary.imgList']: res1.data,
             })
           }
         })
       }
-    })  
+    })
   },
 
   /**
@@ -101,10 +117,5 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
-  }
 })

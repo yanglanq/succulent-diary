@@ -14,9 +14,9 @@
 				bindtap="newDairy"
 			>新建</text>
 		</view>
-		<!-- <view wx:if="{{!overdueList.length}}" class="text-xl padding text">
+		<view wx:if="{{!diaryList.length}}" class="text-xl padding text">
 			<text class="text-black text-bold">暂无日记哦!</text>
-		</view> -->
+		</view>
 		<view >
 			<view class="cu-timeline" style="background:transparent"
 			wx:for="{{diaryList}}" wx:key="*this"
@@ -28,6 +28,7 @@
 					data-item="{{item}}"
 					data-index="{{index}}"
 				></text>
+				
 				<view class="cu-time">{{item.date[0]}}</view>
 				<view class="cu-item">
 					<view class="content">
@@ -35,6 +36,7 @@
 							<view class="cu-tag bg-cyan">{{item.time}}</view>
 							<view class="cu-tag line-cyan">{{item.date[1]}}</view>
 						</view>
+						<view class="img"></view>
 						<view class="title">{{item.title}}</view>
 						<view class="info">{{item.inside}}</view>
 					</view>

@@ -43,6 +43,6 @@
     <view class="bottom" bindtap="diarySubmit"
         style="border: 1px solid #eee;"
     >
-       提交
+        <text class="cuIcon-check"> 提交</text>
     </view>
 </form>

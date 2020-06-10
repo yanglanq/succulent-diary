@@ -249,7 +249,6 @@ Page({
       },
       success: function (res) {
         if(res.data.length){
-          console.log(res.data);
           that.setData({
             diary: res.data
           })

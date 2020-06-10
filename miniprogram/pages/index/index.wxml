@@ -3,7 +3,7 @@
 <view class="container">
 
 	<view class="cu-modal {{modalName=='Modal'?'show':''}}"
-		style="z-index: 2110;"
+		style="z-index: 22110 !important;"
 	>
 		<view class="cu-dialog watering">
 		  <view class="cu-bar bg-white justify-end">
@@ -29,7 +29,7 @@
 
 	<view class="header">
 		<text>多肉日记本</text>
-		<cover-image class="imgIcon" src="https://yanglq.xyz/images/plantIcon/duorouduocai.png"></cover-image>
+		<image class="imgIcon" src="https://yanglq.xyz/images/plantIcon/duorouduocai.png"></image>
 	</view>
 
 
@@ -72,7 +72,7 @@
 
 	<view class="msg">
 		<view class="title">
-			<cover-image class="imgIcon" src="https://yanglq.xyz/images/plantIcon/duorouduocai.png"></cover-image>
+			<image class="imgIcon" src="https://yanglq.xyz/images/plantIcon/duorouduocai.png"></image>
 			<text class="colorgradient">今日份小贴士~</text>
 		</view>
 		<view class="content">
