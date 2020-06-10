@@ -14,8 +14,8 @@ Page({
     // }]
     searchList: [],
     searchWord: "清盛锦",
-    url:"http://yanglq.xyz:4430",
-    
+    url: "http://yanglq.xyz:4430",
+
   },
 
   /**
@@ -36,21 +36,26 @@ Page({
     })
   },
   search(e) {
-    
+    wx.showToast({
+      title: '搜索中',
+      icon: 'loading',
+      duration: 2000
+    });
+    wx.hideToast();
     let word;
     if (e.currentTarget.dataset.searchword) {
       word = e.currentTarget.dataset.searchword
-    }else{
+    } else {
       word = this.data.searchWord
     }
     wx.request({
       url: 'https://yanglq.xyz/succulent/searchByWord',
-      data:{
-        word:word
+      data: {
+        word: word
       },
       success: (res) => {
         console.log(res.data.data);
-        
+
         this.setData({
           searchList: res.data.data
         })
@@ -59,17 +64,47 @@ Page({
         throw err;
       }
     })
-    
+    // wx.showLoading({
+    //   title: '搜索中',
+    //   mask: true,
+    //   success: (result) => {
+    //     let word;
+    //     if (e.currentTarget.dataset.searchword) {
+    //       word = e.currentTarget.dataset.searchword
+    //     } else {
+    //       word = this.data.searchWord
+    //     }
+    //     wx.request({
+    //       url: 'https://yanglq.xyz/succulent/searchByWord',
+    //       data: {
+    //         word: word
+    //       },
+    //       success: (res) => {
+    //         console.log(res.data.data);
+
+    //         this.setData({
+    //           searchList: res.data.data
+    //         })
+    //       },
+    //       fail(err) {
+    //         throw err;
+    //       }
+    //     })
+    //   },
+    //   fail: () => {},
+    //   complete: () => {
+    //     wx.hideLoading();
+    //   }
+    // });
   },
-  viewInfo(e){
+  viewInfo(e) {
     wx.navigateTo({
-      url: '../detail/detail?info='+JSON.stringify(e.currentTarget.dataset.info),
+      url: '../detail/detail?info=' + JSON.stringify(e.currentTarget.dataset.info),
     })
   },
   searchWordChange(e) {
     this.setData({
       searchWord: e.detail.value
     })
-  }
-
+  },
 })
