@@ -12,6 +12,13 @@ Page({
       id:null
     }
   },
+  ViewImage(e) {
+    var cur = e.currentTarget.dataset.url;
+    wx.previewImage({
+      urls: this.data.diary.imgList,
+      current: 'http://yanglq.xyz:4430' + cur
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */

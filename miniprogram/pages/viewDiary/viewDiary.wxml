@@ -29,7 +29,7 @@
     <view class="cu-form-group">
         <view class="grid col-4 grid-square flex-sub">
             <view class="bg-img" wx:for="{{diary.imgList}}" wx:for-item="item" wx:key="*this">
-                <image src="http://yanglq.xyz:4430{{item.picUrl}}" data-index="{{index}}" mode='aspectFill'></image>
+                <image src="http://yanglq.xyz:4430{{item.picUrl}}" data-index="{{index}}" mode='aspectFill' bindtap="ViewImage"></image>
             </view>
         </view>
     </view>
