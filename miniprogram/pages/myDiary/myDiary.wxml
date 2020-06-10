@@ -16,13 +16,13 @@
             </view>
         </view>
         <view class="cu-list menu sm-border card-menu margin-top">
-            <view class="cu-item margin-top-sm" style="height: 150rpx;font-size: 30rpx;background-color: #fbfbfb;" wx:for="{{diary}}" 
+            <view class="cu-item margin-top-sm" style="height:150rpx" wx:for="{{diary}}" 
             bindtap="change"
             data-id="{{item.id}}"
             wx:for-item="item" wx:key="ID">
-                <image class="diary_img action" wx:if="{{item.path != ''}}" src="http://yanglq.xyz:4430{{item.headUrl}}" data-index="{{index}}" mode='aspectFill'></image>
-                <image class="diary_img action" wx:if="{{item.path == ''}}" src="{{item.headUrl}}" data-index="{{index}}" mode='aspectFill'></image>
-                <view class="cu-item">
+                <image class="diary_img action basis-xs" wx:if="{{item.path != ''}}" src="http://yanglq.xyz:4430{{item.headUrl}}" data-index="{{index}}" mode='aspectFill'></image>
+                <image class="diary_img action basis-xs" wx:if="{{item.path == ''}}" src="{{item.headUrl}}" data-index="{{index}}" mode='aspectFill'></image>
+                <view class="cu-item basis-lg">
                     <view class="content">
                         <view class="title">{{item.name}}</view>
                         <view class="info margin-top-sm">{{item.plant}}</view>
@@ -43,12 +43,12 @@
             <!-- 日记名称 -->
             <view class="cu-form-group">
                 <view class="title">日记本名称</view>
-                <input value="{{temp.name}}" bindchange="onTitle" required="required"></input>
+                <input value="{{temp.name}}" bindchange="onTitle" required="required" maxlength="12"></input>
             </view>
             <!-- 多肉名称 -->
             <view class="cu-form-group">
                 <view class="title">多肉名称</view>
-                <input value="{{temp.plant}}" bindchange="onMajor"></input>
+                <input value="{{temp.plant}}" bindchange="onMajor" maxlength="12"></input>
             </view>
             <!-- 浇水时间 -->
             <view class="cu-form-group">

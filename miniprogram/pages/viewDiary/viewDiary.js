@@ -14,8 +14,13 @@ Page({
   },
   ViewImage(e) {
     var cur = [];
+<<<<<<< HEAD
     for (var i = 0; i < this.data.diary.imgList.length; i++) {
       cur.push('http://yanglq.xyz:4430' + this.data.diary.imgList[i]);
+=======
+    for(var i = 0;i < this.data.diary.imgList.length;i++){
+      cur.push('http://yanglq.xyz:4430' + this.data.diary.imgList[i].picUrl);
+>>>>>>> 80319d65327babe587cda726857398ec24b160b1
     }
     wx.previewImage({
       urls: cur,
