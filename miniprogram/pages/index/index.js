@@ -120,26 +120,7 @@ Page({
                     throw err;
                   }
                 })
-                wx.request({
-                  url: 'https://yanglq.xyz/diary/listBook',
-                  data: {
-                    id: app.globalData.userInfo.uid //用户id
-                  },
-                  success: (res)=>{
-                    if(res.data.length){
-                      this.setData({
-                        diaryList: res.data
-                      })
-                      let list = [];
-                      for (let i = 0; i < this.data.diaryList.length; i++) {
-                        list.push(this.data.diaryList[i].name)
-                      }
-                      this.setData({
-                        list:list
-                      })
-                    }
-                  }
-                })
+                this.loadDiaryList();
               }
             })
           } 
@@ -188,6 +169,28 @@ Page({
     
     
   },
+  loadDiaryList(){
+    wx.request({
+      url: 'https://yanglq.xyz/diary/listBook',
+      data: {
+        id: app.globalData.userInfo.uid //用户id
+      },
+      success: (res)=>{
+        this.setData({
+          diaryList: res.data
+        })
+        let list = [];
+        if(res.data.length){
+          for (let i = 0; i < this.data.diaryList.length; i++) {
+            list.push(this.data.diaryList[i].name)
+          }
+        }
+        this.setData({
+          list:list
+        })
+      }
+    })
+  },
   viewInfo(e){
     wx.navigateTo({
       url: '../detail/detail?info='+JSON.stringify(e.currentTarget.dataset.info),
@@ -203,15 +206,18 @@ Page({
       url: '/pages/search/search'
     })
   },
-  newDiary() {
-    wx.navigateTo({
-      url: '/pages/newDiary/newDiary'
-    })
-  },
   PickerChange(e){
     wx.navigateTo({// 传该日记的id
       url: '../newDiary/newDiary?id=' + this.data.diaryList[e.detail.value].id
     })
+  },
+  check(){
+    if(!this.data.diaryList.length){
+      wx.showToast({
+        title: '请先建日记本哦~',
+        icon: 'none',
+      })
+    }
   },
   // 图片预览
   showImgList(e) {
@@ -268,5 +274,8 @@ Page({
         swiperList: list
       })
     }
-  }
+  },
+  onShow: function () {
+    this.loadDiaryList();
+  },
 })
