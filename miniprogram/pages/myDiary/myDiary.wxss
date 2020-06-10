@@ -183,7 +183,6 @@
   .cu-item .content .info{
     color: #666;
     /* display: inline-block;  */
-    width: 95%;
     margin: 0rpx;
     display: -webkit-box ;
     overflow: hidden; /*隐藏溢出的文本  */
@@ -357,4 +356,3 @@
       justify-content: center;
       max-width: 100%;
   }
-  

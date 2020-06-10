@@ -15,7 +15,7 @@ Page({
   ViewImage(e) {
     var cur = [];
     for(var i = 0;i < this.data.diary.imgList.length;i++){
-      cur.push('http://yanglq.xyz:4430' + this.data.diary.imgList[i]);
+      cur.push('http://yanglq.xyz:4430' + this.data.diary.imgList[i].picUrl);
     }
     wx.previewImage({
       urls: cur,
