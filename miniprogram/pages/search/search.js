@@ -13,7 +13,7 @@ Page({
     //   intro:"清盛锦又称“灿烂”，为景天科、莲花掌属多年生肉质草本植物，清盛锦株形秀丽美观，叶片色彩绚丽斑斓，常用小型工艺盆栽种，装饰窗台、几架、..."
     // }]
     searchList: [],
-    searchWord: "清盛锦",
+    searchWord: "",
     url:"http://yanglq.xyz:4430",
     
   },

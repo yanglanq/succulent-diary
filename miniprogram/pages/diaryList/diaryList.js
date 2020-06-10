@@ -13,7 +13,8 @@ Page({
 		diaryList: [],
 		id: null,
 		url: "http://yanglq.xyz:4430",
-		height:null
+		height:null,
+		img:""
 	},
 
     /**
@@ -39,6 +40,9 @@ Page({
 					imgList: [this.data.url + res.data.headUrl + ""]
 				})
 				this.setData({
+					img:this.data.url + res.data.headUrl + ""
+				})
+				this.setData({
 					diary: data
 				})
 			},
@@ -58,7 +62,7 @@ Page({
 			success: (res) => {
 				let data = [];
 				res.data.forEach(item => {
-					item.date = item.date.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/g)[0].split("T")
+					item.date = item.date.split(" ")
 					
 					if(Number(item.date[1].split(":")[0])>=12&&Number(item.date[1].split(":")[1])>0){
 						item.time="下午"
@@ -110,7 +114,7 @@ Page({
 	},
 	onSubmit() {
 		// 传图片
-		if (/http:\/\/tmp/.test(this.data.imgList[0])) {
+		if (this.data.img!=this.data.imgList[0]) {
 			// 有图片
 			wx.uploadFile({
 				url: 'https://yanglq.xyz/diary/updateBook',
@@ -121,9 +125,16 @@ Page({
 				},
 				formData: {
 					'id': this.data.id,
+					name:this.data.diary.name,
 					method: 'POST'   //请求方式
 				},
 				success: (res1) => {
+					// setTimeout(function(){
+					// 	let pages = getCurrentPages();
+					// 	let beforePage = pages[pages.length - 2];
+					// 	// 调用列表页的获取数据函数
+					// 	beforePage.load();
+					// },1000)
 				}
 			})
 		}
@@ -142,6 +153,12 @@ Page({
 					wx.showToast({
 						title: '修改成功',
 					})
+					setTimeout(function(){
+						let pages = getCurrentPages();
+						let beforePage = pages[pages.length - 2];
+						// 调用列表页的获取数据函数
+						beforePage.load();
+					},1000)
 					this.hideModal();
 				}
 			}

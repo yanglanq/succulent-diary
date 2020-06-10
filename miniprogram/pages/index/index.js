@@ -66,7 +66,32 @@ Page({
               success: res => {
                 if(res.data < 0){
                   app.globalData.userInfo.uid = -res.data;
+                  wx.getUserInfo({
+                    success: res1 => {
+                      var username = res1.userInfo.nickName;
+                      var sex = res1.userInfo.gender;
+                      var headUrl = res1.userInfo.avatarUrl;
+                      that.globalData.userInfo = res1.userInfo;
+                      wx.request({
+                        url: 'https://yanglq.xyz/user/addUser',
+                        data: {
+                          'id': -res.data,
+                          'username': username,
+                          'headUrl': headUrl,
+                          'sex': sex,
+                        },
+                        method: 'GET',
+                        success: function (res) {
+                        },
+                      })
+                    },
+                    fail: function () {
+                    },
+                    complete: function () {
+                    }
+                  })
                 }
+              
                 app.globalData.userInfo.uid = res.data;
                 // 获取浇水数据
                 wx.request({
