@@ -10,8 +10,7 @@ Page({
   },
 
   getUserInfo(e) {
-    console.log(e);
-    
+    // console.log(e);
     if (e.detail.userInfo) {
       wx.showToast({
         title: '授权成功',
