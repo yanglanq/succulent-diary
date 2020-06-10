@@ -13,10 +13,13 @@ Page({
     }
   },
   ViewImage(e) {
-    var cur = e.currentTarget.dataset.url;
+    var cur = [];
+    for(var i = 0;i < this.data.diary.imgList.length;i++){
+      cur.push('http://yanglq.xyz:4430' + this.data.diary.imgList[i]);
+    }
     wx.previewImage({
-      urls: this.data.diary.imgList,
-      current: 'http://yanglq.xyz:4430' + cur
+      urls: cur,
+      current: e.currentTarget.dataset.url
     });
   },
   /**

@@ -11,7 +11,15 @@ Page({
       
     }
   },
-  
+  ViewImage(e) {
+    var cur = [];
+    cur.push('http://yanglq.xyz:4430' + this.data.succulent.imgUrl);
+    wx.previewImage({
+      urls: cur,
+      current: cur[0]
+    });
+  },
+
   displayMore(e){
     this.setData({
       detail: true

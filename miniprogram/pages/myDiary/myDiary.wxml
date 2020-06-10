@@ -22,12 +22,13 @@
             wx:for-item="item" wx:key="ID">
                 <image class="diary_img action" wx:if="{{item.path != ''}}" src="http://yanglq.xyz:4430{{item.headUrl}}" data-index="{{index}}" mode='aspectFill'></image>
                 <image class="diary_img action" wx:if="{{item.path == ''}}" src="{{item.headUrl}}" data-index="{{index}}" mode='aspectFill'></image>
-                <view style="position: relative;right: 55px;">
-                    <view>{{item.name}}</view>
-                    <view class="margin-top-sm">{{item.plant}}</view>
+                <view class="cu-item">
+                    <view class="content">
+                        <view class="title">{{item.name}}</view>
+                        <view class="info margin-top-sm">{{item.plant}}</view>
+                    </view>
                 </view>
                 <view class="margin-top-sm"></view>
-                <!-- <image class="cu-avatar round sm" style="background-color:#fbfbfb;" src="{{addbutton}}" data-index="{{index}}" mode='widthFix' bindtap="Add"></image> -->
                 <image class="cu-avatar round sm" style="background-color:#fbfbfb;" src="{{deletebutton}}" data-index="{{index}}" mode='widthFix' catchtap="DeleteDiary"></image>
             </view>
         </view>

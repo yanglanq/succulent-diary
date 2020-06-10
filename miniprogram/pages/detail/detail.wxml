@@ -9,7 +9,7 @@
         <view class='text-content' wx:for="{{succulent}}" wx:for-index="id" wx:for-item="item" wx:key="id">
             <view class='margin-top-sm' wx:if="{{id != 'pname'}}">
                 <view wx:if="{{id == 'imgUrl'}}" class="flex padding justify-center">
-                    <view class="cu-avatar xxl round" style="background-image:url(http://yanglq.xyz:4430{{succulent.imgUrl}});"></view>
+                    <view data-index="{{id}}" class="cu-avatar xxl round" style="background-image:url(http://yanglq.xyz:4430{{succulent.imgUrl}});" bindtap="ViewImage"></view>
                 </view>
                 <view wx:if="{{id == 'alias'}}">
                     <view class="property_font" >
