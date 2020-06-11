@@ -49,8 +49,12 @@ Page({
         word:word
       },
       success: (res) => {
-        console.log(res.data.data);
-        
+        if(!res.data.data.length){
+          wx.showToast({
+            title: '暂时没有您想要的结果~',
+            icon: 'none',
+          })
+        }
         this.setData({
           searchList: res.data.data
         })
