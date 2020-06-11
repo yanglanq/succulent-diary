@@ -1,5 +1,9 @@
 /* pages/diaryList/diaryList.wxss */
 /* packageAdmin/pages/pending/pending.wxss */
+page{
+  width: auto;
+  min-height: 100%;
+}
 .cu-form-group .title{
   font-size: 15px !important;
   color: #3a404d !important;
@@ -146,7 +150,7 @@
     pointer-events: all;
   }
   .DrawerWindow .cu-list{
-    margin: 20px 20px
+    margin: 30px 20px
   }
   .DrawerClose {
     position: absolute;

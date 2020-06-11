@@ -6,7 +6,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        margin:null
     },
 
     /**
@@ -14,6 +14,9 @@ Page({
      */
     onLoad: function (options) {
         app.getState();
+        this.setData({
+            margin:app.globalData.height*0.37
+        })
     },
 
     /**

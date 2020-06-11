@@ -1,2 +1,4 @@
 <!--pages/loader/loader.wxml-->
-<view class="loader">.</view>
+<view class="loader" 
+style="margin:{{margin}}px auto;"
+>.</view>

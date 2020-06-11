@@ -63,7 +63,7 @@ Page({
 				let data = [];
 				res.data.forEach(item => {
 					item.date = item.date.split(" ")
-					
+					item.date[1] = item.date[1].match(/\d{2}:\d{2}/)[0];
 					if(Number(item.date[1].split(":")[0])>=12&&Number(item.date[1].split(":")[1])>0){
 						item.time="下午"
 					}else{
@@ -71,6 +71,7 @@ Page({
 					}
 					data.push(item);
 				});
+				data.reverse();
 				this.setData({
 					diaryList: data
 				})

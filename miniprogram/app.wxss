@@ -27,3 +27,9 @@ page{
   display: inline-block;
   vertical-align:text-bottom;
 }
+scroll-view{
+  overflow: hidden !important;
+}
+.cu-form-group textarea{
+  position: static !important;
+}
