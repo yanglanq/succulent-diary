@@ -15,7 +15,9 @@
                 <view class="action">日记本数：{{diary.length}}</view>
             </view>
         </view>
-        <view class="cu-list menu sm-border card-menu margin-top">
+        <view class="cu-list menu sm-border card-menu"
+            style="margin-top: 5px;"
+        >
             <view class="cu-item margin-top-sm" style="height:150rpx" wx:for="{{diary}}" 
             bindtap="change"
             data-id="{{item.id}}"

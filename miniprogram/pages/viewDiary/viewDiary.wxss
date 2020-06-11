@@ -1,16 +1,17 @@
 
   .bottom {
-    padding: 0 8px;
+    padding: 0 10px;
     width: auto;
-    height: 30px;
-    line-height: 30px;
+    height: 35px;
+    line-height: 35px;
     position: absolute;
-    bottom: 30rpx;
-    right: 30rpx;
+    bottom: 50rpx;
+    right: 50rpx;
     text-align: center;
-    background-color: #90ae0a;  
+    background-color: #90ae0a;
     color: #fff;
     border-radius: 5px;
+
   }
   button{
     margin:0 !important;
@@ -19,8 +20,8 @@
     background-color: transparent!important;
     color: inherit !important;
     font-weight: normal !important;
-    line-height: 30px !important;
-    height: 30px !important;
+    line-height: 35px !important;
+    height: 35px !important;
     font-size: inherit !important;
   }
 page {

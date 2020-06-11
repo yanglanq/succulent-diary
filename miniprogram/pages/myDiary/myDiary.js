@@ -297,7 +297,7 @@ Page({
   onLoad: function (options) {
     this.load();
   },
-  load() {
+  load(){
     var that = this;
     wx.request({
       url: 'https://yanglq.xyz/diary/listBook',
