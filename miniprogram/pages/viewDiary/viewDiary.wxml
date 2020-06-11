@@ -12,8 +12,8 @@
     </view>
     <!-- 正文 -->
     <view class="cu-form-group textarea" >
-        <text style="height: 600rpx;font-size: 30rpx;">
-            {{diary.content}}
+        <text class="margin-bottom textouter">
+            {{diary.content}} 
         </text>
     </view>
     <!-- 图片 -->
