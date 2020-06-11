@@ -15,6 +15,8 @@ Page({
     searchList: [],
     searchWord: "",
     url:"http://yanglq.xyz:4430",
+    search:false,
+    word:null
   },
 
   /**
@@ -35,25 +37,35 @@ Page({
     })
   },
   search(e) {
+    console.log(this.data.word,this.data.searchWord);
+    
+    if(this.data.search||this.data.word==this.data.searchWord){
+      console.log("返回");
+      
+      return;
+    }
+    this.data.search = true;
     wx.showToast({
       title: '搜索中',
       icon: 'loading',
       duration: 2000
     });
-    wx.hideToast();
     let word;
     if (e.currentTarget.dataset.searchword) {
       word = e.currentTarget.dataset.searchword
     } else {
       word = this.data.searchWord
     }
+    this.setData({
+      word:word
+    })
     wx.request({
       url: 'https://yanglq.xyz/succulent/searchByWord',
       data: {
         word: word
       },
       success: (res) => {
-        if(!res.data.data.length){
+        if(!res.data.data.length||!res){
           wx.showToast({
             title: '暂时没有您想要的结果~',
             icon: 'none',
@@ -61,44 +73,19 @@ Page({
         }
         this.setData({
           searchList: res.data.data
+        },()=>{
+          setTimeout(()=>{
+            wx.hideToast();
+            this.data.search = false;
+          },1000)
         })
       },
       fail(err) {
         throw err;
+      },
+      complete(){
       }
     })
-    // wx.showLoading({
-    //   title: '搜索中',
-    //   mask: true,
-    //   success: (result) => {
-    //     let word;
-    //     if (e.currentTarget.dataset.searchword) {
-    //       word = e.currentTarget.dataset.searchword
-    //     } else {
-    //       word = this.data.searchWord
-    //     }
-    //     wx.request({
-    //       url: 'https://yanglq.xyz/succulent/searchByWord',
-    //       data: {
-    //         word: word
-    //       },
-    //       success: (res) => {
-    //         console.log(res.data.data);
-
-    //         this.setData({
-    //           searchList: res.data.data
-    //         })
-    //       },
-    //       fail(err) {
-    //         throw err;
-    //       }
-    //     })
-    //   },
-    //   fail: () => {},
-    //   complete: () => {
-    //     wx.hideLoading();
-    //   }
-    // });
   },
   viewInfo(e) {
     wx.navigateTo({

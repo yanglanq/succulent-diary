@@ -151,7 +151,7 @@ Page({
             plant: plant,
             uid: uid,
             description: description,
-            watering: watering,
+            watering: watering+":00",
           },
           header: {
             "Content-Type": "application/x-www-form-urlencoded"

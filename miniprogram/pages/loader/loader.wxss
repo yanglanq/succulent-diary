@@ -3,7 +3,6 @@ page{
     background-color: #fff;
 }
 .loader {
-    margin: 200px auto;
     font-size: 20px;
     width: 1em;
     height: 1em;
