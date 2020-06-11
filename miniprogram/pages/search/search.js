@@ -37,8 +37,6 @@ Page({
     })
   },
   search(e) {
-    console.log(this.data.word,this.data.searchWord);
-    
     if(this.data.search||this.data.word==this.data.searchWord){
       console.log("返回");
       
@@ -48,7 +46,6 @@ Page({
     wx.showToast({
       title: '搜索中',
       icon: 'loading',
-      duration: 2000
     });
     let word;
     if (e.currentTarget.dataset.searchword) {
