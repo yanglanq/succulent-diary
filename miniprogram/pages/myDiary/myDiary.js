@@ -9,6 +9,7 @@ Page({
     deletebutton: 'https://yanglq.xyz/images/plantIcon/delete.png',
     imgList: [],
     diary: [],
+    height:null,
     temp: {
       watering: '00:00'
     }
@@ -295,6 +296,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+			height:app.globalData.height
+		})
     this.load();
   },
   load(){

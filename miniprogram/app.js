@@ -97,6 +97,8 @@ App({
   globalData: {
     userInfo: {},
     wxuserInfo: {},
+    height: wx.getSystemInfoSync().windowHeight,
+    width: wx.getSystemInfoSync().windowWidth
   },
   getState(){
     wx.getSetting({

@@ -264,7 +264,7 @@
     pointer-events: all;
   }
   .DrawerWindow .cu-list{
-    margin:70rpx 40rpx;
+    margin:20px 20px;
   }
   .DrawerClose {
     position: absolute;

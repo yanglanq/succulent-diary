@@ -22,7 +22,7 @@ Page({
      */
 	onLoad: function (options) {
 		this.setData({
-			height:app.globalData.pHeight
+			height:app.globalData.height
 		})
 		this.setData({
 			id: options.id

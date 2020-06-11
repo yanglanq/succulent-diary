@@ -3,7 +3,7 @@
     <view class="container">
         <view class="header">
             <text>日记本</text>
-            <cover-image class="imgIcon" src="https://yanglq.xyz/images/plantIcon/duorouduocai.png"></cover-image>
+            <image class="imgIcon" src="https://yanglq.xyz/images/plantIcon/duorouduocai.png"></image>
         </view>
         <!-- 图片 -->
         <view class="cu-list menu sm-border card-menu margin-top">
@@ -41,7 +41,7 @@
 </view>
 <scroll-view scroll-y class="DrawerWindow {{modalName=='viewModal'?'show':''}}">
     <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg">
-        <view class="cu-item pend-form" style="height:1400rpx;justify-content:flex-start;opacity:0.8;">
+        <view class="cu-item pend-form" style="height:{{height-40}}px;justify-content:flex-start;opacity:0.8;">
             <!-- 日记名称 -->
             <view class="cu-form-group">
                 <view class="title">日记本名称</view>

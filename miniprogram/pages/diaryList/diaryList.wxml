@@ -52,7 +52,7 @@
 
 <scroll-view scroll-y class="DrawerWindow {{modalName=='viewModal'?'show':''}}">
 	<view class="cu-list menu card-menu  shadow-lg">
-		<view class="cu-item pend-form" style="height:1250rpx;justify-content:flex-start;opacity:0.8;">
+		<view class="cu-item pend-form" style="height:{{height-40}}px;justify-content:flex-start;opacity:0.8;">
 			<!-- 日记名称 -->
 			<view class="cu-form-group margin-top">
 				<view class="title">日记名称</view>
