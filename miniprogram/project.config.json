@@ -134,6 +134,13 @@
 					"id": -1,
 					"name": "pages/loader/loader",
 					"pathName": "pages/loader/loader",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "loader",
+					"pathName": "pages/loader/loader",
 					"scene": null
 				}
 			]

@@ -130,14 +130,14 @@ Page({
       if(typeof(name) == 'undefined'){
         wx.showToast({
           title: '请输入日记本名称',
-          icon: 'loading',
+          icon: 'none',
           duration: 800
         })
       }
       else {
         wx.showToast({
           title: '请输入多肉名称',
-          icon: 'loading',
+          icon: 'none',
           duration: 800
         })
       }
@@ -158,31 +158,39 @@ Page({
           },
           method: 'POST',
           success: function (res) {
-            var id = res.data;
-            var ans = {};
-            ans.id = id;
-            ans.name = name;
-            ans.path = '';
-            ans.plant = plant;
-            ans.uid = uid;
-            ans.description = description;
-            ans.watering = watering;
-            D.push(ans);
-            that.setData({
-              diary: D,
-              haveImg: false,
-              imgNum: 0,
-              ['temp.watering']: '00:00',
-              ['temp.plant']: '',
-              ['temp.name']: '',
-              ['temp.description']: '',
-            })
-            wx.showToast({
-              title: '提交成功！',
-              icon: 'success'
-            })
-            that.hideModal();
-            that.load();
+            if(res.data){
+              var id = res.data;
+              var ans = {};
+              ans.id = id;
+              ans.name = name;
+              ans.path = '';
+              ans.plant = plant;
+              ans.uid = uid;
+              ans.description = description;
+              ans.watering = watering;
+              D.push(ans);
+              that.setData({
+                diary: D,
+                haveImg: false,
+                imgNum: 0,
+                ['temp.watering']: '00:00',
+                ['temp.plant']: '',
+                ['temp.name']: '',
+                ['temp.description']: '',
+              })
+              wx.showToast({
+                title: '提交成功！',
+                icon: 'success'
+              })
+              that.hideModal();
+              that.load();
+            }else{
+              wx.showToast({
+                title: '添加失败',
+                icon:"none"
+              })
+            }
+            
           }
         })
       } else {
@@ -200,49 +208,57 @@ Page({
           },
           method: 'POST',
           success: function (res) {
-            var Id = res.data;
-            wx.uploadFile({
-              url: 'https://yanglq.xyz/diary/updateBook',
-              filePath: headUrl, //文件路径  
-              name: 'file', //随意
-              header: {
-                'Content-Type': 'multipart/form-data',
-              },
-              formData: {
-                'id': Id,
-                'name': name,
-                method: 'POST' //请求方式
-              },
-              success: function (res) {
-                var id = res.data;
-                var ans = {};
-                ans.headUrl = headUrl;
-                ans.id = id;
-                ans.name = name;
-                ans.path = '';
-                ans.plant = plant;
-                ans.uid = uid;
-                ans.description = description;
-                ans.watering = watering;
-                D.push(ans);
-                that.setData({
-                  diary: D,
-                  haveImg: false,
-                  imgNum: 0,
-                  ['temp.watering']: '00:00',
-                  ['temp.plant']: '',
-                  ['temp.name']: '',
-                  ['temp.description']: '',
-                  imgList: [],
-                })
-                wx.showToast({
-                  title: '提交成功！',
-                  icon: 'success'
-                })
-                that.hideModal();
-                that.load();
-              }
-            })
+            if(res.data){
+              var Id = res.data;
+              wx.uploadFile({
+                url: 'https://yanglq.xyz/diary/updateBook',
+                filePath: headUrl, //文件路径  
+                name: 'file', //随意
+                header: {
+                  'Content-Type': 'multipart/form-data',
+                },
+                formData: {
+                  'id': Id,
+                  'name': name,
+                  method: 'POST' //请求方式
+                },
+                success: function (res) {
+                  var id = res.data;
+                  var ans = {};
+                  ans.headUrl = headUrl;
+                  ans.id = id;
+                  ans.name = name;
+                  ans.path = '';
+                  ans.plant = plant;
+                  ans.uid = uid;
+                  ans.description = description;
+                  ans.watering = watering;
+                  D.push(ans);
+                  that.setData({
+                    diary: D,
+                    haveImg: false,
+                    imgNum: 0,
+                    ['temp.watering']: '00:00',
+                    ['temp.plant']: '',
+                    ['temp.name']: '',
+                    ['temp.description']: '',
+                    imgList: [],
+                  })
+                  wx.showToast({
+                    title: '提交成功！',
+                    icon: 'success'
+                  })
+                  that.hideModal();
+                  that.load();
+                }
+              })
+            }else{
+              wx.showToast({
+                title: '添加失败',
+                icon:"none"
+              })
+            }
+            
           }
         })
       }
@@ -277,6 +293,11 @@ Page({
                 wx.showToast({
                   title: '删除成功！',
                   icon: 'success'
+                })
+              }else{
+                wx.showToast({
+                  title: '删除失败',
+                  icon:"none"
                 })
               }
             }

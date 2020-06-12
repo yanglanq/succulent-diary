@@ -1,4 +1,13 @@
 <!--pages/loader/loader.wxml-->
+
+<view style="margin:{{margin-80}}px auto;margin-bottom:0;"
+    class="animate__animated animate__repeat-1 animate__rollIn"
+>
+    <view><text class=".colorgradient note1 note">享受绿色萌宠</text> </view>
+    <view><text class=".colorgradient note2 note">你的多肉记录小助手</text> </view>
+</view>
+
+
 <view class="loader" 
-style="margin:{{margin}}px auto;"
+style="margin:0 auto;"
 >.</view>

@@ -37,7 +37,7 @@
 	<!-- 点击跳转到搜索界面 -->
 	<view class="search" bindtap="search">
 		<text class="cuIcon-search"></text>
-		<text>Search</text>
+		<text> 搜索</text>
 	</view>
 
 	<view class="swiperImg">

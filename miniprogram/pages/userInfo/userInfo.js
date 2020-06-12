@@ -7,6 +7,18 @@ Page({
     // hasUserInfo:false
   },
 
+  show(){
+    wx.showModal({
+      title: "联系我们",
+      content: "邮箱：572295700@qq.com",
+      showCancel: false,
+      confirmText: "确定",
+      confirmColor: "#0f0",
+      success: function (res) {
+ 　　　}
+   })
+  },
+
   // ListTouch触摸开始
   ListTouchStart(e) {
     this.setData({

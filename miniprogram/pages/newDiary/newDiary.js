@@ -85,54 +85,70 @@ Page({
               },
               method:"POST",
               success:(res)=>{
-                let i = 0;
-                if(this.data.diary.imgList.length){
-                  this.data.diary.imgList.forEach(item => {
-                    wx.uploadFile({
-                      url: 'https://yanglq.xyz/diary/updateDiary',
-                      filePath: item, //文件路径  
-                      name: 'file',  //随意
-                      header: { 
-                        'Content-Type': 'multipart/form-data',
-                      },
-                      formData: {
-                        'id':res.data,
-                        method: 'POST'   //请求方式
-                      },
-                      success:(res1)=>{
-                        if(res1.data==="1"){
-                          i++;
-                          if(i==this.data.diary.imgList.length){
-                            let pages = getCurrentPages();
-                            let beforePage = pages[pages.length - 2];
-                            // 调用列表页的获取数据函数
-                            beforePage.loadData(this.data.id);
-                            wx.showToast({
-                              title: '添加成功',
-                            })
-                            
-                            wx.navigateBack({
-                              delta: 1
-                            });
+                if(res.data){
+                  let i = 0;
+                  if(this.data.diary.imgList.length){
+                    this.data.diary.imgList.forEach(item => {
+                      wx.uploadFile({
+                        url: 'https://yanglq.xyz/diary/updateDiary',
+                        filePath: item, //文件路径  
+                        name: 'file',  //随意
+                        header: { 
+                          'Content-Type': 'multipart/form-data',
+                        },
+                        formData: {
+                          'id':res.data,
+                          method: 'POST'   //请求方式
+                        },
+                        success:(res1)=>{
+                          if(res1.data==="1"){
+                            i++;
+                            if(i==this.data.diary.imgList.length){
+                              let pages = getCurrentPages();
+                              let beforePage = pages[pages.length - 2];
+                              // 调用列表页的获取数据函数
+                              beforePage.loadData(this.data.id);
+                              wx.showToast({
+                                title: '添加成功',
+                              })
+                              
+                              wx.navigateBack({
+                                delta: 1
+                              });
+                            }
                           }
                         }
-                      }
+                      })
+                    });
+                  }else{
+                    wx.showToast({
+                      title: '添加成功',
                     })
-                  });
-                }else{
-                  wx.showToast({
-                    title: '添加成功',
-                  })
-                  let pages = getCurrentPages();
-                  let beforePage = pages[pages.length - 2];
-                  // 调用列表页的获取数据函数
-                  beforePage.loadData(this.data.id);
-                  wx.navigateBack({
-                    delta: 1
-                  });
+                    let pages = getCurrentPages();
+                    let beforePage = pages[pages.length - 2];
+                    // 调用列表页的获取数据函数
+                    if(beforePage.data.diary){
+                      beforePage.loadData(this.data.id);
+                    }
+                    
+                    wx.navigateBack({
+                      delta: 1
+                    });
+                  }
                 }
+                else{
+                  wx.showToast({
+                    title: '添加失败',
+                    icon:"none"
+                  })
+                }
+                
               },
               fail(err){
+                wx.showToast({
+                  title: '添加失败',
+                  icon:"none"
+                })
                 throw err;
               }
             })

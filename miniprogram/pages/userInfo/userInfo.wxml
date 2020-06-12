@@ -54,5 +54,13 @@
                 </view>
             </view>
         </view>
+        <view class="cu-item arrow"
+            bindtap="show"
+        >
+            <view>
+                <image class="cu-avatar round" src="https://yanglq.xyz/images/plantIcon/duorou20.png" mode='widthFix'></image>
+                <text style="margin-left:10rpx;">联系我们</text>
+            </view>
+        </view>
     </view>
 </view>
